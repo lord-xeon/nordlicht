@@ -11,8 +11,8 @@
 		</div>
 		<hr class="clear"/>
 		<h2>Year to Date</h2>
-		<img src="<?php echo chartURL($y2dMetaC,$y2d,$y2dMetaCc);?>" alt="year to date chart" />
-		<?php drawTable($monthYearArgs);;?>
+		<img src="<?php echo chartURL($y2dMetaC,$y2dData,$y2dMetaCc);?>" alt="year to date chart" />
+		<?php drawTable($monthYearArgs);?>
 	</section> <!-- closes today section --> 
 	
 	<section id="daily" class="statsSection">
