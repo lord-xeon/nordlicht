@@ -1,4 +1,4 @@
-<?php require_once('funn/config.php'); ?>
+<?php require_once('config.php'); ?>
 <!DOCTYPE HTML>
 <head>
 	<meta charset="utf-8">
@@ -12,11 +12,12 @@
 
 <body>
   <div id="container">
-    <header>
+    <header id="navHead">
 		<p>Statists for <?php echo $statsURL;?>, for <?php echo $monthList[ltrim(substr($dayR,0,2),'0')].', '.substr($dayR,2,4); ?></p>
 		<div id="controls">
 			<?php fileDrop($stsList);?>
 			<input type="text" value="<?php echo $dayR;?>" id="dayR" name="dayR" />
+			<br class="clear" />
 		</div> <!-- closes controls div -->
     </header>
 	<nav>

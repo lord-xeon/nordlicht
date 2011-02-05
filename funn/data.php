@@ -1,6 +1,5 @@
 <?php
 /*Data file for AWstats*/
-
 $general	= generalSts($sts);
 $time		= sectionArray('TIME',$sts);
 $month		= sectionArray('DAY',$sts);

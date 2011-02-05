@@ -1,6 +1,9 @@
 <?php
 /*Metadata arrays for tables:*/
 
+
+$year2DayMeta = array('Month','Pages','Hits','Bandwidth','Visits');
+
 /*###############
 	@2.0 - Chart Columns metadata
 ###############*/

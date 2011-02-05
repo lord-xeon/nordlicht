@@ -1,5 +1,10 @@
 <?php
 /*arguments for the generation of the tables*/
+
+//year to date
+$year2Date = array('section'=>sectionArray('MONTH',$cacheF),
+						'meta'=>$year2DayMeta);
+
 //Time - 0 - 11am
 $time12Args 	= array('section'=>$time,
 						'meta'=>$timeMetaT,

@@ -653,4 +653,30 @@ function expandDay($section){
 	endforeach;
 	return $max;
 }
+/*function y2dFile - creates an empty year file if it doesnt exist
+ * $file 	- filename
+ * $site	- sitename
+ * return	= written file
+ */
+function y2dFile($file,$site){
+	$f = fopen($file, 'w');
+	$l = 'Year to date for: '.$site."\n";
+	$l .= "# Month - Pages - Hits - Bandwidth - Visits\n";
+	$l .= "BEGIN_MONTH\n";
+	$l .= "Jan 0 0 0 0\n";
+	$l .= "Feb 0 0 0 0\n";
+	$l .= "Mar 0 0 0 0\n";
+	$l .= "Apr 0 0 0 0\n";
+	$l .= "May 0 0 0 0\n";
+	$l .= "June 0 0 0 0\n";
+	$l .= "July 0 0 0 0\n";
+	$l .= "Aug 0 0 0 0\n";
+	$l .= "Sept 0 0 0 0\n";
+	$l .= "Oct 0 0 0 0\n";
+	$l .= "Nov 0 0 0 0\n";
+	$l .= "Dec 0 0 0 0\n";
+	$l .= "END_MONTH\n";
+	fwrite($f,$l);
+	fclose($f);
+}
 ?>
