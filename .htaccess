@@ -9,6 +9,6 @@
 Options +FollowSymLinks
 RewriteEngine On
 	#rewrite rule for optional time paramater
-RewriteRule ^stats-([^-]*)$ /nordlicht/index.php?stats=$1 [L]
+RewriteRule ^stats-([^-]*)$ /nordlicht/juno.php?stats=$1 [L]
 	#rewrite rule for with the time paramater
-RewriteRule ^stats-([^-]*)-([^-]*)$ /nordlicht/index.php?stats=$1&time=$2 [L]
+RewriteRule ^stats-([^-]*)-([^-]*)$ /nordlicht/juno.php?stats=$1&time=$2 [L]
