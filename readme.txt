@@ -1,5 +1,5 @@
 README
-nordlicht version 0.2
+nordlicht version 0.4
 copyright 2011 alpha vega llc
 
 Licesned under the GNU GENERAL PUBLIC LICENSE Version 2
@@ -30,6 +30,12 @@ nordlicht comes with the following resources that have been made available under
   * FamFamFam Flag icons - http://www.famfamfam.com/lab/icons/flags/
 
 =Changelog=
+==nordlicht v0.4==
+===Feb. 05,2011===
+  * added the Year to Date info
+  * fixed bug 10 - added padding to charts
+  * fixed bug 2
+  * started bug 8 - added a splash page, it looks like crap
 ==nordlicht v0.3.1.1==
 ===Jan 27, 2011===
   * added magnifing glass icon
