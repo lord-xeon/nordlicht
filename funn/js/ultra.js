@@ -3193,7 +3193,8 @@ $(function() {
 		aTag +=  " style='"+innerStyle+"'";
 		};
 		aTag +=  ' id="'+aid+'">';
-		aTag += arrow + '<span class="'+styles.ddTitleText+'">' +sText+'</span></a>';
+//		aTag += arrow + '<span class="'+styles.ddTitleText+'">' +sText+'</span></a>';
+		aTag += arrow + sText+'</a>';
 		return aTag;
 	};
 	var createATags = function () {
@@ -4046,36 +4047,23 @@ $(window).load(function(){
 		width:'75%',
 		height:'75%'
 	});
+	var curyear = new Date();
 	$("#dayR").datepick({
 		showAnim:'slideDown',
-		showSpeed:'normal'
+		showSpeed:'normal',
+		pickerClass:'buffel',
+		maxDate:0
 	});
-	$("#siteSelect").msDropDown({mainCSS:'dd2'});
+	$("#siteSelect").msDropDown({mainCSS:'buffel'});
 	$("#goToStats").click(function(e){
 		$("#statsInfo").html();
 		e.preventDefault();
 		var href, dayR = $('#dayR').val(), dayR2;
-
 		href = 'stats-'+$('#siteSelect').val();
 		if(dayR) {
 			dayR2 = dayR.split("/");
 			href += '-'+dayR2[0]+dayR2[2];
 		}
-		console.log($(this).attr('href'));
-//		window.location.href=$(this).attr('href');
-			
 		$("#statsInfo").load(href+ ' #statsInfo');
 	});
-	
-/*	$("#paging a").live('click',function(e){
-		e.preventDefault();
-		$.scrollTo("#container",{duration:500,offset:-150});
-		$("#overlay").fadeIn('fast');
-		var link=$(this).attr('href')+' #ajaxContainer';
-		var pg=$(this).attr('rel');console.log(link);
-		var wrap=$('#ajaxContainer');
-		wrap.html('loading.....');
-		$("#pageNumTitle").html('Page: '+pg).fadeIn();
-		wrap.load(link,'#ajaxContainer',function(){$("#overlay").fadeOut('slow')})});
-	*/
 });
