@@ -27,10 +27,11 @@ function fileList($dir){
 */
 function fileDrop($fileList){
 	echo '<select id="siteSelect" name="siteSelect">';
+	echo "\n\t<option name=\"please select\">Please Select...</option>\n";
 	$secList = array();
 	foreach($fileList as $site):
 		if(!in_array($site,$secList)):
-			echo '<option id="'.$site.'" name="'.$site.'">'.$site.'</option>';
+			echo "\t".'<option id="'.$site.'" name="'.$site.'">'.$site.'</option>'."\n";
 			$secList[] = $site;
 		endif;
 	endforeach;

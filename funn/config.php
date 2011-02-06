@@ -40,7 +40,7 @@ require_once('funnns.php');
 $stsList = fileList($stsP);
 
 //splash page check - don't bother loading the data if we're only on the splash page
-if($_SERVER['PHP_SELF'] != 'nordlicht/index.php'):
+if($_SERVER['PHP_SELF'] != '/nordlicht/index.php'):
 	//sample AW stats output file
 	if(file_exists($stsF)):
 		$sts = file($stsF);
