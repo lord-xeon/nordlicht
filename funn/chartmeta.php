@@ -7,7 +7,7 @@ $hourMetaC = array('cht'=>'bvg',//'chf'=>'c,lg,0,EFEFEF,0,BBBBBB,1',
    				   'chdl'=>'Pages|Hits',
 				   'chs'=>'800x350',
 				   'chco'=>'80C65A,76A4FB',
-				   'chma'=>'15,15,15,15',
+				   'chma'=>'15,15,15,15|0,25',
 				   'chg'=>'0,10,20,10',
    				   'chxt'=>'y,r,x',
 				   'chxr'=>'0,0,'.findMax($time,'Pages').'|1,0,'.findMax($time,'Hits'),
@@ -23,7 +23,7 @@ $monthMetaC = array('cht'=>'lc',					//chart type
 					'chs'=>'950x300',				//chart size
 					'chco'=>'3072F3,80C65A,AA0033',	//data colors
 					'chls'=>'4|2|1,5,5',		//line widths
-					'chma'=>'40,20,30,50',	//margin
+					'chma'=>'40,20,30,50|0,25',	//margin
 					'chg'=>'4,0,10,10',		//grid lines
 					'chxtc'=>'3,10',		//axis tic marks
 					'chxt'=>'y,y,r,x',	//axis
@@ -52,7 +52,7 @@ $browserMeta = array('cht'=>'p3',	//pie chart
 
 $osMeta = array('cht'=>'p3',
 				'chs'=>'450x250',
-				'chma'=>'15,45,0,30|5',
+				'chma'=>'15,45,0,30|0,25',
 				'chtt'=>'OS+Breakdown+(All+Versions)',
 				'chts'=>'EFEFEF,13',
 				'chf'=>'bg,lg,270,525252,0,2B323F,1',
@@ -75,7 +75,7 @@ $ccMap	= array('cht'=>'map:fixed=-60,180,80,179',
 		'chf'=>'bg,s,9BC0D4',
 		'chtt'=>'Top+10+Countries+by+Hits',
 		'chm'=>rtrim($domainData2['Hits'],'|'),
-		'chma'=>'30,20,0,10'
+		'chma'=>'30,20,0,10|0,25'
 		);
 
 
@@ -106,7 +106,7 @@ $dtTotalMetaC = array('chxl=0:|Monday|Wednesday|Friday|Sunday',
 					'chdl=Pages|Hits|Visits',
 					'chdlp=b',
 					'chg=0,10,0,0',
-					'chma=10,10,5,25',
+					'chma=10,10,5,25|0,25',
 					'chm=D,8BACEE,0,-1.1,3|D,83E74C,1,-1,3,1|D,F57199,2,-1,3,-1',
 					'chtt=Daily+Totals'
 					);
