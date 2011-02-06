@@ -16,7 +16,8 @@
 		<p>Statists for <?php echo $statsURL;?>, for <?php echo $monthList[ltrim(substr($dayR,0,2),'0')].', '.substr($dayR,2,4); ?></p>
 		<div id="controls">
 			<?php fileDrop($stsList);?>
-			<input type="text" value="<?php echo $dayR;?>" id="dayR" name="dayR" />
+			<input type="text" id="dayR" name="dayR" />
+			<a href="juno.php" title="Go to Stats" id="goToStats" class="goButton">Go!</a>
 			<br class="clear" />
 		</div> <!-- closes controls div -->
     </header>
