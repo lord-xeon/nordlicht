@@ -1,4 +1,13 @@
-<?php require_once('config.php'); ?>
+<?php 
+$statsURL = $_GET['stats'];
+$dayR = $_GET['time'];
+$tday = date('mY');
+
+//if the time is not specified, then use the current month and year
+if($dayR==''):
+	$dayR = date('mY');
+endif;
+require_once('config.php'); ?>
 <!DOCTYPE HTML>
 <head>
 	<meta charset="utf-8">
