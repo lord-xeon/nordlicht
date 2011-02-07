@@ -14,7 +14,7 @@ require_once('config.php'); ?>
 	<title>Apache Statistics for: <?php echo $statsURL; ?> |Month: <?php echo substr($dayR,0,2).' |Year, '.substr($dayR,2,4);?></title>
 	<meta name="description" content="statistics">
 	<meta name="author" content="<?php echo $aweVerson; ?>">
-	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="shortcut icon" href="favicon.ico">
 	<link type="text/css" rel="stylesheet" href="funn/css/ruthless.css"/>
 	<script src="funn/js/modernizr-1.6.min.js"></script>
 </head>
