@@ -22,20 +22,7 @@
 			width:600px;
 		}
 		img { margin:0 auto; text-align:center; display:block; }
-		#controls {
-			position:relative;
-			margin:0 auto;
-		}
-		#dayR {
-		    position:absolute;
-			left:318px;
-		    top:10px;
-		}
-		.goButton {
-			position:absolute;
-			top:-16px;
-			right:0;
-		}
+		#controls { opacity:1; }
 	</style>
 </head>
 <body>
@@ -46,7 +33,7 @@
 		<img src="funn/img/others/aurora.jpg" alt="northern lights" />
 		<p>Welcome to the stats section of <?php echo $domain; ?>.  Please choose a subdomain, and date below.</p>
 		<div id="controls">
-			<input type="text" id="dayR" name="dayR" />
+			<input type="text" id="dayR2" name="dayR" />
 			<a href="juno.php" title="Go to Stats" id="goToStats" class="goButton">Go!</a>
 			<?php fileDrop($stsList);?>
 		</div>
@@ -60,16 +47,21 @@
 <script type="text/javascript">
 	$("#goToStats").click(function(e){
 		e.preventDefault();
-		var href, dayR = $('#dayR').val(), dayR2;
-
+		var href, dayR = $('#dayR2').val(), dayR2;
 		href = 'stats-'+$('#siteSelect').val();
 		if(dayR) {
 			dayR2 = dayR.split("/");
 			href += '-'+dayR2[0]+dayR2[2];
 		}
 		$(this).attr('href', href)
-		console.log($(this).attr('href'));
 		window.location.href=$(this).attr('href');
+	});
+		var curyear = new Date();
+	$("#dayR2").datepick({
+		showAnim:'slideDown',
+		showSpeed:'normal',
+		pickerClass:'buffel',
+		maxDate:0
 	});
 </script>
 </body>
