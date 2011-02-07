@@ -270,7 +270,7 @@ function drawTable($args){
 				elseif($h == 'Type'):
 					$vl = $args['error'][$section['Errors'][$id]];
 				elseif($h == 'Browser'):
-					$vl = "\t\t<img src=\"funn/img/browsers/".strtolower(str_replace(' ','-',$vl)).".png\"alt=\"".$vl."\"/>".$vl."\n";
+					$vl = "<img src=\"funn/img/browsers/".strtolower(str_replace(' ','-',$vl)).".png\"alt=\"".$vl."\"/>".$vl;
 				endif;	//ends meta type if
 				echo "\t\t\t<td>".$vl."</td>\n";
 			endforeach;	//ends meta foreach
