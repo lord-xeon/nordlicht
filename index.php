@@ -16,22 +16,25 @@
 						4px 4px 8px rgba(167,231,215,0.5),
 						8px 8px 12px rgba(167,231,215,0.1);
 			color:rgba(167,213,215,0.8);
-		}
-		
+		}		
 		section { 
 			margin:0 auto;
 			width:600px;
 		}
 		img { margin:0 auto; text-align:center; display:block; }
-		footer {
-			margin:50px auto;
-			background:rgba(236,166,192,0.9);
-			-webkit-box-shadow:2px 2px 4px rgba(236,166,192,0.7),
-							4px 4px 8px rgba(236,166,192,0.3),
-							inset 2px 2px 4px rgba(201,121,151,0.7),
-							inset 4px 4px 8px rgba(201,121,151,0.3);
-			text-align:center;
-			padding:5px;
+		#controls {
+			position:relative;
+			margin:0 auto;
+		}
+		#dayR {
+		    position:absolute;
+			left:318px;
+		    top:10px;
+		}
+		.goButton {
+			position:absolute;
+			top:-16px;
+			right:0;
 		}
 	</style>
 </head>
@@ -42,11 +45,10 @@
 	<section id="splashPage">
 		<img src="funn/img/others/aurora.jpg" alt="northern lights" />
 		<p>Welcome to the stats section of <?php echo $domain; ?>.  Please choose a subdomain, and date below.</p>
-		<div>
-			<?php fileDrop($stsList);?>
-			<br><br>
+		<div id="controls">
 			<input type="text" id="dayR" name="dayR" />
 			<a href="juno.php" title="Go to Stats" id="goToStats" class="goButton">Go!</a>
+			<?php fileDrop($stsList);?>
 		</div>
 	</section>
 	<footer>
