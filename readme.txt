@@ -1,5 +1,5 @@
 README
-nordlicht version 0.4
+nordlicht version 0.4.1
 copyright 2011 alpha vega llc
 
 Licesned under the GNU GENERAL PUBLIC LICENSE Version 2
@@ -28,10 +28,20 @@ nordlicht comes with the following resources that have been made available under
 ==Images and Icons:==
   * The Ultimate Free Web Designer’s Icon Set (750 icons, 48x48px) - http://www.smashingmagazine.com/2010/04/15/the-ultimate-free-web-designer-s-icon-set-750-icons-incl-psd-sources/ 
   * FamFamFam Flag icons - http://www.famfamfam.com/lab/icons/flags/
-
+  * nordlicht northern lights photo from http://en.wikipedia.org/wiki/File:Polarlicht_2.jpg - part of the Public Domain
+  
 =Changelog=
+==nordlicht v0.4.1==
+===Feb. 06, 2011===
+  * finished bug 8 - made the splash page fucking ace
+  * added custom theme to date picker and MSDropDown
+  * removed lots of CSS from MSDropDown
+  * limited date picker to 2001 till current day
+  * cleaned up the HTML output of drawTable()
+  * centered the Y2D table
+  * added a favicon - looks like crap but better then nothing right now
 ==nordlicht v0.4==
-===Feb. 05,2011===
+===Feb. 05, 2011===
   * added the Year to Date info
   * fixed bug 10 - added padding to charts
   * fixed bug 2
