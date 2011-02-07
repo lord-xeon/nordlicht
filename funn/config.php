@@ -7,7 +7,7 @@
 	4. Enjoy
 */
 //nordlich version number - current version of nordlicht
-$nordlich  = '0.4';
+$nordlich  = '0.4.1';
 
 //Abslolute server path to AWStats data files.  The usual path is below, but your server may differ
 $stsP = '/var/lib/awstats/';
