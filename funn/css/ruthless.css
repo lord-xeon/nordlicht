@@ -65,13 +65,12 @@ h2 {
 	position:fixed;
 	top:0px;
 	left:11%;
-/*	height:40px;*/
 	width:85%;
 	background:rgba(255,255,255,0.4);
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
 	border-radius:10px;
-	background-image: -webkit-gradient(
+/*	background-image: -webkit-gradient(
 		linear,
 		right bottom,
 		right top,
@@ -84,19 +83,23 @@ h2 {
 		rgb(255,255,255) 0%,
 		rgb(97,122,143) 41%,
 		rgb(130,123,130) 80%
-	);
+	);*/
+	background:#000;
 	font-size:20px;
 	font-family:'OFL Sorts Mill Goudy TT', Verdana, Geneva, sans-serif;
 	opacity:0.4;
+	z-index:1000;
 }
 header p { margin:2px auto; text-align:center; text-shadow:0px -1px 0px #fff; font-size:30px; }
-#navHead:hover { opacity:1; z-index:1010; }
+#navHead:hover { opacity:1; z-index:1010; background:rgba(0,0,0,0.5) }
 
 #controls {
-	margin:15px 15px 15px 10%;
+	margin:15px auto;
 	position:relative;
-	z-index:900;
+	opacity:0.1;
+	width:600px;
 }
+#navHead:hover #controls { z-index:1001; opacity:1; }
 .goButton
 {
 	width:70px;
@@ -139,6 +142,17 @@ header p { margin:2px auto; text-align:center; text-shadow:0px -1px 0px #fff; fo
 .goButton:hover {
 	background:rgba(73,131,179,0.75);
 	color:#461500;
+}
+
+#dayR, #dayR2 {
+	position:absolute;
+	left:318px;
+	top:10px;
+}
+.goButton {
+	position:absolute;
+	top:-16px;
+	right:0;
 }
 
 /*###############
@@ -685,7 +699,6 @@ nav:hover {
 		inset 0px 2px 5px rgba(255,255,255,0.2);
 }
 /*@2.1.9 - Browser Icon*/
-
 /*@2.1.10 - Magnifing Glass Icon*/
 #searchIcon { 
 	background:rgba(62,201,231,0.5);
@@ -790,7 +803,7 @@ section table th.Last-visit-date	{ min-width:115px; }
 	font-size:18px;
 	margin:10px;
 }
-
+#y2d table { margin:10px auto; }
 /*@3.2.1 - Hourly */
 #hours table, #month table { float:left; margin:10px; }
 

@@ -8,12 +8,14 @@
 				lastUpdate($lu);
 				echo "<p>". number_format($general['TotalVisits'][0]). " total visits this month</p>\n";
 				echo "<p>".number_format($general['TotalUnique'][0]). " total uniques this month</p>\n"; ?>
-		</div>
+		</div><!--closes todayStats div-->
 		<?php if($year2Date == true): //only print the year chart if year2Date is set to true?>
 		<hr class="clear"/>
-		<h2>Year to Date</h2>
-		<img src="<?php echo chartURL($y2dMetaC,$y2dData,$y2dMetaCc);?>" alt="year to date chart" />
-		<?php drawTable($monthYearArgs);
+		<div id="y2d">
+			<h2>Year to Date</h2>
+			<img src="<?php echo chartURL($y2dMetaC,$y2dData,$y2dMetaCc);?>" alt="year to date chart" />
+			<?php drawTable($monthYearArgs);
+			echo "</div> <!-- closes y2d div-->\n";
 			endif;?>
 	</section> <!-- closes today section --> 
 	
