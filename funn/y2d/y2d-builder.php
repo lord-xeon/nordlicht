@@ -12,8 +12,7 @@ if(!file_exists($y2d)):
 	echo 'year to date stats file written';
 endif;
 
-
-if(substr($dayR,2,4) != date('Y')):
+if(substr($dayR,2,4) == date('Y')):
 	$y = new Y2D();		//starts the new class
 	$y->month = substr($dayR,0,2);	//gets the month from the time
 	$y->getCache($y2d);		//opens the Y2D file
