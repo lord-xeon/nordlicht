@@ -70,36 +70,23 @@ h2 {
 	-webkit-border-radius:10px;
 	-moz-border-radius:10px;
 	border-radius:10px;
-/*	background-image: -webkit-gradient(
-		linear,
-		right bottom,
-		right top,
-		color-stop(0, rgb(255,255,255)),
-		color-stop(0.41, rgb(97,122,143)),
-		color-stop(0.8, rgb(130,123,130))
-	);
-	background-image: -moz-linear-gradient(
-		center bottom,
-		rgb(255,255,255) 0%,
-		rgb(97,122,143) 41%,
-		rgb(130,123,130) 80%
-	);*/
-	background:#000;
 	font-size:20px;
 	font-family:'OFL Sorts Mill Goudy TT', Verdana, Geneva, sans-serif;
-	opacity:0.4;
 	z-index:1000;
 }
 header p { margin:2px auto; text-align:center; text-shadow:0px -1px 0px #fff; font-size:30px; }
-#navHead:hover { opacity:1; z-index:1010; background:rgba(0,0,0,0.5) }
+#navHead:hover { z-index:1010; background:rgba(255,255,255,1); }
 
 #controls {
+	display:none;
 	margin:15px auto;
 	position:relative;
-	opacity:0.1;
 	width:600px;
 }
-#navHead:hover #controls { z-index:1001; opacity:1; }
+#navHead:hover #controls {
+	display:block;
+	-webkit-transition-timing-function:1s, ease;
+}
 .goButton
 {
 	width:70px;
@@ -771,20 +758,27 @@ nav:hover {
 	-moz-border-radius:15px;
 	border-radius:15px;
 	width:100%;
-	margin:20px 10px;
-	
+	margin:20px 0;
 }
-.statsSection h2 				{ background:#fff; color:rgba(41,14,0,0.9); }
+.statsSection h2 {
+	background:#fff;
+	color:#000;
+	font-weight:bold;
+	text-shadow:-1px 0 1px #fff;
+}
 .statsSection:nth-child(even)	{ background:rgba(196,32,38,0.3); } /*red background*/
-.statsSection:nth-child(even) h2{ background:#000; color:rgba(41,104,40,0.9); }
+.statsSection:nth-child(even) h2{
+	background:#000;
+	color:#fff;
+	text-shadow:none;
+	text-shadow:-1px 0 1px #000;
+}
 .statsSection img {
 	margin:5px auto;
 	display:block;
 }
 .tableHold {
 	margin:10px auto;
-	width:50%;
-	min-width:550px;
 }
 /*@3.1 - Stats Tables*/
 section table {
@@ -822,26 +816,48 @@ section table th.Last-visit-date	{ min-width:115px; }
 	font-size:18px;
 	margin:10px;
 }
+/*@3.2.1 Year to Date*/
 #y2d table { margin:10px auto; }
-/*@3.2.1 - Hourly */
-#hours table, #month table { float:left; margin:10px; }
 
-/*@3.2.2 - Monthly */
+/*@3.2.2 Daily Breakdown*/
+#daily					{ min-width:850px; }
+#dailyTotal, #dailyAvg	{ width:400px; margin:5px; float:left; }
+#daily table 			{ margin:10px auto; }
+#dailyTotal h3, #dailyAvg h3{ text-align:center; color:#fff; }
+
+/*@3.2.2 Hourly */
+#hours .tableHold { width:50%; min-width:550px;}
+#hours table { float:left; margin:10px; }
+
+/*@3.2.3 - Monthly */
 #month	{ min-width:960px; }
-#month .tableHold, #browserOS .tableHold  { width:70%; min-width:750px; }
+#month .tableHold { width:70%; min-width:750px; }
 
-/*@3.2.3 - Browser/OS */
-#browserOS table { margin:60px 30px 0; }
-#browserOS img	{ margin:2px 10px; float:right; }
+/*@3.2.4 - Browser/OS */
+#browserOS { min-width:850px; }
+#browser, #os {
+	margin:10px;
+}
+#browser.tableHold, #os.tableHold {
+	width:400px;
+	float:left;
+}
+#browserOS table {
+	margin:10px auto;
+}
+#browserOS table img {
+	margin:2px;
+	float:left;
+}
 
-/*@3.2.4 - Domain/IP*/
+/*@3.2.5 - Domain/IP*/
 #domainIP	{ min-width:975px; }
 #domainIP .tableHold { width:95%; }
 #domainIP .tableHold img	{ float:right; }
 #domainIP .tableHold h2		{ width:40%; min-width:400px; }
 #domainIP .tableHold table	{ margin:5px 10px; }
 
-/*@3.2.5 - Files/Pages*/
+/*@3.2.6 - Files/Pages*/
 #content .tableHold { min-width:900px; }
 #content aside	{ float:left; margin:10px; }
 
@@ -849,7 +865,7 @@ section table th.Last-visit-date	{ min-width:115px; }
 #pages	{ max-width:600px; }
 #files table img { float:left; margin:0; }
 
-/*@3.2.6 - Robots/Refferals/Search*/
+/*@3.2.7 - Robots/Refferals/Search*/
 #se, #searchPhrase, #searchWord		{ width:320px; }
 #robots	{ width:400px; }
 #se, #robots, #searchPhrase, #searchWord		{ float:left; margin:10px; }
@@ -858,12 +874,9 @@ section table th.Last-visit-date	{ min-width:115px; }
 #reffs .tableHold { min-width:800px; }
 aside h2+table { margin:10px auto; }
 
-/*@3.2.7 - Errors*/
+/*@3.2.8 - Errors*/
 
-/*@3.2.8 - Daily Stats*/
-#daily	{ min-width:950px; }
-#dailyTotal, #dailyAvg { width:400px; margin:5px 15px; float:left; }
-#dailyTotal h3, #dailyAvg h3{ text-align:center; }
+
 
 /*###############
 @9.0 - Footer/Globals
@@ -1146,6 +1159,7 @@ button.datepick-cmd { text-align:center; }
 ###############*/
 /*buffel skin*/
 .buffel .ddTitle {
+	background:#000;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
@@ -1154,7 +1168,6 @@ button.datepick-cmd { text-align:center; }
 	-moz-box-shadow:inset 2px 2px 10px rgba(255, 255, 255, 0.5);
 	-webkit-box-shadow:inset 2px 2px 10px rgba(255, 255, 255, 0.5);
 	box-shadow:inset 2px 2px 10px rgba(255, 255, 255, 0.5);
-
 	padding:5px 3px;
 	text-indent:0;
 	cursor:default;
