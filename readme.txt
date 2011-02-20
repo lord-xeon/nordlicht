@@ -31,6 +31,13 @@ nordlicht comes with the following resources that have been made available under
   * nordlicht northern lights photo from http://en.wikipedia.org/wiki/File:Polarlicht_2.jpg - part of the Public Domain
   
 =Changelog=
+==nordlicht v0.4.3==
+===Feb. 20, 2011===
+  * updated the colors to be more northern lighty
+  * updated the header to be not so IN YOUR FACE
+  * updated the layout of the Browser/OS section
+  * added global javascript variables for URL & time
+  * begun work on bug 3, not done yet
 ==nordlicht v0.4.1==
 ===Feb. 06, 2011===
   * finished bug 8 - made the splash page fucking ace
