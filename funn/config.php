@@ -50,6 +50,7 @@ if($_SERVER['PHP_SELF'] != '/nordlicht/index.php'):
 		require_once('tableArgs.php');
 	else:
 		$sts = false;
+		echo 'no dice';
 	endif;	
 	//Year to date check
 	if($year2Date == true):
