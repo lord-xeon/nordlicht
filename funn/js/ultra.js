@@ -4,7 +4,9 @@
 	@2 - Colorbox v1.3.15
 	@3 - Date picker for jQuery v4.0.4.
 	@4 - MSDropDown v2.36
-	@5 - inline JS taken out of header
+	@5 - DataTable
+	@6 - Global Functions
+	@7 - Inline JS taken out of header
 */
 /*@1. jQuery ScrollTo */
 /**
@@ -4034,8 +4036,51 @@ $(function() {
 		   
 })(jQuery);
 
+/*@5 DataTable */
 
-/*@5 - inline JS taken out of header*/
+/*@6 Global Functions*/
+function byteSize(byte){
+	var sz = (parseInt(byte)) /1024;
+	if(sz < 1024){
+		sz = sz.toFixed(2);
+		sz += ' KB';
+	} else {
+		if(sz/1024 < 1024){
+			sz = (sz/1024).toFixed(2);
+			sz += ' MB';
+		} else {
+			(sz/1024/1024).toFixed(3);
+			sz += ' GB';
+		}
+	}
+	return sz;
+}
+
+function dateMake(time){
+	if(isNaN(time)){
+		when =  'not recorded';
+	}
+	else {
+	var t = time,
+		month = Array("January","February","March","April","May","June","July","August","September","October","November","December"),
+		weekDay = Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"),
+		y = t.substr(0,4),
+		m = t.substr(4,2),
+		d = t.substr(6,2),
+		h = t.substr(8,2),
+		mm = t.substr(10,2),
+		s = t.substr(12,2),
+		tt = new Date(y,m,d,h,mm,s);
+		when = '';
+
+		when = month[tt.getMonth()];
+		when += " "+ weekDay[tt.getDay()];
+		when += " at "+tt.getHours() + ":"+tt.getMinutes() +":"+tt.getMilliseconds();
+	}
+	return when;
+}
+
+/*@7 inline JS taken out of header*/
 $(window).load(function(){
 	$('#nav li').click(function(e){
 		e.preventDefault();
@@ -4052,7 +4097,9 @@ $(window).load(function(){
 		showAnim:'slideDown',
 		showSpeed:'normal',
 		pickerClass:'buffel',
-		maxDate:0
+		maxDate:0,
+		popupContainer:'#navHead',
+		alignment: 'bottomLeft'
 	});
 	$("#siteSelect").msDropDown({mainCSS:'buffel'});
 	$("#goToStats").click(function(e){
