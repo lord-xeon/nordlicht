@@ -4039,6 +4039,9 @@ $(function() {
 /*@5 DataTable */
 
 /*@6 Global Functions*/
+/* function byteSize()	= returns human readable KB/MB/GB size
+ *	byte	= int
+ */
 function byteSize(byte){
 	var sz = (parseInt(byte)) /1024;
 	if(sz < 1024){
@@ -4050,12 +4053,30 @@ function byteSize(byte){
 			sz += ' MB';
 		} else {
 			(sz/1024/1024).toFixed(3);
+			sz = addCommas(sz);
 			sz += ' GB';
 		}
 	}
 	return sz;
 }
-
+/* function addCommas()	= adds commas to a number every 3 digits
+ *	nStr = int
+ */
+function addCommas(nStr) {
+	  var rgx = /(\d+)(\d{3})/,x,x1,x2;
+	  nStr += '';
+	  x = nStr.split('.');
+	  x1 = x[0];
+	  x2 = x.length > 1 ? '.' + x[1] : '';
+	  
+	  while(rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	  }
+	  return x1 + x2;
+}
+/* function dateMake()	= retuns a Human friendly Time stamp
+ *	time	= int in this format: YYYYMMDDhhmmss | 20110217235028
+ */
 function dateMake(time){
 	if(isNaN(time)){
 		when =  'not recorded';
@@ -4073,11 +4094,51 @@ function dateMake(time){
 		tt = new Date(y,m,d,h,mm,s);
 		when = '';
 
-		when = month[tt.getMonth()];
-		when += " "+ weekDay[tt.getDay()];
-		when += " at "+tt.getHours() + ":"+tt.getMinutes() +":"+tt.getMilliseconds();
+		when = weekDay[tt.getDay()];
+		when += ", "+ month[tt.getMonth()]+" "+d+", "+y;
+		when += "<br />@ "+tt.getHours() + ":"+tt.getMinutes() +":"+tt.getMilliseconds();
 	}
 	return when;
+}
+/* function countryFlag()	= adds a country Flag to the Domain column of the table
+ * dn	= domain name, lowercase ex: us, uk, ru
+ */
+function countryFlag(dn){
+	var flag = '<img src="funn/img/country/'+dn+'.png" alt="'+dn+'" class="flag" />';
+	flag += " "+dn;
+	return flag;
+}
+
+function drawTable(flo,flir) {
+	var hd = getHeaders(flo['headers']);
+	$("#"+flir).dataTable({
+		"bDestroy":true,
+		"aaData":flo['data'],
+		"aoColumns":hd,
+		"bSort":false,
+		"iDisplayLength":37,
+		"sPaginationType":"full_numbers",
+		"sDom":'<"dataTableTop"lif<"clear">>rtp'
+	});
+}
+
+function getHeaders(hd){
+	var i=0,fh=Array()
+	while(i < hd.length){
+		fh[i] = new Array();
+		fh[i]['sTitle']=hd[i];
+		if(hd[i] == 'Bandwidth'){
+			fh[i]['fnRender'] = function(dd){ return byteSize(dd.aData[dd.iDataColumn]);};
+		}
+		else if(hd[i] == 'Last visit date'){
+			fh[i]['fnRender'] = function(dd){ return dateMake(dd.aData[dd.iDataColumn]);};
+		}
+		else if(hd[i] == 'Domain'){
+			fh[i]['fnRender'] = function(dd){ return countryFlag(dd.aData[dd.iDataColumn]);};
+		}
+		i++;
+	}
+	return fh;
 }
 
 /*@7 inline JS taken out of header*/
