@@ -271,6 +271,10 @@ function drawTable($args){
 					$vl = $args['error'][$section['Errors'][$id]];
 				elseif($h == 'Browser'):
 					$vl = "<img src=\"funn/img/browsers/".strtolower(str_replace(' ','-',$vl)).".png\"alt=\"".$vl."\"/>".$vl;
+				elseif($h == 'Errors'):
+					if($$vl == '404'):
+						$vl == $vl . fullRangeLink('sider_404');
+					endif;
 				endif;	//ends meta type if
 				echo "\t\t\t<td>".$vl."</td>\n";
 			endforeach;	//ends meta foreach
@@ -680,4 +684,9 @@ function y2dFile($file,$site){
 	fwrite($f,$l);
 	fclose($f);
 }
+
+function fullRangeLink($type){
+	echo '<a href="#fullList" id="'.$type.'" class="fullList" data-fullList="'.strtoupper($type).'" data-frData="'.$type.'Data" data-table="'.$type.'FR">Full List</a>';
+}
+
 ?>
