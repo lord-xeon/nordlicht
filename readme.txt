@@ -24,6 +24,7 @@ nordlicht comes with the following resources that have been made available under
   * jQuery ScrollTo - Dual licensed under MIT and GPL
   * Date picker for jQuery v4.0.4 - Dual licensed under MIT and GPL
   * MSDropDown v2.36 - Dual licensed under MIT and GPL
+  * DataTables v1.7.5 - Dual licensed under GPL & BSD3
 
 ==Images and Icons:==
   * The Ultimate Free Web Designer’s Icon Set (750 icons, 48x48px) - http://www.smashingmagazine.com/2010/04/15/the-ultimate-free-web-designer-s-icon-set-750-icons-incl-psd-sources/ 
@@ -31,6 +32,19 @@ nordlicht comes with the following resources that have been made available under
   * nordlicht northern lights photo from http://en.wikipedia.org/wiki/File:Polarlicht_2.jpg - part of the Public Domain
   
 =Changelog=
+==nordlicht v0.5==
+===Feb. 27, 2011===
+  * Fixed bug 3 - Full list functionality now avaliable on:
+    * IP
+	* Domain
+	* File Types
+	* Page Referals
+  * Added each individual jQuery plugin file, compressed, and uncompressed
+  * Made ultra.js just include my javascript
+  * Created venona.js to include all the minified jQuery plugins, and venona.min.js to include minified plugins, with no comments
+  * Changed to modernizer 1.7 custom build
+  * Added global javascript variables for date, and surl
+  
 ==nordlicht v0.4.3==
 ===Feb. 20, 2011===
   * updated the colors to be more northern lighty
