@@ -845,6 +845,12 @@ section table th.Last-visit-date	{ min-width:115px; }
 	top:8px;
 	right:2%;
 }
+
+.dataTables_wrapper .date {
+	width:190px;
+	text-align:center;
+	padding:5px 0;
+}
 .dataTables_filter input {
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
@@ -924,6 +930,7 @@ section table th.Last-visit-date	{ min-width:115px; }
 /*@3.2.3 - Monthly */
 #month	{ min-width:960px; }
 #month .tableHold { width:70%; min-width:750px; }
+#month table { float:left; margin:10px; }
 
 /*@3.2.4 - Browser/OS */
 #browserOS { min-width:850px; }
