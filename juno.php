@@ -69,8 +69,8 @@
 			<h2>Top Operating Systems</h2> 
 			<img src="<?php echo chartURL($osMeta,'','');?>" alt="browser breakdown pie chart" />
 			<?php drawTable($osArgs); ?>
-			<br class="clear" />
-		</div> <!-- closes os div --> 
+		</div> <!-- closes os div -->
+		<br class="clear" />
 	</section> <!-- closes browseOS section -->
 	
 	<section id="domainIP" class="statsSection"> 
@@ -78,11 +78,15 @@
 			<?php if($domain['Domain'][0] == 'ip'):
 					echo 'Please install the <a href="http://awstats.sourceforge.net/docs/awstats_contrib.html#plugin_others" title="GeoIP">GeoIP plugin</a>.';
 				else: ?>
-			<h2>Top 15 Countries</h2>
+			<h2>Top 15 Countries
+				<?php fullRangeLink('domain');?>
+			</h2>
 			<img src="<?php echo chartURL($ccMap,'','');?>" alt="world chart" />
 			<?php endif;
 				drawTable($domainArgs); ?>
-			<h2>Top 10 IPs</h2>
+			<h2>Top 10 IPs
+				<?php fullRangeLink('VISITOR');?>
+			</h2>
 			<?php  drawTable($ipArgs);?>
 			<br class="clear" />
 		</div> <!-- closes tableHold div --> 
@@ -91,7 +95,9 @@
 	<section id="content" class="statsSection">
 		<div class="tableHold">
 			<aside id="files">
-				<h2>File Types</h2>
+				<h2>File Types
+					<?php fullRangeLink('fileTypes');?>
+				</h2>
 				<?php drawTable($fileArgs); ?>
 			</aside>
 			<aside id="pages">
@@ -105,6 +111,7 @@
 	<section id="reffs" class="statsSection"> 
 		<h2>Robots &amp; Refferals</h2>
 			<?php drawTable($searchArgs); ?>
+			<?php fullRangeLink('pageRefs');?>
 		<br class="clear" />
 		<div class="tableHold">
 			<aside id="se">
@@ -117,7 +124,7 @@
 			</aside>
 			<aside id="robots">
 				<h2>Robots</h2>
-				<?php drawTable($robotArgs);	?>
+				<?php drawTable($robotArgs); ?>
 			</aside>
 			<br class="clear" />
 		</div> <!-- closes tableHold div -->
