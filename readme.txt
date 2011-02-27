@@ -44,6 +44,7 @@ nordlicht comes with the following resources that have been made available under
   * Created venona.js to include all the minified jQuery plugins, and venona.min.js to include minified plugins, with no comments
   * Changed to modernizer 1.7 custom build
   * Added global javascript variables for date, and surl
+  * fixed the layout of the tables
   
 ==nordlicht v0.4.3==
 ===Feb. 20, 2011===
