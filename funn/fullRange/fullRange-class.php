@@ -12,7 +12,7 @@ class FullRange {
 		$jsonObj =  array();
 	
 	private $url = '/var/lib/awstats/',	//absolute server path to stats file
-		$secOff= array('VISITOR'=>3,'DOMAIN'=>2);
+		$secOff= array('VISITOR'=>3,'DOMAIN'=>2,'FILETYPES'=>1,'PAGEREFS'=>2);
 	
 	//opens the file
 	private function openFile(){
