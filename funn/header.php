@@ -16,7 +16,7 @@ require_once('config.php'); ?>
 	<meta name="author" content="<?php echo $aweVerson; ?>">
 	<link rel="shortcut icon" href="favicon.ico">
 	<link type="text/css" rel="stylesheet" href="funn/css/ruthless.css"/>
-	<script src="funn/js/modernizr-1.6.min.js"></script>
+	<script src="funn/js/modernizr-1.7.cust.js"></script>
 	<script>var dayR = '<?php echo $dayR;?>', statsURL = '<?php echo $statsURL;?>';</script>
 </head>
 
