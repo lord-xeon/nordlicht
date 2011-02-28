@@ -27,11 +27,11 @@ function fileList($dir){
 */
 function fileDrop($fileList){
 	echo '<select id="siteSelect" name="siteSelect">';
-	echo "\n\t<option name=\"please select\">Please Select...</option>\n";
+	echo "\n\t<option id=\"please-select\">Please Select...</option>\n";
 	$secList = array();
 	foreach($fileList as $site):
 		if(!in_array($site,$secList)):
-			echo "\t".'<option id="'.$site.'" name="'.$site.'">'.$site.'</option>'."\n";
+			echo "\t".'<option id="'.$site.'">'.$site.'</option>'."\n";
 			$secList[] = $site;
 		endif;
 	endforeach;
@@ -239,7 +239,7 @@ function drawTable($args){
 	endif;
 	
 	//begin to draw the table
-	echo "<table id=\"".$tableID."\">\n";
+	echo "<table>\n";
 	headerRow($args['meta']);	//the header row
 	
 	foreach($section[$sort] as $id=>$v):
@@ -251,13 +251,13 @@ function drawTable($args){
 			foreach($args['meta'] as $h):
 				$vl = $section[$h][$id];
 				if($h == 'Files type'):
-					$vl = '<img src="funn/img/files/file_'.$vl.'.png" alt="file icon" width="24px" height="24px;" />'.$vl;
+					$vl = '<img src="funn/img/files/file_'.$vl.'.png" alt="file icon" width="24" height="24" />'.$vl;
 				elseif($h == 'Bandwidth'):
 					$vl = byteSize($vl);
 				elseif($h == 'Hits' || $h == 'Pages'):
 					$vl = number_format($vl);
 				elseif($h == 'Domain'):
-					$vl = '<img src="funn/img/country/'.$vl.'.png" alt="'.$vl.'" width="16px" height="11px"/>'.str_replace('+',' ',$cc[strtoupper($vl)]);
+					$vl = '<img src="funn/img/country/'.$vl.'.png" alt="'.$vl.'" width="16" height="11"/>'.str_replace('+',' ',$cc[strtoupper($vl)]);
 				elseif($h == 'Last visit date' || $h == 'Last visit' || $h == 'Date'):
 					$vl = dayMake($vl);
 				elseif($h == 'URL'):
@@ -270,7 +270,7 @@ function drawTable($args){
 				elseif($h == 'Type'):
 					$vl = $args['error'][$section['Errors'][$id]];
 				elseif($h == 'Browser'):
-					$vl = "<img src=\"funn/img/browsers/".strtolower(str_replace(' ','-',$vl)).".png\"alt=\"".$vl."\"/>".$vl;
+					$vl = "<img src=\"funn/img/browsers/".strtolower(str_replace(' ','-',$vl)).".png\" alt=\"".$vl."\"/>".$vl;
 				elseif($h == 'Errors'):
 					if($$vl == '404'):
 						$vl == $vl . fullRangeLink('sider_404');
