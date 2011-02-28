@@ -980,16 +980,16 @@ aside h2+table { margin:10px auto; }
 /*###############
 @9.0 - Footer/Globals
 ###############*/
-	footer {
-		margin:50px auto;
-		background:rgba(236,166,192,0.9);
-		-webkit-box-shadow:2px 2px 4px rgba(236,166,192,0.7),
-						4px 4px 8px rgba(236,166,192,0.3),
-						inset 2px 2px 4px rgba(201,121,151,0.7),
-						inset 4px 4px 8px rgba(201,121,151,0.3);
-		text-align:center;
-		padding:5px;
-	}
+footer {
+	margin:50px auto;
+	background:rgba(236,166,192,0.9);
+	-webkit-box-shadow:2px 2px 4px rgba(236,166,192,0.7),
+					4px 4px 8px rgba(236,166,192,0.3),
+					inset 2px 2px 4px rgba(201,121,151,0.7),
+					inset 4px 4px 8px rgba(201,121,151,0.3);
+	text-align:center;
+	padding:5px;
+}
 .floatLeft	{ float:left; }
 .floatRight	{ float:right; }
 .clear		{ clear:both; }
