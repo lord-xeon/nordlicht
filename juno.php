@@ -59,53 +59,55 @@
 	</section> <!-- closes month section --> 
 	
 	<section id="browserOS" class="statsSection"> 
-		<div id="browser" class="tableHold"> 
-			<h2>Top Browsers</h2> 
+		<div id="browser" class="tableHold">
+			<h3>Top Browsers</h3>
 			<img src="<?php echo chartURL($browserMeta,'','');?>" alt="browser breakdown pie chart" />
 			<?php drawTable($browserArgs); ?>
 			<br class="clear" />
-		</div> <!-- closes broswer div --> 
-		<div id="os" class="tableHold"> 
-			<h2>Top Operating Systems</h2> 
+		</div> <!-- closes broswer div -->
+		<div id="os" class="tableHold">
+			<h3>Top Operating Systems</h3>
 			<img src="<?php echo chartURL($osMeta,'','');?>" alt="browser breakdown pie chart" />
 			<?php drawTable($osArgs); ?>
 		</div> <!-- closes os div -->
 		<br class="clear" />
 	</section> <!-- closes browseOS section -->
 	
-	<section id="domainIP" class="statsSection"> 
-		<div class="tableHold">
+	<section id="domainIP" class="statsSection">
+	<h2>Geo Location</h2>
+		<div id="domain">
 			<?php if($domain['Domain'][0] == 'ip'):
 					echo 'Please install the <a href="http://awstats.sourceforge.net/docs/awstats_contrib.html#plugin_others" title="GeoIP">GeoIP plugin</a>.';
 				else: ?>
-			<h2>Top 15 Countries
-				<?php fullRangeLink('domain');?>
-			</h2>
+			<h3>Top 15 Countries
+				<?php fullRangeLink('Domain');?>
+			</h3>
 			<img src="<?php echo chartURL($ccMap,'','');?>" alt="world chart" />
 			<?php endif;
 				drawTable($domainArgs); ?>
-			<h2>Top 10 IPs
+		</div> <!-- closes domain div -->
+		<div id="IP">
+			<h3>Top 10 IPs
 				<?php fullRangeLink('VISITOR');?>
-			</h2>
+			</h3>
 			<?php  drawTable($ipArgs);?>
 			<br class="clear" />
-		</div> <!-- closes tableHold div --> 
+		</div> <!-- closes IP div --> 
 	</section> <!-- closes domainIP section -->
 	
 	<section id="content" class="statsSection">
-		<div class="tableHold">
-			<aside id="files">
-				<h2>File Types
-					<?php fullRangeLink('fileTypes');?>
-				</h2>
-				<?php drawTable($fileArgs); ?>
-			</aside>
-			<aside id="pages">
-				<h2>Top 15 Pages</h2> 
-				<?php drawTable($pagesArgs); ?>
-			</aside>
-			<br class="clear" />
-		</div> <!-- closes tableHold div -->
+		<h2>Top Content</h2>
+		<aside id="files">
+			<h3>File Types
+				<?php fullRangeLink('fileTypes');?>
+			</h3>
+			<?php drawTable($fileArgs); ?>
+		</aside>
+		<aside id="pages">
+			<h3>Top 15 Pages</h3>
+			<?php drawTable($pagesArgs); ?>
+		</aside>
+		<br class="clear" />
 	</section> <!-- closes content section -->
 	
 	<section id="reffs" class="statsSection"> 
