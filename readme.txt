@@ -45,6 +45,8 @@ nordlicht comes with the following resources that have been made available under
   * Changed to modernizer 1.7 custom build
   * Added global javascript variables for date, and surl
   * fixed the layout of the tables
+  * created the new alsos theme
+  * updated the HTML to be valid HTML5
   
 ==nordlicht v0.4.3==
 ===Feb. 20, 2011===
