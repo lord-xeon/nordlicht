@@ -15,7 +15,7 @@ require_once('config.php'); ?>
 	<meta name="description" content="statistics">
 	<meta name="author" content="<?php echo $aweVerson; ?>">
 	<link rel="shortcut icon" href="favicon.ico">
-	<link type="text/css" rel="stylesheet" href="funn/css/ruthless.css"/>
+	<link type="text/css" rel="stylesheet" href="funn/css/alsos.css"/>
 	<script src="funn/js/modernizr-1.7.cust.js"></script>
 	<script>var dayR = '<?php echo $dayR;?>', statsURL = '<?php echo $statsURL;?>';</script>
 </head>
@@ -25,8 +25,10 @@ require_once('config.php'); ?>
     <header id="navHead">
 		<p>Statists for <?php echo $statsURL;?>, for <?php echo $monthList[ltrim(substr($dayR,0,2),'0')].', '.substr($dayR,2,4); ?></p>
 		<div id="controls">
-			<input type="text" id="dayR" name="dayR" />
-			<a href="juno.php" title="Go to Stats" id="goToStats" class="goButton">Go!</a>
+			<div id="datePickHolder">
+				<input type="text" id="dayR" name="dayR" />
+			</div> <!--closes datePickHolder div-->
+			<a href="juno.php" title="Go to Stats" id="goToStats" class="goButton fullList">Go!</a>
 			<?php fileDrop($stsList);?>
 		</div> <!-- closes controls div -->
     </header>

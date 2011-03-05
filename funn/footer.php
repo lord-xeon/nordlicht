@@ -4,7 +4,7 @@
 	<div id="fullRange"></div>
 </div> <!--! end of #container -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script type="text/javascript" src="funn/js/venona.min.js"></script>
+<script type="text/javascript" src="funn/js/venona.jsmin.js"></script>
 <script type="text/javascript" src="funn/js/ultra.js"></script>
 </body>
 </html>
