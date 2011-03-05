@@ -10,7 +10,7 @@
 
 Contents:
 @0 - Imports/Reset
-@1 - 
+@1 - Header
 @2 - Nav
 	@2.1 - Nav Icons
 		@2.1.1 - Today Icon
@@ -40,9 +40,10 @@ Contents:
 		@3.2.11 - Errors
 @9 - Footer/Globals
 @10 - Plugins
-	@10.1 - Colorbox theme 2
-	@10.2 - Datepicker
-	@10.3 - jQuery Dropdown
+	@10.1 - Colorbox theme 5
+	@10.2 - Datatables buffel theme
+	@10.3 - DropDown Select buffel theme
+	@10.4 - Date Picker buffel theme
 */
 /*###############
 @0 - Imports/Reset 
@@ -50,12 +51,62 @@ Contents:
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 @import url(http://fonts.googleapis.com/css?family=OFL+Sorts+Mill+Goudy+TT);
 @import url(http://fonts.googleapis.com/css?family=Neuton);
-html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,img,strong,sup{margin:0;padding:0;border:none;}ul{margin:0}html,body{height:100%}html{overflow:scroll}
-article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
-body { background:#545454; color:#fff; }
+html		{ overflow:scroll }
+html,body	{ height:100% }
+ul			{ margin:0 }
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,img,strong,sup				{ margin:0; padding:0; border:none; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section	{display:block; }
+a		{ outline:none; }
+body	{ background:#545454; color:#fff; }
 
 #statsInfo {
 	margin-left:125px;
+	margin-top:50px;
+}
+/*###############
+@1 - Header
+###############*/
+header {
+	background:rgba(0,0,0,0.7);
+	-webkit-border-radius:0 0 10px 10px;
+	-moz-border-radius:0 0 10px 10px;
+	border-radius:0 0 10px 10px;
+	position:fixed;
+	left:140px;
+	top:0;
+	width:85%;
+	height:65px;
+	opacity:0.3;
+}
+header p 		{ font-size:18px; text-align:center; }
+header:hover	{
+	opacity:1;
+	-webkit-transition:0.5s ease-out;
+	-moz-transition:0.5s ease-out;
+	-o-transition:0.5s ease-out;
+	-ms-transition:0.5s ease-out;
+	transition:0.5s ease-out;
+}
+
+#controls		{ position:relative; }
+#controls .dropDown {
+	position:absolute;
+	left:10px;
+	top:5px;
+}
+#controls .ddChild {
+	top:30px !important;
+	left:4px;
+}
+#datePickHolder {
+	position:absolute;
+	top:7px;
+	left:350px;
+}
+
+#goToStats {
+	position:absolute;
+	left:530px;
 }
 
 /*###############
@@ -76,20 +127,50 @@ nav {
 	-webkit-box-shadow: 2px 2px 15px 5px rgba(218, 66, 78, 0.8);
 	-moz-box-shadow: 2px 2px 15px 5px rgba(218, 66, 78, 0.8);
 	box-shadow: 2px 2px 15px 5px rgba(218, 66, 78, 0.8);
+	-webkit-transition:0.2s;
+	-moz-transition:0.2s;
+	-o-transition:0.2s;
+	-ms-transition:0.2s;
+	transition:0.2s;
 }
 
 nav:hover {
 	left:10px;
+	-webkit-transition:0.5s ease-in;
+	-moz-transition:0.5s ease-in;
+	-o-transition:0.5s ease-in;
+	-ms-transition:0.5s ease-in;
+	transition:0.5s ease-in;
 }
 
 nav ul 		{ list-style:none; }
-nav ul li 	{ text-align:right; }
+nav ul li 	{
+	text-align:right;
+}
+
+nav ul li:first-child	{ margin-top:5px; }
+nav ul li:last-child 	{ margin-bottom:5px; }
+nav ul li:hover {
+    background:rgba(0,0,0,0.6);
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	-moz-box-shadow: inset 2px 2px 10px rgba(255,255,255,0.5),
+			 inset -2px -2px 10px rgba(255,255,255,0.5);
+	-webkit-box-shadow: inset 2px 2px 10px rgba(255,255,255,0.5),
+			inset -2px -2px 10px rgba(255,255,255,0.5);
+	box-shadow: inset 2px 2px 10px rgba(255,255,255,0.5),
+			inset -2px -2px 10px rgba(255,255,255,0.5);
+			
+}
+
 nav ul li a {
 	margin-right:77px;
 	font-weight:bold;
 	color:#fff;
 	text-decoration:none;
 }
+
 /*###############
 @2.1 - Nav Icons
 ###############*/
@@ -666,14 +747,13 @@ section img {
 @3.1 - Section Tables
 ###############*/
 section table {
-	background:#4e4e4e;
+	background:#fff;
 	border-collapse:collapse;
-	color:#fff;
+	color:#000;
 	margin:10px auto;
 }
 section table tr:nth-child(odd) {
-	background:#dadada;
-	color:#000;
+	background:#CCC;
 }
 section table th {
 	background:#666;
@@ -693,11 +773,16 @@ section tr:hover,
 section table tr:nth-child(odd):hover {
 	background:#da424e;
 	color:#000;
+	-webkit-transition:0.2s ease-out;
+	-moz-transition:0.2s ease-out;
+	-o-transition:0.2s ease-out;
+	-ms-transition:0.2s ease-out;
+	transition:0.2s ease-out;
 }
 section table a {
 	text-decoration:none;
 	border-bottom:1px dotted;
-	color:#6ec8fa;
+	color:#0175b6;
 	margin-left:10px;
 }
 
@@ -710,6 +795,7 @@ section table a {
 @3.2 Each Section
 ###############*/
 /*@3.2.1 Month to Date */
+#todayStats	{ margin-left:20px; }
 /*@3.2.2 Year to Date */
 /*@3.2.3 Daily Breakdown */
 #daily		{ min-width:950px; }
@@ -783,8 +869,22 @@ section table a {
 footer {
 	margin:50px auto;
 	text-align:center;
-	padding:5px;
+	padding:15px;
+	background:rgba(218,66,78,0.6);
+	-webkit-box-shadow:0 -5px 10px rgba(218, 66, 78, 0.4),
+			0 -10px 5px 10px rgba(255,255,255,0.3),
+			0 5px 10px rgba(218, 66, 78, 0.2),
+			0 15px 5px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 -5px 10px rgba(218, 66, 78, 0.4),
+			0 -15px 5px 10px rgba(255,255,255,0.3),
+			0 5px 10px rgba(218, 66, 78, 0.2),
+			0 15px 5px rgba(0,0,0,0.2);
+	box-shadow:0 -5px 10px rgba(218, 66, 78, 0.4),
+			0 -10px 5px 10px rgba(255,255,255,0.3),
+			0 5px 10px rgba(218, 66, 78, 0.2),
+			0 15px 5px rgba(0,0,0,0.2);
 }
+footer a 	{ color:#000; }
 .floatLeft	{ float:left; }
 .floatRight	{ float:right; }
 .clear		{ clear:both; }
@@ -793,46 +893,464 @@ footer {
 .italic		{ font-style:italic; }
 
 /*###############
-@10.1 - Colorbox theme 2
+@10.1 - Colorbox buffel theme
 ###############*/
 /*
     ColorBox Core Style
     The following rules are the styles that are consistant between themes.
     Avoid changing this area to maintain compatability with future versions of ColorBox.
 */
-#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
-#cboxOverlay{position:fixed; width:100%; height:100%;}
-#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
-#cboxContent{position:relative; overflow:visible;}
-#cboxLoadedContent{overflow:auto;}
-#cboxLoadedContent iframe{display:block; width:100%; height:100%; border:0;}
-#cboxTitle{margin:0;}
-#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%;}
-#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+#colorbox, #cboxOverlay, #cboxWrapper {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:9999;
+	overflow:hidden;
+}
+#cboxOverlay {
+	position:fixed;
+	width:100%;
+	height:100%;
+}
+#cboxMiddleLeft, #cboxBottomLeft	{ clear:left; }
+#cboxContent		{ position:relative; overflow:visible; }
+#cboxLoadedContent	{ overflow:auto; }
+#cboxLoadedContent iframe {
+	border:0;
+	display:block;
+	width:100%;
+	height:100%;
+}
+#cboxTitle	{ margin:0; }
+#cboxLoadingOverlay, #cboxLoadingGraphic {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow { cursor:pointer; }
 
-/* 
-    ColorBox example user style
-    The following rules are ordered and tabbed in a way that represents the
-    order/nesting of the generated HTML, so that the structure easier to understand.
-*/
-#cboxOverlay{background:#fff;}
+/*Colorbox Theme 5 theme styles*/
+#cboxOverlay{background:#000;}
+    #cboxTopLeft{width:14px; height:14px; background:url(../img/colorbox/t5/controls.png) no-repeat 0 0;}
+    #cboxTopCenter{height:14px; background:url(../img/colorbox/t5/border.png) repeat-x top left;}
+    #cboxTopRight{width:14px; height:14px; background:url(../img/colorbox/t5/controls.png) no-repeat -36px 0;}
+    #cboxBottomLeft{width:14px; height:43px; background:url(../img/colorbox/t5/controls.png) no-repeat 0 -32px;}
+    #cboxBottomCenter{height:43px; background:url(../img/colorbox/t5/border.png) repeat-x bottom left;}
+    #cboxBottomRight{width:14px; height:43px; background:url(../img/colorbox/t5/controls.png) no-repeat -36px -32px;}
+    #cboxMiddleLeft{width:14px; background:url(../img/colorbox/t5/controls.png) repeat-y -175px 0;}
+    #cboxMiddleRight{width:14px; background:url(../img/colorbox/t5/controls.png) repeat-y -211px 0;}
+    #cboxContent{background:#fff;}
+        #cboxLoadedContent{margin-bottom:5px;}
+        #cboxLoadingOverlay{background:url(../img/colorbox/t5/loading_background.png) no-repeat center center;}
+        #cboxLoadingGraphic{background:url(../img/buffel/loading.gif) no-repeat center center;}
+        #cboxTitle{position:absolute; bottom:-25px; left:0; text-align:center; width:100%; font-weight:bold; color:#7C7C7C;}
+        #cboxCurrent{position:absolute; bottom:-25px; left:58px; font-weight:bold; color:#7C7C7C;}
+        
+        #cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{position:absolute; bottom:-29px; background:url(../img/colorbox/t5/controls.png) no-repeat 0px 0px; width:23px; height:23px; text-indent:-9999px;}
+        #cboxPrevious{left:0px; background-position: -51px -25px;}
+        #cboxPrevious.hover{background-position:-51px 0px;}
+        #cboxNext{left:27px; background-position:-75px -25px;}
+        #cboxNext.hover{background-position:-75px 0px;}
+        #cboxClose{right:0; background-position:-100px -25px;}
+        #cboxClose.hover{background-position:-100px 0px;}
+        
+        .cboxSlideshow_on #cboxSlideshow{background-position:-125px 0px; right:27px;}
+        .cboxSlideshow_on #cboxSlideshow.hover{background-position:-150px 0px;}
+        .cboxSlideshow_off #cboxSlideshow{background-position:-150px -25px; right:27px;}
+        .cboxSlideshow_off #cboxSlideshow.hover{background-position:-125px 0px;}
 
-#colorbox{}
-    #cboxContent{margin-top:32px;}
-        #cboxLoadedContent{background:#000; padding:1px;}
-        #cboxLoadingGraphic{background:url(/nordlicht/funn/img/colorbox/t2/loading.gif) no-repeat center center;}
-        #cboxLoadingOverlay{background:#000;}
-        #cboxTitle{position:absolute; top:-22px; left:0; color:#000;}
-        #cboxCurrent{position:absolute; top:-22px; right:205px; text-indent:-9999px;}
-        #cboxSlideshow, #cboxPrevious, #cboxNext, #cboxClose{text-indent:-9999px; width:20px; height:20px; position:absolute; top:-20px; background:url(/nordlicht/funn/img/colorbox/t2/controls.png) no-repeat 0 0;}
-        #cboxPrevious{background-position:0px 0px; right:44px;}
-        #cboxPrevious.hover{background-position:0px -25px;}
-        #cboxNext{background-position:-25px 0px; right:22px;}
-        #cboxNext.hover{background-position:-25px -25px;}
-        #cboxClose{background-position:-50px 0px; right:0;}
-        #cboxClose.hover{background-position:-50px -25px;}
-        .cboxSlideshow_on #cboxPrevious, .cboxSlideshow_off #cboxPrevious{right:66px;}
-        .cboxSlideshow_on #cboxSlideshow{background-position:-75px -25px; right:44px;}
-        .cboxSlideshow_on #cboxSlideshow.hover{background-position:-100px -25px;}
-        .cboxSlideshow_off #cboxSlideshow{background-position:-100px 0px; right:44px;}
-        .cboxSlideshow_off #cboxSlideshow.hover{background-position:-75px -25px;}
+/*###############
+@10.2 - Datatables buffel theme
+###############*/
+#colorbox section {
+	background:none;
+	color:#000;
+	margin:0;
+	border:none;
+}
+#colorbox section.dataTables_wrapper	{
+	background:#6b6b6b;
+	font-weight:bold;
+	color:#fff;
+}
+.dataTableTop {
+	position:relative;
+	background:#DA424E; /* old browsers */
+	background:-moz-linear-gradient(top, #DA424E 0%, #DA424E 25%, #6b6b6b 90%); /* firefox */
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#DA424E), color-stop(25%,#DA424E), color-stop(90%,#6b6b6b)); /* webkit */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#DA424E', endColorstr='#6b6b6b',GradientType=0 ); /* ie */
+	-moz-border-radius:10px 10px 0 0;
+	-webkit-border-radius:10px 10px 0 0;
+	border-radius:10px 10px 0 0;
+	height:40px;
+	text-shadow:1px 1px 1px #000;
+}
+.dataTables_length {
+	position:absolute;
+	left:10px;
+	top:5px;
+}
+.dataTables_info {
+	text-align:center;
+	padding-top:5px;
+}
+.dataTables_filter {
+	position:absolute;
+	top:5px;
+	right:10px;
+}
+.dataTables_wrapper table			{ margin:0 auto; font-weight:normal; }
+.dataTables_wrapper table thead	tr th	{ background:#780000; color:#fff; }
+.dataTables_wrapper table td img 	{ float:left;  margin:5px; }
+.dataTables_paginate {
+	background:#6b6b6b; /* old browsers */
+	background:-moz-linear-gradient(top, #6b6b6b 10%, #DA424E 75%, #DA424E 100%); /* firefox */
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(10%,#6b6b6b), color-stop(75%,#DA424E), color-stop(100%,#DA424E)); /* webkit */
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#6b6b6b', endColorstr='#DA424E',GradientType=0 ); /* ie */
+	padding-top:15px;
+	height:30px;
+	text-shadow:1px 1px 1px #000;
+	text-align:center;
+}
+.first.paginate_button,
+.previous.paginate_button {
+	margin-right:20px;
+}
+.last.paginate_button,
+.next.paginate_button {
+	margin-left:20px;
+}
+.paginate_button,
+.paginate_active {
+	margin:10px;
+}
+.paginate_button:hover {
+	cursor:pointer;
+	color:#000;
+	text-shadow:1px 1px 1px #fff;
+	-webkit-transition:0.2s ease-out;
+	-moz-transition:0.2s ease-out;
+	-o-transition:0.2s ease-out;
+	-ms-transition:0.2s ease-out;
+	transition:0.2s ease-out;
+}
+.paginate_active {
+	padding:0 3px;
+	border-bottom:1px solid #000;
+}
+
+/*###############
+@10.3 - DropDown Select buffel theme
+###############*/
+.buffel .ddTitle {
+	background:#000;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	height:20px;
+	width:300px !important;
+	-moz-box-shadow:inset 2px 2px 10px rgba(255, 255, 255, 0.5);
+	-webkit-box-shadow:inset 2px 2px 10px rgba(255, 255, 255, 0.5);
+	box-shadow:inset 2px 2px 10px rgba(255, 255, 255, 0.5);
+	padding:5px 3px;
+	text-indent:0;
+	cursor:default;
+	overflow:hidden;
+	position:relative;
+}
+.buffel .ddTitle span.arrow {
+	background:transparent url(../img/buffel/down-arrow.png) no-repeat top left;
+	float:right;
+	display:inline-block;
+	width:24px;
+	height:24px;
+	cursor:pointer;
+	position:relative;
+	top:-1px;
+}
+.buffel .ddTitle:hover { cursor:pointer; }
+.buffel .ddTitle:hover span.arrow,
+.buffel .ddTitle span.arrow:hover {
+	background-position:left -25px !important;
+	cursor:pointer;
+}
+.buffel .ddTitle span.ddTitleText {
+	overflow:hidden;
+	font-family:"OFL Sorts Mill Goudy+TT", Georgia, "Times New Roman", Times, serif;
+	font-size:16px;
+	font-weight:bold;
+	line-height:33px;
+	color:#fff;
+	position:absolute;
+	top:5px;
+	left:10px;
+	_position:relative;
+	_top:4px;
+	overflow-x:hidden;
+	width:75%;
+}
+.buffel .ddTitle span.ddTitleText img{text-align:left; padding:0 2px 0 0;}
+.buffel .ddTitle img.selected {
+	padding:0 2px 0 0;
+	vertical-align:top;
+}
+.buffel .ddChild {
+	background:#fff;
+	-moz-border-radius:0 0 10px 10px;
+	-webkit-border-radius:0 0 10px 10px;
+	border-radius:0 0 10px 10px;	
+	border:1px solid #c3c3c3;
+	border-top:none;
+	padding-bottom:20px;
+	display:none;
+	margin:0;
+	position:absolute;
+	overflow:auto;
+	overflow-x:hidden !important;
+	font-size:14px;
+	-moz-box-shadow:inset 2px -10px 10px rgba(219, 5, 85, 0.2);
+	width:297px !important;
+}
+
+.buffel .ddChild .opta a, .buffel .ddChild .opta a:visited { padding-left:10px}
+.buffel .ddChild a {
+	display:block;
+	padding:3px 0 3px 3px;
+	text-decoration:none;
+	color:#000;
+	overflow:hidden;
+	white-space:nowrap;
+	cursor:pointer;
+}
+.buffel .ddChild a:hover { background-color:#66CCFF; }
+.buffel .ddChild a img {
+	border:0;
+	padding:0 2px 0 0;
+	vertical-align:middle;
+}
+.buffel .ddChild a.selected { background-color:#9f76a1; }
+.buffel .borderTop { border-top:1px solid #c3c3c3  !important; }
+.buffel .noBorderTop { border-top:none 0  !important; }
+
+/*###############
+@10.4 - Date Picker buffel theme
+###############*/
+#datePickHolder .datepick-popup {
+	top:25px !important;
+	left:0 !important;
+}
+.datepick table {
+	background:#000;
+}
+.datepick-nav		{ text-align:center; }
+.datepick-cmd-prev	{ float:left; }
+.datepick-cmd-next	{ float:right; }
+
+
+
+/***********/
+/* Default styling for jQuery Datepicker v4.0.4. */
+.datepick-popup { z-index: 1000; }
+.datepick-disable {
+	position:absolute;
+	z-index:100;
+	background-color:white;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+}
+.datepick a { color:#fff; text-decoration:none; }
+.datepick a.datepick-disabled { color:#888; cursor:auto; }
+.datepick button {
+	margin:0.25em;
+	padding:0.125em 0em;
+	background-color:#fcc;
+	border:none;
+	border-radius:0.25em;
+	-moz-border-radius:0.25em;
+	-webkit-border-radius:0.25em;
+	font-weight:bold;
+}
+.datepick-nav, .datepick-ctrl {
+	float:left;
+	width:100%;
+	background-color:#000;
+	color:#fff;
+	font-size:90%;
+	font-weight:bold;
+}
+.datepick-ctrl { background-color:#600; }
+.datepick-cmd { width:30%; }
+.datepick-cmd:hover { background-color:#777; }
+.datepick-ctrl .datepick-cmd:hover { background-color:#f08080; }
+.datepick-cmd-prevJump, .datepick-cmd-nextJump { width:8%; }
+a.datepick-cmd { height:1.5em; }
+button.datepick-cmd { text-align:center; }
+.datepick-cmd-prev, .datepick-cmd-prevJump, .datepick-cmd-clear { float:left; padding-left:2%; }
+.datepick-cmd-current, .datepick-cmd-today {
+	float:left;
+	width:35%;
+	text-align:center;
+}
+.datepick-cmd-next, .datepick-cmd-nextJump, .datepick-cmd-close {
+	float:right;
+	padding-right:2%;
+	text-align:right;
+}
+.datepick-month-nav {
+	float:left;
+	background-color:#777;
+	text-align:center;
+}
+.datepick-month-nav div {
+	float:left;
+	width:12.5%;
+	margin:1%;
+	padding:1%;
+}
+.datepick-month-nav span { color:#888; }
+.datepick-month-row { clear:left; }
+.datepick-month {
+	float:left;
+	width:15em;
+	border:1px solid #444;
+	text-align:center;
+}
+.datepick-month-header, .datepick-month-header select, .datepick-month-header input {
+	height:1.5em;
+	background-color:#444;
+	color:#fff;
+	font-weight:bold;
+}
+.datepick-month-header select, .datepick-month-header input { height:1.4em; border:none; }
+.datepick-month-header input { position:absolute; display:none; }
+.datepick-month table { width:100%; border-collapse:collapse; }
+.datepick-month thead { border-bottom:1px solid #aaa; }
+.datepick-month th, .datepick-month td {
+	margin:0em;
+	padding:0em;
+	font-weight:normal;
+	text-align:center;
+}
+.datepick-month th { border:1px solid #777; }
+.datepick-month th, .datepick-month th a { background-color:#777; color:#fff; }
+.datepick-month td { background-color:#eee; border:1px solid #aaa; }
+.datepick-month td.datepick-week { border: 1px solid #777; }
+.datepick-month td.datepick-week * {
+	background-color: #777;
+	color: #fff;
+	border: none;
+}
+.datepick-month a {
+	display: block;
+	width: 100%;
+	padding: 0.125em 0em;
+	background-color: #eee;
+	color: #000;
+	text-decoration: none;
+}
+.datepick-month span {
+	display: block;
+	width: 100%;
+	padding: 0.125em 0em;
+}
+.datepick-month td span { color: #888; }
+.datepick-month td .datepick-other-month	{ background-color: #fff; }
+.datepick-month td .datepick-weekend 		{ background-color: #ddd; }
+.datepick-month td .datepick-today 			{ background-color: #f0c0c0; }
+.datepick-month td .datepick-selected		{ background-color: #777; color: #fff; }
+.datepick-month th.datepick-week 			{ background-color: #777; color: #fff; }
+.datepick-status {
+	clear: both;
+	background-color: #ddd;
+	text-align: center;
+}
+.datepick-clear-fix	{ clear: both; }
+.datepick-cover {
+	display: none;
+	display/**/: block;
+	position: absolute;
+	z-index: -1;
+	filter: mask();
+	top: -1px;
+	left: -1px;
+	width: 100px;
+	height: 100px;
+}
+
+
+/*buffel skin for datepicker*/
+.datepick.buffel { 
+	font-size:18px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+}
+/*nav bar on datepicker*/
+.buffel .datepick-nav {
+	background:rgba(211, 119, 218, 0.7);
+	-moz-border-radius:10px 10px 0 0;
+	-webkit-border-radius:10px 10px 0 0;
+	border-radius:10px 10px 0 0;
+	-moz-box-shadow:inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow:inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+	box-shadow:inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+.buffel .datepick-ctrl {
+	background:rgba(211, 119, 218, 0.7);
+	-moz-border-radius:0 0 10px 10px;
+	-webkit-border-radius:0 0  10px 10px;
+	border-radius:0 0 10px 10px;
+	-moz-box-shadow:inset -2px -2px 5px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow:inset -2px -2px 5px rgba(0, 0, 0, 0.5);
+	box-shadow:inset -2px -2px 5px rgba(0, 0, 0, 0.5);
+}
+.buffel .datepick-nav a { color:#000; margin-top:3px; }
+
+.buffel .datepick-cmd:hover {
+	-moz-border-radius:8px 8px 0 0;
+	-webkit-border-radius:8px 8px 0 0;
+	border-radius:8px 8px 0 0;
+	-moz-box-shadow:inset 1px 1px 3px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow:inset 1px 1px 3px rgba(0, 0, 0, 0.4);
+	box-shadow:inset 1px 1px 3px rgba(0, 0, 0, 0.4);
+	background:#fff;
+}
+
+.buffel .datepick-ctrl a:hover {
+	-moz-border-radius:0 0 8px 8px;
+	-webkit-border-radius:0 0 8px 8px;
+	border-radius:0 0 8px 8px;
+	background:#f08080;
+}
+/*month dropdown*/
+.buffel .datepick-month-header {
+	background:#b384b3;
+	height:35px;
+}
+.buffel .datepick-month-header select {
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+    background:#fff;
+    color:#000;
+    height:30px;
+    margin:3px 5px;
+    padding:5px;
+    -moz-box-shadow:inset -2px -2px 2px rgba(0, 0, 0, 0.5),
+			inset 2px 2px 2px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow:inset -2px -2px 2px rgba(0, 0, 0, 0.5),
+			inset 2px 2px 2px rgba(0, 0, 0, 0.5);
+    box-shadow:inset -2px -2px 2px rgba(0, 0, 0, 0.5),
+			inset 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+/*date range month table*/
+.buffel .datepick-month th {
+	background:rgba(167,213,215,0.8);
+	border:1px solid #777;
+	text-shadow:2px 2px 4px rgba(167,231,215,0.9);
+	color:#000;
+}
+.buffel .datepick-month td a:hover {
+	background:rgba(155,203,204,1);
+}
