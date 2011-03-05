@@ -1,5 +1,5 @@
 README
-nordlicht version 0.4.1
+nordlicht version 0.6
 copyright 2011 alpha vega llc
 
 Licesned under the GNU GENERAL PUBLIC LICENSE Version 2
@@ -32,6 +32,19 @@ nordlicht comes with the following resources that have been made available under
   * nordlicht northern lights photo from http://en.wikipedia.org/wiki/File:Polarlicht_2.jpg - part of the Public Domain
   
 =Changelog=
+==nordlicht v0.6==
+===March 05, 2011===
+  * Finished fixing bug 1
+  * fixed bug 12
+  * fixed bug 15
+  * uses the alsos theme, which is much nicer on the eyes
+  * added css transitions to hover on the nav, header and table row 
+  * cleaned up the JS combined it nicer using jsmin
+  * made the header nicer on the eyes
+  * made the footer nicer on the eyse
+  * added a loading icon
+  * fixed the colorbox styles
+  
 ==nordlicht v0.5==
 ===Feb. 27, 2011===
   * Fixed bug 3 - Full list functionality now avaliable on:
