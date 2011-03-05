@@ -5,6 +5,7 @@ $time		= sectionArray('TIME',$sts);
 $month		= sectionArray('DAY',$sts);
 $IPs		= sectionArray('VISITOR',$sts,3);
 $domain		= sectionArray('DOMAIN',$sts,2);
+$session 	= sectionArray('SESSION',$sts);
 $dt			= dayTotals($month);
 $dtT 		= dayChartData($dt['Total']);	//day total
 $dtA 		= dayChartData($dt['Average']);	//day average

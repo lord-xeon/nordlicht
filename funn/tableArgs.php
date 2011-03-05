@@ -13,6 +13,10 @@ $time12Args 	= array('section'=>$time,
 $time24Args 	= array('section'=>$time,
 					'meta'=>$timeMetaT,
 					'offSet'=>12);
+//Session Length
+$sessionArgs 	= array('section'=>$session,
+						'meta'=>$sessionMetaT,
+						'sort'=>'Number of visits');
 //Days of the Month - 1st - 15th
 $month15Args 	= array('section'=>$month,
 						'meta'=>$monthMetaT,

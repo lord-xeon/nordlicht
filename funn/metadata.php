@@ -16,6 +16,7 @@ $hourCols = array('Pages','Hits');
 ###############*/
 $dayMeta	= array('Hits','Pages','Bandwidth');
 $timeMetaT = array('Hour','Pages','Hits','Bandwidth');
+$sessionMetaT = array('Session range','Number of visits');
 $monthMetaT = array('Date','Pages','Hits','Bandwidth','Visits');
 $IPMetaT = array('Host','Hits','Bandwidth','Last visit date');
 $domainMetaT	= array('Domain','Hits','Bandwidth');

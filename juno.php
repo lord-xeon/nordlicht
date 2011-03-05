@@ -34,6 +34,8 @@
 			<?php dayTable($dt['Average']);?>
 		</div> <!-- closes dailyAvg div-->
 		<br class="clear" />
+		<h3>Session Length</h3>
+		<?php drawTable($sessionArgs);?>
 	</section> <!-- closes daily section -->
 	 
 	<section id="hours" class="statsSection"> 
@@ -85,6 +87,7 @@
 			<img src="<?php echo chartURL($ccMap,'','');?>" alt="world chart" />
 			<?php endif;
 				drawTable($domainArgs); ?>
+				<br class="clear" />
 		</div> <!-- closes domain div -->
 		<div id="IP">
 			<h3>Top 10 IPs
@@ -114,10 +117,9 @@
 		<h2>Robots &amp; Refferals</h2>
 			<?php drawTable($searchArgs); ?>
 			<?php fullRangeLink('pageRefs');?>
-		<br class="clear" />
-		<div class="tableHold">
+			<br class="clear" />
 			<aside id="se">
-				<h2>Top 15 Search Engines</h2>
+				<h3>Top 15 Search Engines</h3>
 				<?php if($searchRef):
 					drawTable($refArgs);
 					else:
@@ -125,18 +127,16 @@
 					endif;?>
 			</aside>
 			<aside id="robots">
-				<h2>Robots</h2>
+				<h3>Robots</h3>
 				<?php drawTable($robotArgs); ?>
 			</aside>
 			<br class="clear" />
-		</div> <!-- closes tableHold div -->
 	</section> <!-- closes reffs section -->
-	
+
 	<section id="searches" class="statsSection">
 		<h2>Searches</h2>
-		<div class="tableHold">
 			<aside id="searchPhrase">
-				<h2>Top 10 Search Phrases</h2>
+				<h3>Top 10 Search Phrases</h3>
 				<?php if($searchPhrase):
 					drawTable($searchPArgs);
 					else:
@@ -144,15 +144,14 @@
 					endif;?>
 			</aside> <!-- closes searchPhrase div --> 
 			<aside id="searchWord">
-				<h2>Top 10 Search Words</h2>
+				<h3>Top 10 Search Words</h3>
 				<?php if($searchWord):
 					drawTable($searchWArgs);
 					else:
 						echo 'No Searches this month';
 					endif;?>
-			</aside> <!-- closes searchPhrase div --> 
+						</aside> <!-- closes searchPhrase div --> 
 			<br class="clear"/>
-		</div> <!-- closes tableHold div -->
 	</section> <!-- closes searches section -->
 	
 	<section id="errors" class="statsSection">
