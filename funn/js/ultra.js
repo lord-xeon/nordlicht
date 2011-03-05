@@ -81,7 +81,7 @@ function drawTable(flo,flir) {
 		"aaData":flo['data'],
 		"aoColumns":hd,
 		"bSort":false,
-		"iDisplayLength":37,
+		"iDisplayLength":25,
 		"sPaginationType":"full_numbers",
 		"sDom":'<"dataTableTop"lif<"clear">>rtp'
 	});
@@ -112,7 +112,7 @@ $(window).load(function(){
 	$('#nav li').click(function(e){
 		e.preventDefault();
 		var div = $(this).children('a').attr('href');
-		$.scrollTo($(div), {duration:500});
+		$.scrollTo($(div), {duration:750});
 	});
 	$('table td a').colorbox({
 		iframe:true,
@@ -125,10 +125,9 @@ $(window).load(function(){
 		showSpeed:'normal',
 		pickerClass:'buffel',
 		maxDate:0,
-		popupContainer:'#navHead',
-		alignment: 'bottomLeft'
+		popupContainer:"#datePickHolder"
 	});
-	$("#siteSelect").msDropDown({mainCSS:'buffel'});
+	$("#siteSelect").msDropDown({mainCSS:'buffel dropDown'});
 	$("#goToStats").click(function(e){
 		$("#statsInfo").html();
 		e.preventDefault();
@@ -165,7 +164,7 @@ $(window).load(function(){
 			inline:true,
 			href:flair,
 			width:"95%",
-			height:"80%",
+			height:"85%",
 			onOpen: function(){		//fades in the section before it's finished loading
 				$(flair).fadeIn('fast');
 			},
