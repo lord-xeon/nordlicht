@@ -115,8 +115,8 @@
 	
 	<section id="reffs" class="statsSection"> 
 		<h2>Robots &amp; Refferals</h2>
-			<?php drawTable($searchArgs); ?>
-			<?php fullRangeLink('pageRefs');?>
+			<?php fullRangeLink('pageRefs');
+				drawTable($searchArgs); ?>
 			<br class="clear" />
 			<aside id="se">
 				<h3>Top 15 Search Engines</h3>
