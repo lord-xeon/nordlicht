@@ -112,7 +112,7 @@ $(window).load(function(){
 	$('#nav li').click(function(e){
 		e.preventDefault();
 		var div = $(this).children('a').attr('href');
-		$.scrollTo($(div), {duration:750});
+		$.scrollTo($(div), {duration:1750});
 	});
 	$('table td a').colorbox({
 		iframe:true,
@@ -129,7 +129,7 @@ $(window).load(function(){
 	});
 	$("#siteSelect").msDropDown({mainCSS:'buffel dropDown'});
 	$("#goToStats").click(function(e){
-		$("#statsInfo").html();
+		$("#statsInfo").html('');
 		e.preventDefault();
 		var href, dayR = $('#dayR').val(), dayR2;
 		href = 'stats-'+$('#siteSelect').val();
@@ -163,8 +163,8 @@ $(window).load(function(){
 		$.colorbox({	//open up the colorbox with the table
 			inline:true,
 			href:flair,
-			width:"95%",
-			height:"85%",
+			width:"85%",
+			height:"75%",
 			onOpen: function(){		//fades in the section before it's finished loading
 				$(flair).fadeIn('fast');
 			},
