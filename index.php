@@ -6,7 +6,7 @@
 	<meta name="description" content="statistics">
 	<meta name="author" content="<?php echo $aweVerson; ?>">
 	<link rel="shortcut icon" href="/favicon.ico">
-	<link type="text/css" rel="stylesheet" href="funn/css/ruthless.css"/>
+	<link type="text/css" rel="stylesheet" href="funn/css/lucid.css"/>
 	<script src="funn/js/modernizr-1.6.min.js"></script>
 	<style>
 		body { width:80%; margin:0 auto; font-size:24px; font-family:"PT Sans", Verdana, Geneva, sans-serif; color:#fff; }
@@ -42,7 +42,7 @@
 		Made with <a href="http://awstats.org/" title="AWStats"><?php echo $sts[0];?></a> using <a href="http://www.alphavega.com/nordlicht/" title="nordlicht">nordlich version <?php echo $nordlich; ?></a>.
     </footer>
 </div> <!--! end of #container -->
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script type="text/javascript" src="funn/js/ultra.js"></script>
 <script type="text/javascript">
 	$("#goToStats").click(function(e){
