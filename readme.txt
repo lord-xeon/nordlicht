@@ -1,5 +1,5 @@
 README
-nordlicht version 0.6
+nordlicht version v2
 copyright 2011 alpha vega llc
 
 Licesned under the GNU GENERAL PUBLIC LICENSE Version 2
