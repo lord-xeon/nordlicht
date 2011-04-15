@@ -1,6 +1,6 @@
 <?php
-require_once('nordlicht.php');
-require_once('Sherman.php');
+require_once('amo/nordlicht.php');
+require_once('amo/Sherman.php');
 
 
 $checked = array(
@@ -30,7 +30,7 @@ $checked = array(
 	)
 );
 $monthly = new Sherman();
-$monthly->fi='awstats032011.blog.deadlycomputer.com.txt';
+$monthly->fi='amo/awstats032011.blog.deadlycomputer.com.txt';
 $monthly->sec='DAY';
 $monthly->checked = $checked;
 $monthly->tableMeta = array('Date','Pages','Hits','Visits','Bandwidth');

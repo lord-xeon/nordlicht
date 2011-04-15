@@ -1,10 +1,10 @@
 <?php
 //require_once('config.php');
-require_once('nordlicht.php');
-require_once('Sherman.php');
+require_once('amo/nordlicht.php');
+require_once('amo/Sherman.php');
 
 	$keywords = new Sherman();
-	$keywords->fi='awstats032011.blog.deadlycomputer.com.txt';
+	$keywords->fi='amo/awstats032011.blog.deadlycomputer.com.txt';
 	$keywords->sec='KEYWORDS';
 
 	$keywords->off = 2;

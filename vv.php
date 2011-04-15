@@ -2,10 +2,10 @@
 
 echo '<p>initial memory used: ' .number_format(memory_get_usage()) ." bytes</p>";
 
-require_once('../../funn/funnns.php');
-require_once('nordlicht.php');
-require_once('Sherman.php');
-require_once('Panzer.php');
+//require_once('funn/funnns.php');
+require_once('amo/nordlicht.php');
+require_once('amo/Sherman.php');
+require_once('amo/Panzer.php');
 
 $code = strtoupper($_GET['sec']);
 ?>
@@ -15,7 +15,7 @@ $code = strtoupper($_GET['sec']);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
 <link href="/nordlicht/funn/css/plugins/JSONtip-v2.css" type="text/css" rel="stylesheet" />
-<link href="panzer.css" type="text/css" rel="stylesheet" />
+<link href="testing/amo/panzer.css" type="text/css" rel="stylesheet" />
 
 </head>
 
@@ -108,7 +108,7 @@ $h1 = 'safari3.0';
 //echo substr(
 
 $sh = new Panzer();
-$sh->fi='awstats032011.blog.deadlycomputer.com.txt';
+$sh->fi='amo/awstats032011.blog.deadlycomputer.com.txt';
 $sh->sec=$code;
 $sh->checked = $checked;
 $sh->mv = $mv;
@@ -131,7 +131,7 @@ $sh->debug();
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
 <script src="/nordlicht/funn/js/plugins/jquery.JSONtip-v2.js"></script>
-<script src="jquery.flot.js"></script>
+<script src="testing/amo/jquery.flot.js"></script>
 <script>
 
 var flotOps = {

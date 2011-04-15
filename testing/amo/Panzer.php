@@ -1,6 +1,6 @@
 <?php 
 require_once('nordlicht.php');
-require_once('../../funn/funnns.php');
+require_once('../funn/funnns.php');
 class Panzer extends nordlicht {
 	public	$tableMeta = array(),
 			$checked = array(),

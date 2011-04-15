@@ -1,6 +1,6 @@
 <?php
-require_once('nordlicht.php');
-require_once('Sherman.php');
+require_once('amo/nordlicht.php');
+require_once('amo/Sherman.php');
 
 
 $checked = array(
@@ -24,7 +24,7 @@ $checked = array(
 	)
 );
 $time = new Sherman();
-$time->fi='awstats032011.blog.deadlycomputer.com.txt';
+$time->fi='amo/awstats032011.blog.deadlycomputer.com.txt';
 $time->sec='TIME';
 $time->checked = $checked;
 $time->tableMeta = array('Hour','Pages','Hits','Bandwidth');
