@@ -1,5 +1,6 @@
 README
-nordlicht version v2
+nordlicht version v2 - Omaha
+
 copyright 2011 alpha vega llc
 
 Licesned under the GNU GENERAL PUBLIC LICENSE Version 2
@@ -27,11 +28,17 @@ nordlicht comes with the following resources that have been made available under
   * DataTables v1.7.5 - Dual licensed under GPL & BSD3
 
 ==Images and Icons:==
-  * The Ultimate Free Web Designer’s Icon Set (750 icons, 48x48px) - http://www.smashingmagazine.com/2010/04/15/the-ultimate-free-web-designer-s-icon-set-750-icons-incl-psd-sources/ 
+  * The Ultimate Free Web Designer's Icon Set (750 icons, 48x48px) - http://www.smashingmagazine.com/2010/04/15/the-ultimate-free-web-designer-s-icon-set-750-icons-incl-psd-sources/ 
   * FamFamFam Flag icons - http://www.famfamfam.com/lab/icons/flags/
   * nordlicht northern lights photo from http://en.wikipedia.org/wiki/File:Polarlicht_2.jpg - part of the Public Domain
   
 =Changelog=
+==V2 - Omaha==
+===April 16, 2011===
+  * first beta release of nordlicht v2
+
+
+
 ==nordlicht v0.6==
 ===March 05, 2011===
   * Finished fixing bug 1
