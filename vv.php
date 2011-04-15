@@ -5,6 +5,7 @@ echo '<p>initial memory used: ' .number_format(memory_get_usage()) ." bytes</p>"
 require_once('../../funn/funnns.php');
 require_once('nordlicht.php');
 require_once('Sherman.php');
+require_once('Panzer.php');
 
 $code = strtoupper($_GET['sec']);
 ?>
@@ -19,20 +20,6 @@ $code = strtoupper($_GET['sec']);
 </head>
 
 <body>
-<?php if($code == 'KEYWORDS' || $code == 'SEARCHWORDS'):
-	$keywords = new Sherman();
-	$keywords->fi='awstats032011.blog.deadlycomputer.com.txt';
-	$keywords->sec=$code;
-	$keywords->off = 2;
-	$keywords->meta = array('Search keywords','Number of search');
-	if($code == 'SEARCHWORDS') {
-		$keywords->meta = array('Search keyphrases','Number of search');
-	}
-	$keywords->limit = 15;
-	$keywords->wordCloud();
-	$keywords->destroy();
-else:
-?>
 <div id="flot"></div>
 <div class="tableHold">
 <?php
@@ -55,42 +42,91 @@ $checked = array(
 		'on'=>true
 	)
 );
-$time12 = new Sherman();
-$time12->fi='awstats022011.steve.deadlycomputer.com.txt';
-$time12->sec=$code;
-$time12->checked = $checked;
-$time12->tableMeta = array('Hour','Pages','Hits','Bandwidth');
-$time12->limit = 12;
-$time12->builder();
+$mv = array(
+	'firefox',
+	'safari',
+	'chrome',
+	'opera',
+	'msie',
+	'netscape',
+	'mozilla'
+	
+);
+$mmv = array(
+	'firefox4.0',
+	'firefox3.6',
+	'firefox3.5',
+	'firefox3.0',
+	'firefox2.0',
+	'firefox1.5',
+	'firefox1',
+	
+	'chrome12',
+	'chrome11',
+	'chrome10',
+	'chrome9',
+	'chrome8',
+	'chrome7',
+	'chrome6',
+	'chrome5',
+	'chrome4',
+	'chrome3',
+	'chrome2',
+	'chrome1.0',
+
+	'opear11',
+	'opear10',
+	'opear9',
+	'opear8',
+	'opear7',
+	'opear6',
+	'opear5',	
+	
+	'safari6',
+	'safari5',
+	'safari4',
+	'safari3',
+	'safari2',
+	'safari1.0',
+	
+	'msie11',
+	'msie10',
+	'msie9',
+	'msie8',
+	'msie7',
+	'msie6',
+	'msie5',
+	'msie4',
+	'msie3',
+	'msie2',
+	'msie1.0',
+);
+
+$h = 'safari';
+$h1 = 'safari3.0';
+
+//echo substr(
+
+$sh = new Panzer();
+$sh->fi='awstats032011.blog.deadlycomputer.com.txt';
+$sh->sec=$code;
+$sh->checked = $checked;
+$sh->mv = $mv;
+//$sh->mmv = $mmv;
+$sh->builder();
+
+$sh->majorTable();
+
+$sh->debug();
+
 ?>
 	<div class="meminfo">
-	<?php	echo "memory used before destroy(): " .number_format(memory_get_usage())." bytes";
-		$time12->destroy();
-		echo "\nmemory used after destroy(): " .number_format(memory_get_usage())." bytes";
-		echo "\npeak memory used: " .number_format(memory_get_peak_usage())." bytes";
-	?>
+		<?php	echo "memory used before destroy(): " .number_format(memory_get_usage())." bytes";
+			$sh->destroy();
+			echo "\nmemory used after destroy(): " .number_format(memory_get_usage())." bytes";
+			echo "\npeak memory used: " .number_format(memory_get_peak_usage())." bytes"; ?>
 	</div>
 </div>
-<div class="tableHold">
-<?php	echo "memory used: " .number_format(memory_get_usage())." bytes";
-$time24 = new Sherman();
-$time24->fi='awstats022011.steve.deadlycomputer.com.txt';
-$time24->sec=$code;
-$time24->tableMeta = array('Hour','Pages','Hits','Bandwidth');
-$time24->offSet = 12;
-$time24->builder();
-?>
-	<div class="meminfo">
-<?php	echo "memory used before destroy(): " .number_format(memory_get_usage())." bytes";
-	$time24->destroy();
-	echo "\nmemory used after destroy(): " .number_format(memory_get_usage())." bytes";
-	echo "\npeak memory used: " .number_format(memory_get_peak_usage())." bytes";
-	?>
-	</div>
-</div>
-
-
-<?php endif; ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>

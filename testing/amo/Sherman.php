@@ -36,7 +36,6 @@ class Sherman extends nordlicht {
 		$this->tableMeta = array();
 	}
 	
-	
 	/*Function - drawTable()	= draws a table for the section of the array  Takes an assocative array of arguments
 		'section' 	= > section of the stats array file	(Required)
 		'meta'		= > meta data for headers to draw	(Required)
@@ -57,7 +56,11 @@ class Sherman extends nordlicht {
 	
 	public function innerTable(){
 		$row = '';
-		foreach($this->ss['Bandwidth'] as $id=>$v):
+		$fe = 'Bandwidth';
+		if($this->sec == 'BROWSER'){
+			$fe = 'Hits';
+		}
+		foreach($this->ss[$fe] as $id=>$v):
 			if($id >= $this->offSet):
 				if($j >= $this->limit && $this->limit != false):
 					break;	//limit reached, stop loop

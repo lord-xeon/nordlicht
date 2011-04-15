@@ -3,10 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Nordlicht V-2 []</title>
-<link href="/nordlicht/testing/jquery-ui-1.8.11.custom.css" type="text/css" rel="stylesheet" />
-<!--link href="/nordlicht/funn/css/alsos.css" type="text/css" rel="stylesheet" /-->
-<link href="/nordlicht/funn/css/plugins/JSONtip-v2.css" type="text/css" rel="stylesheet" />
-<link href="panzer.css" type="text/css" rel="stylesheet" />
+<link href="css/jquery-ui-1.8.11.custom.css" type="text/css" rel="stylesheet" />
+<link href="css/spitfire.css" type="text/css" rel="stylesheet" />
+<link href="css/jquery.JSONtip-v2.css" type="text/css" rel="stylesheet" />
 
 </head>
 
@@ -72,8 +71,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
 <script src="amo.js"></script>
-<script src="/nordlicht/funn/js/plugins/jquery.JSONtip-v2.js"></script>
-<script src="jquery.flot.js"></script>
+<script src="/js/js/jquery.JSONtip-v2.js"></script>
+<script src="/js/jquery.flot.js"></script>
 <script>
 $(document).ready(function(){
 	
