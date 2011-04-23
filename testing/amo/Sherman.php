@@ -1,8 +1,10 @@
 <?php
 require_once('nordlicht.php');
 require_once('../funn/funnns.php');
+
 class Sherman extends nordlicht {
 	public	$tableMeta = array(),
+			$typeMeta = array(),
 			$meta = array(),
 			$checked = array(),
 			$limit = false,
@@ -47,7 +49,7 @@ class Sherman extends nordlicht {
 	*/
 	
 	public function buildTable(){
-		$this->innerTable();
+		$this->iRows = $this->innerTable();
 		echo "<table class=\"nStats\">\n";
 		echo $this->headerRow($this->tableMeta,$this->checked);
 		echo $this->iRows;
@@ -56,10 +58,11 @@ class Sherman extends nordlicht {
 	
 	public function innerTable(){
 		$row = '';
-		$fe = 'Bandwidth';
-		if($this->sec == 'BROWSER'){
+		$fe = 'Hits';
+		if($this->sec == 'BROWSER' || $this->sec == 'ERRORS'){
 			$fe = 'Hits';
 		}
+		arsort($this->ss[$fe]);
 		foreach($this->ss[$fe] as $id=>$v):
 			if($id >= $this->offSet):
 				if($j >= $this->limit && $this->limit != false):
@@ -95,6 +98,24 @@ class Sherman extends nordlicht {
 						case 'Visits':
 							$vl = number_format($vl);
 							break;
+						case 'Type':
+							//
+							$vl = $this->typeMeta[$vl];
+							break;
+						case 'Errors':
+							//adds the more info ? next to each error
+							$vl = $vl . '<span class="moreInfo" data-jsondata="'.$vl.'">?</span>';
+							break;
+						case 'Search engine referers ID':
+							//replaces underscore with a space, and makes first letter of each word Upper Case
+							$vl = ucwords(str_replace('_',' ',$vl));
+							break;
+						case 'External page referers':
+							/* makes the refferal a link to that page with the nofollow attribute since thats what it is
+							 * also truncates the link to characters long placing ... in the center
+							 */
+							$vl = '<a href="'.$vl.'" title="visit site" rel="nofollow" class="externalLinks">'.truncate($vl,50).'</a>';
+							break;
 						default:
 							$vl = $vl;
 							break;
@@ -107,84 +128,6 @@ class Sherman extends nordlicht {
 		endforeach;
 		
 		return $this->iRows = $row;
-	}
-	
-	
-	public function drawTable($args){
-		
-//		'section'=>$time;
-//		'meta'=>$timeMetaT;
-	
-		//set the variables
-		$section = $args['section'];
-		$j = 0;
-		
-		$limit = false;
-		if($args['limit']) :
-			$limit = $args['limit'];
-		endif;
-		
-		$offSet = 0;
-		if($args['offSet']):
-			$offSet = $j = $args['offSet'];
-		endif;
-		
-		if($args['cc']):
-			$cc = $args['cc'];
-		endif;
-	
-		$sort = 'Bandwidth';
-		if($args['sort']) :
-			$sort = $args['sort'];
-			arsort($section[$sort]);
-		endif;
-		
-		
-		
-		//begin to draw the table
-		
-		foreach($section[$sort] as $id=>$v):
-			if($id >= $offSet):
-				if($j >= $limit && $limit != false):
-					break;	//limit reached, stop the loop
-				endif;
-				echo "\t\t<tr>\n";
-				foreach($args['meta'] as $h):
-					$vl = $section[$h][$id];
-					if($h == 'Files type'):
-						
-					elseif($h == 'Bandwidth'):
-						$vl = byteSize($vl);
-					elseif($h == 'Hits' || $h == 'Pages'):
-						$vl = number_format($vl);
-					elseif($h == 'Domain'):
-						$vl = '<img src="funn/img/country/'.$vl.'.png" alt="'.$vl.'" width="16" height="11"/>'.str_replace('+',' ',$cc[strtoupper($vl)]);
-					elseif($h == 'Last visit date' || $h == 'Last visit' || $h == 'Date'):
-						$vl = dayMake($vl);
-					elseif($h == 'URL'):
-						$va = '<a href="http://'.$args['baseURL'].'/'.$vl.'">'.$vl.'</a>';
-						$vl = $va;
-					elseif($h == 'Search keyphrases'):
-						$vl = str_replace('+',' ',$vl);
-					elseif($h == 'External page referers'):
-						$vl = '<a href="'.$vl.'" title="visit site">'.$vl.'</a>';
-					elseif($h == 'Type'):
-						$vl = $args['error'][$section['Errors'][$id]];
-					elseif($h == 'Browser'):
-						$vl = "<img src=\"funn/img/browsers/".strtolower(str_replace(' ','-',$vl)).".png\" alt=\"".$vl."\"/>".$vl;
-					elseif($h == 'Errors'):
-						$vl .= '<span class="moreInfo" data-jsondata="'. $vl .'">?</span>';
-						if($vl == '404'):
-							$vl .= fullRangeLink('sider_404');
-						endif;
-					endif;	//ends meta type if
-					echo "\t\t\t<td>".$vl."</td>\n";
-				endforeach;	//ends meta foreach
-				echo "\t\t</tr>\n";
-				$j++;
-			endif;	//ends offset if
-		endforeach;	//ends section foreach
-		echo "</table>\n";
 	}
 	
 	/* headerRow()	- prints out the header row for the tables - used inside tableMeta(), and todayStats() function
@@ -260,5 +203,17 @@ class Sherman extends nordlicht {
 		echo "</div>\n";
 	}
 }
+function truncate($str,$max){
+	$newStr = $str;
+	$len = strlen($str);
 
+	if($len > $max):
+		$mid = $max / 2;
+		$newStr = substr($str,0,($mid - 2));
+		$newStr .= ' ... ';
+		$newStr .= substr($str,($len - $mid + 2));
+	endif;
+	
+	return $newStr;
+}
 ?>
