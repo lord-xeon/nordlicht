@@ -62,7 +62,10 @@ class Sherman extends nordlicht {
 		if($this->sec == 'BROWSER' || $this->sec == 'ERRORS'){
 			$fe = 'Hits';
 		}
-		arsort($this->ss[$fe]);
+		//If it's the Month to Day section don't sort it by anything as it's already in the correct order
+		if($this->sec != 'DAY') {
+			arsort($this->ss[$fe]);
+		}
 		foreach($this->ss[$fe] as $id=>$v):
 			if($id >= $this->offSet):
 				if($j >= $this->limit && $this->limit != false):
