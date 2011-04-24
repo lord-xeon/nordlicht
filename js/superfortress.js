@@ -53,6 +53,9 @@ function byteSize(byte){
 	return sz;
 }
 
+function byteSizeTick(v,axis){
+	return byteSize(v.toFixed(axis.tickDecimals));
+}
 
 function numAxes(flotO,n,data){
 	var ax = {};
@@ -171,6 +174,42 @@ var tabFuns = {
 			
 		}
 		
+	},
+	monthly: {
+		sec:'monthly',
+		startUp:function(){
+				var sec = '#monthly';
+				$(sec+" .nStats th").each(function(i,v){
+					var $t = $(this),
+						td = $t.data(),
+						rd = [],
+						day = '',
+						flot = {},
+						b = {};
+					if(td.charton == true){
+						$t.addClass('graphed');
+						flot = {
+							label:$t.html(),
+							yaxis:td.chartyaxis,
+							color:td.chartcolor,
+							data:[]
+						};
+						if(td.charttype == 'bars'){
+							flot.bars = { show:true };
+							flot.lines = { show:false };
+							flot.points = { show:false };
+						}
+						console.log(td);
+						$(sec +' .nStats td:nth-child('+td.chartid+')').each(function(ind,val){
+							day = parseInt(val.parentElement.children[0].dataset.chartdata)*1000;
+							rd.push([day, parseInt(val.dataset.chartdata)]);
+						});
+						flot.data = rd;
+						oFlot.push(flot);
+					}
+				});
+				$.plot($("#monthlyFlot"),oFlot,flotOps.monthly);
+		}
 	},
 	searches: {
 		sec:'searches',

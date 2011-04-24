@@ -217,5 +217,60 @@ var flotOps = {
 			hoverable: true,
 			clickable:true
         }
+	},
+	
+	/*@3 Errors*/
+	errors: {
+		series: {
+			bars: {
+				fill:1,
+				show:true,
+				horizontal:true,
+				align:'center'
+			},
+			points: {
+				show:false
+			},
+			shadowSize:2
+		},
+        grid: {
+			hoverable: true,
+			clickable:true
+        },
+		legend: {
+			show:true,		//show the legend
+			//container: $("#errors figcaption"),	//put the legend in the figcaption under the errors section
+			noColumns: 1
+		},
+	},
+	/*@4 Monthly*/
+	monthly: {
+		series: {
+			points: {
+				show:true
+			},
+			lines: {
+				show:true
+			},
+			bars: {
+				barWidth:(10 * 60 * 60 * 1000), //2 hours less then a full day, so that there's some spacing between the bars
+				fill:0.9,
+				align:'center',
+				points: {
+					show:false
+				}
+			},
+			shadowSize:5,
+		},
+		xaxes: [{
+			mode:'time'
+		}],
+		yaxes: [{
+			min:0
+		},{
+			alignTicksWithAxis:'right',
+			position:'right',
+			tickFormatter:byteSizeTick
+		}]
 	}
 };
