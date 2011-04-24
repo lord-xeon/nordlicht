@@ -75,6 +75,7 @@ class Sherman extends nordlicht {
 				foreach($this->tableMeta as $h):
 					//print_r($this->ss[$h]);
 					$vl = $this->ss[$h][$id];
+					$vd = $vl;
 					
 					switch($h):
 						case 'Files type':			//add the file type icon to the cell
@@ -85,12 +86,15 @@ class Sherman extends nordlicht {
 							break;
 						case 'Last visit date':		//format the date to Month DD, YYYY
 							$vl = dayMake($vl);
+							$vd = dayUTC($vd);
 							break;
 						case 'Last visit' :
 							$vl = dayMake($vl);
+							$vd = dayUTC($vd);
 							break;
-						case 'Date' :
+						case 'Date' :						
 							$vl = dayMake($vl);
+							$vd = dayUTC($vd);
 							break;
 						case 'Pages':				//add commas in the right places to make the number easier to read
 							$vl = number_format($vl);
@@ -123,7 +127,7 @@ class Sherman extends nordlicht {
 							$vl = $vl;
 							break;
 					endswitch;
-					$row .= "\t\t<td>".$vl."</td>\n";
+					$row .= "\t\t<td data-chartdata=\"".$vd.'">'.$vl."</td>\n";
 				endforeach;
 				$row .= "\t</tr>\n";
 				$j++;
@@ -218,5 +222,11 @@ function truncate($str,$max){
 	endif;
 	
 	return $newStr;
+}
+function dayUTC($day){
+	$year = substr($day,0,4);
+	$month = substr($day,4,2);
+	$day = substr($day,6,2);
+	return strtotime($year.'-'.$month.'-'.$day)*1000;
 }
 ?>
