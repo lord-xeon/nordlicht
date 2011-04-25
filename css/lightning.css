@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*@1 Tabs*/
+/*@1.1 Default Tab State*/
+.ui-tabs {
+	font-size:16px;
+	font-family: 'Quattrocento', arial, serif;
+	font-family: 'Expletus Sans', arial, serif;
+}
+.ui-widget-header {
+	background:#053F60;
+	border:none;
+}
+
+.ui-tabs .ui-tabs-nav li {
+	border:3px solid #ccc;
+	border-bottom:none;
+	border-radius:8px 8px 0 0;
+	margin:5px 5px 0;
+	height:36px;
+	width:36px;
+	float:left;
+	list-style:none;
+	position:relative;
+	-webkit-transition:0.1s ease-out;
+	-moz-transition:0.3s ease-out;
+}
+
+/* We want to set the opacity instead of the display value because it works better with the transition
+ */
+.ui-tabs-nav li a {
+	margin-left:32px;
+	margin-top:5px;
+	padding:5px 10px;
+	float:left;
+	color:#053F60;
+	text-shadow:0 1px 1px #fff;
+	opacity:0;
+}
+
+/*@1.2 Hovered State*/
+.ui-tabs .ui-tabs-nav li:hover {
+	width:130px;
+	-webkit-transition:0.3s ease-in;
+	-moz-transition:0.3s ease-in;
+}
+.ui-tabs .ui-tabs-nav li.year2DateTab:hover {
+	width:160px;
+	-webkit-transition:0.3s ease-in;
+	-moz-transition:0.3s ease-in;
+}
+.ui-tabs .ui-tabs-nav li:hover a {
+	-webkit-transition:0.25s ease-in;
+	-moz-transition:0.25s ease-in;
+	opacity:1;
+}
+
+/*@1.3 Selected State*/
+
+/*@1.3.1 Individual tabs selected state widths*/
+.ui-tabs-nav li.todayTab:hover,
+.ui-tabs-nav li.ui-state-active.todayTab	{ width:100px; }
+.ui-tabs-nav li.year2DateTab:hover,
+.ui-tabs-nav li.ui-state-active.year2DateTab{ width:160px; }
+.ui-tabs-nav li.monthlyTab:hover,
+.ui-tabs-nav li.ui-state-active.monthlyTab	{ width:175px; }
+.ui-tabs-nav li.hourlyTab:hover,
+.ui-tabs-nav li.ui-state-active.hourlyTab	{ width:105px; }
+.ui-tabs-nav li.osTab:hover,
+.ui-tabs-nav li.ui-state-active.osTab		{ width:75px; }
+.ui-tabs-nav li.geoTab:hover,
+.ui-tabs-nav li.ui-state-active.geoTab		{ width:80px; }
+.ui-tabs-nav li.contentTab:hover,
+.ui-tabs-nav li.ui-state-active.contentTab	{ width:120px; }
+.ui-tabs-nav li.robotsTab:hover,
+.ui-tabs-nav li.ui-state-active.robotsTab	{ width:110px; }
+.ui-tabs-nav li.searchTab:hover,
+.ui-tabs-nav li.ui-state-active.searchTab	{ width:120px; }
+.ui-tabs-nav li.errorsTab:hover,
+.ui-tabs-nav li.ui-state-active.errorsTab	{ width:100px; }
+
+
+.ui-tabs-nav li.ui-state-active a {
+	color:#333;
+	text-shadow:0 1px 1px #fff;
+	opacity:1;
+}

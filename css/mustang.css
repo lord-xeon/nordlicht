@@ -1,0 +1,220 @@
+@charset "utf-8";
+/* CSS Document */
+@import url(http://fonts.googleapis.com/css?family=Quattrocento);
+@import url(http://fonts.googleapis.com/css?family=Expletus+Sans);
+table {
+	margin:10px;
+	border-collapse:collapse;
+}
+section table th,
+section table td {
+	border:1px solid;
+	padding:2px 8px 0;
+}
+section table th {
+	font-family:Quattrocento, Verdana, Geneva, sans-serif;
+}
+section table tr:first-child th{
+	background:#333;
+	color:#fff;
+	text-shadow:1px 1px 1px #000;
+	font-weight:bold;
+}
+
+section table tr th.graphed {
+	background:#0C0 !important;
+	-webkit-transition:2s;
+	-moz-transition:2s;
+	-ms-transition:2s;
+	-o-transition:2s;
+	cursor:pointer;
+}
+section table tr:nth-child(odd) {
+	background:#E2E2E2;
+}
+section table tr:hover {
+	background:#0CF;
+	-webkit-transition:0.3s;
+	-moz-transition:0.3s;
+	-ms-transition:0.3s;
+	-o-transition:0.3s;
+}
+
+/*Month to Date Section*/
+#monthlyTable {
+	margin:0 auto;
+	border:1px solid;
+}
+#monthly table:first-child {
+	float:left;
+}
+#monthly table:nth-child(2) {
+	float:right;
+}
+#monthlyFlot {
+	width:80%;
+	height:200px;
+}
+.clear { clear:both; }
+
+/*Browser Section*/
+.pieLabel {
+	padding:5px;
+	font-weight:bold;
+	color:#fff;
+}
+.pieLabelBackground {
+	border:2px solid #999;
+	border-radius:10px;
+}
+
+#browser aside {
+	position:relative;
+	width:45%;
+	height:500px;
+	float:left;
+	margin:10px;
+	border:1px solid #fff;
+}
+.plotSide {
+	min-width:500px;
+}
+#browserPlot {
+	width:50%;
+	height:50%;
+	position:absolute;
+	left:25%;
+	top:25%;
+	z-index:100;
+}
+.minorPlot {
+	width:90%;
+	height:90%;
+	position:absolute;
+	top:5%;
+	left:5%;
+	z-index:90;
+}
+.minorHolder { display:none; }
+
+
+#browser figcaption {
+	position:absolute;
+	top:0;
+	right:10px;
+}
+
+
+
+
+/*word cloud info*/
+.wordCloud {
+	width:400px;
+	height:200px;
+	border:4px solid #333;
+	border-radius:10px;
+	padding:15px;
+	margin:0 auto;
+	font-size:75px;
+	font-family:Verdana, Geneva, sans-serif;
+	position:relative;
+	background: #b3dced; /* old browsers */
+	background: -moz-linear-gradient(top, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* firefox */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=0 ); /* ie */
+	background:-webkit-radial-gradient(top left, circle, #128cc4 20%, white 25%, rgba(0,162,255,0.8) 35%);
+}
+.wordCloud span {
+	margin:0 10px;
+	padding:5px;
+	position:absolute;
+	border:2px solid transparent;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	cursor:pointer;
+}
+#SEARCHWORDS {
+	width:500px;
+	height:300px;
+}
+
+.wordCloud .wordCloud-max {
+	font-size:1em;
+	position:relative;
+	margin:7% auto 0;
+	display:block;
+	color:#00a2ff;
+	text-align:center;
+	text-shadow:2px 2px 6px #000;
+	z-index:100;
+}
+.wordCloud-9 {
+	font-size:0.9em;
+	color:#a30000;
+	z-index:90;
+}
+.wordCloud-8 {
+	font-size:0.8em;
+	color:#a8d8f3;
+	z-index:80;
+}
+.wordCloud-7 {
+	font-size:0.7em;
+	color:#89490a;
+	z-index:70;
+}
+.wordCloud-6 {
+	font-size:0.6em;
+	color:#c95252;
+	z-index:60;
+}
+.wordCloud-5 {
+	font-size:0.5em;
+	color:#9a77d9;
+	z-index:50;
+}
+.wordCloud-4 {
+	font-size:0.4em;
+	color:#18608;
+	z-index:40;
+}
+.wordCloud-3 {
+	font-size:0.3em;
+	color:#7cb993;
+	z-index:30;
+}
+.wordCloud-2 {
+	font-size:0.2em;
+	color:#0b391c;
+	z-index:20;
+}
+.wordCloud-1 {
+	font-size:0.1em;
+	color:#474747;
+	z-index:10;
+}
+.wordCloud-09 {
+	font-size:0.01em;
+	color:#222;
+	z-index:1;
+}
+
+.wordCloud span:hover {
+	border-color:inherit;
+}
+
+/*word cloud tip*/
+.wordCloudTip {
+	width:300px;
+}
+.wordCloudTip .JSONtipBody {
+	font-size:10px;
+}
+.searchTipWord {
+	color:#036;
+	font-weight:bold;
+}
+.searchTipVal {
+	color:#300;
+	font-weight:bold;
+}

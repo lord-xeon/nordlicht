@@ -4,79 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Layout setup</title>
 <link href="css/jquery-ui-1.8.11.custom.css" type="text/css" rel="stylesheet" />
-<link href="css/nav.css" type="text/css" rel="stylesheet" />
+<link href="css/lightning.css" type="text/css" rel="stylesheet" />
+<link href="css/warhawk.css" type="text/css" rel="stylesheet" />
+<link href="css/mustang.css" type="text/css" rel="stylesheet" />
 <style>
-@import url(http://fonts.googleapis.com/css?family=Quattrocento);
-@import url(http://fonts.googleapis.com/css?family=Expletus+Sans);
-
-/*@1 Tabs*/
-/*@1.1 Default Tab State*/
-.ui-tabs {
-	font-size:16px;
-	font-family: 'Quattrocento', arial, serif;
-	font-family: 'Expletus Sans', arial, serif;
-}
-.ui-widget-header {
-	background:#053F60;
-	border:none;
-}
-
-.ui-tabs .ui-tabs-nav li {
-	border:3px solid #ccc;
-	border-bottom:none;
-	border-radius:8px 8px 0 0;
-	margin:5px 5px 0;
-	height:36px;
-	width:36px;
-	float:left;
-	list-style:none;
-	position:relative;
-	-webkit-transition:0.1s ease-out;
-	-moz-transition:0.3s ease-out;
-}
-
-/* We want to set the opacity instead of the display value because it works better with the transition
- */
-.ui-tabs-nav li a {
-	margin-left:32px;
-	margin-top:5px;
-	padding:5px 10px;
-	float:left;
-	color:#053F60;
-	text-shadow:0 1px 1px #fff;
-	opacity:0;
-}
-
-/*@1.2 Hovered State*/
-.ui-tabs .ui-tabs-nav li:hover {
-	width:130px;
-	-webkit-transition:0.3s ease-in;
-	-moz-transition:0.3s ease-in;
-}
-.ui-tabs .ui-tabs-nav li.year2DateTab:hover {
-	width:160px;
-	-webkit-transition:0.3s ease-in;
-	-moz-transition:0.3s ease-in;
-}
-.ui-tabs .ui-tabs-nav li:hover a {
-	-webkit-transition:0.25s ease-in;
-	-moz-transition:0.25s ease-in;
-	opacity:1;
-}
-
-/*@1.3 Selected State*/
-.ui-tabs-nav li.ui-state-active {
-	width:130px;
-}
-.ui-tabs .ui-tabs-nav li.ui-state-active.year2DateTab {
-	width:160px;
-}
-
-.ui-tabs-nav li.ui-state-active a {
-	color:#333;
-	text-shadow:0 1px 1px #fff;
-	opacity:1;
-}
 
 </style>
 </head>
@@ -85,17 +16,14 @@
 <div id="europe">
 	<nav id="tabNav">
 		<ul>
-			<li><a href="#tabs-1">Today</a>
+			<li class="todayTab"><a href="#tabs-1" data-sec="today">Today</a>
 				<span class="navIcon todayIcon"> 
 					<span><?php echo date('M');?></span>
 					<?php echo date('j');?>
 				</span> <!-- closes todayIcon span -->
 			</li>
 			<li class="year2DateTab"><a href="y2d.php">Year to Date</a></li>
-			<li><a href="daily.php">Daily</a></li>
-			<li><a href="hourly.php" data-flot="true">Hourly</a>
-			</li>
-			<li><a href="monthly.php">Monthly</a>
+			<li class="monthlyTab"><a href="monthly.php" data-sec="monthly">Month to Date</a>
 				<span class="navIcon monthIcon"> 
 					<span class="calRing"></span> 
 					<span class="calRing"></span> 
@@ -104,14 +32,23 @@
 					</span> 
 				</span> <!-- closes monthIcon span -->
 			</li>
-			<li><a href="browser.php">Browser</a></li>
-			<li><a href="os.php">OS</a>
+			<li class="hourlyTab"><a href="hourly.php" data-flot="true" data-sec="hourly">Hourly</a>
+				<div class="navIcon hourlyIcon">
+					<div class="clock">
+						<div class="minuteHand"></div>
+						<div class="hourHand hour<?php echo date('h');?>"></div>
+						<div class="clockDot"></div>
+					</div>
+				</div>
+			</li>
+			<li class="browserTab"><a href="browser.php" data-sec="browser">Browser</a></li>
+			<li class="osTab"><a href="os.php">OS</a>
 				<span class="navIcon OSIcon"> 
 					<span class="OSscreen"></span> 
 					<span class="OSbase"></span> 
 				</span> <!-- closes OSIcon span --> 
 			</li>
-			<li><a href="#geo">Geo</a>
+			<li class="geoTab"><a href="#geo">Geo</a>
 				<span class="navIcon countryIcon"> 
 					<span class="ring ring1"></span> 
 					<span class="ring ring2"></span> 
@@ -120,12 +57,20 @@
 					<span class="ring ring5"></span> 
 				</span> <!-- closes countryIcon span -->
 			</li>
-			<li><a href="#content">Content</a>
+			<li class="contentTab"><a href="#content">Content</a>
 				<span class="navIcon fileIcon"> 
-					<span></span> 
+					<span></span>
+					<table>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+						<tr><td></td></tr>
+					</table>
 				</span> <!-- closes fileIcon span -->
 			</li>
-			<li><a href="robots.php">Robots</a>
+			<li class="robotsTab"><a href="robots.php" data-sec="robots">Robots</a>
 				<div class="navIcon robotIcon"> 
 					<span class="robotAntena"></span> 
 					<span class="robotAntena"></span> 
@@ -143,21 +88,25 @@
 					</div> <!-- closes robotFace span--> 
 				</div> <!-- closes robotIcon span--> 
 			</li>
-			<li><a href="search.php">Searches</a>
+			<li class="searchTab"><a href="search.php" data-sec="searches">Searches</a>
+				<div class="navIcon searchIcon">
+					<span class="searchGlass"></span>
+					<span class="searchHandle"></span>
+				</div>
 			</li>
-			<li><a href="errors.php">Errors</a>
-				<span class="navIcon errorIcon">X</span> <!-- closes errorIcon span -->
+			<li class="errorsTab"><a href="errors.php">Errors</a>
+				<span class="navIcon errorIcon"></span> <!-- closes errorIcon span -->
 			</li>
 		</ul>
 	</nav>
 	<div id="tabs-1">
 		<section id="today" class="statsSection"> 
-			<h2>Month to Date</h2>
+			<h2>Today</h2>
 			<div id="todayStats">
 				<p><span class="bold">Last Updated:</span> Friday, April 1, 2011 at: 9:17 p.m.</p> 
 				<p> 10 new records since last update.</p> 
 				<p>58 total visits this month</p> 
-				<p>57 total uniques this month</p> 
+				<p>57 total uniques this month</p>
 			</div><!--closes todayStats div-->
 		</section>
 	</div>
@@ -165,13 +114,17 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
-<script src="js/flot.colorhelpers.js"></script>
-<script src="js/color2.js"></script>
+<script async src="js/jquery.flot.js"></script>
+<script async src="js/flot.pie.js"></script>
+<script async src="js/colorHelper.js"></script>
+<script async src="js/superfortress.js"></script>
+<script async src="js/ju87.js"></script>
 <script>
 $(window).load(function(){
 	$("#europe").tabs({
 		load: function(e,uid){
-			var sec = uid.tab.innerHTML.toLowerCase();
+			var sec = uid.tab.dataset.sec;
+			tabFuns[sec].startUp();
 		},
 		cache:true,
 		fx: {
