@@ -92,7 +92,7 @@ function pieClick(event, pos, obj) {
 		return;
 	}
 	var percent = parseFloat(obj.series.percent).toFixed(2),
-		baseColor = $.color.parse(obj.series.color),
+		baseColor = $.colorHelp.parse(obj.series.color),
 		mv = $.parseJSON($("#browser .minorHolder").html()),
 		rg = '',
 		minorDD = [],
@@ -105,11 +105,11 @@ function pieClick(event, pos, obj) {
 			if(obj.series.label == 'msie' || obj.series.label == 'chrome'){
 				diff = -diff;
 			}
-			newHue = $.color.newHue(baseColor, diff);
+			newHue = baseColor.lighter(diff);
 			minorDD.push({
 				label:nm,
 				data:dd,
-				color:newHue
+				color:newHue.hex
 			});
 		}
 	});
@@ -120,7 +120,7 @@ function osPieClick(event,pos,obj){
 		return;
 	}
 	var percent = parseFloat(obj.series.percent).toFixed(2),
-		baseColor = $.color.parse(obj.series.color),
+		baseColor = $.colorHelp.parse(obj.series.color),
 		mv = $.parseJSON($("#os .minorHolder").html()),
 		rg = '',
 		minorDD = [],
@@ -129,12 +129,11 @@ function osPieClick(event,pos,obj){
 	$.each(mv, function(nm, dd){
 		rg = new RegExp(obj.series.label);
 		if(nm.match(rg)){
-			diff += 5;
-			newHue = $.color.newHue(baseColor, diff);
+			newHue = baseColor.lighter();
 			minorDD.push({
 				label:nm,
 				data:dd,
-				color:newHue
+				color:newHue.hex
 			});
 		}
 	});
@@ -149,17 +148,18 @@ var tabFuns = {
 		minorPlot: {},
 		startUp: function(){
 			var sec = this.sec,
-				plot = {};
+				plot = {},
+				pl = [];
 			$("#" +sec+ " .nStats td:first-child").each(function(i,v){
 				var $t = $(this),
 					td = $t.data(),
 					rd = [];
-				oFlot[i] = {
+				pl[i] = {
 					label:td.piename,
 					data:td.pieval,
 					color:td.piecolor
 					};
-				plot = $.plot($("#"+sec+"Plot"),oFlot,flotOps.browser);
+				plot = $.plot($("#"+sec+"Plot"),pl,flotOps.browser);
 			});
 			
 			$("#"+sec+"Plot").bind("plotclick", pieClick);
