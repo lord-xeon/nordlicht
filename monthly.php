@@ -38,18 +38,19 @@ $monthly->limit = 15;
 
 ?>
 <section id="monthly">
-	<figure id="monthlyFlotFig">
+	<figure>
 		<div id="monthlyFlot"></div>
 		<figcaption></figcaption>
 	</figure>
 	<div id="monthlyTable">
 		<?php $monthly->builder();
 			$monthly->checked = array();
-			$monthly->offSet = 16;
+			$monthly->offSet = 15;
+			$monthly->limit = null;
 			$monthly->builder();
 			$monthly->destroy();
 		?>
-	</div>
 	<br class="clear" />
+	</div>
 </section>
 
