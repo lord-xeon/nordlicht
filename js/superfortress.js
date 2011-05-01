@@ -82,63 +82,8 @@ function chartData(flotD,what){
 	flotD[td.charttype] = {show:true};				
 	return flotD;
 }
-
-/* pieClick(event, position clicked, chart-obj)	- click event for Pie charts - creates a donut shaped chart out of the minor detail data
- *
+/* plotData(section)	gets the data for the plot
  */
-function pieClick(event, pos, obj) {
-	if(!obj || obj.series.label == 'All Others') {
-		return;
-	}
-	var percent = parseFloat(obj.series.percent).toFixed(2),
-		baseColor = $.colorHelp.parse(obj.series.color),
-		mv = $.parseJSON($("#browser .minorHolder").html()),
-		rg = '',
-		minorDD = [],
-		diff = 0;
-		
-	$.each(mv, function(nm, dd){
-		rg = new RegExp(obj.series.label);
-		if(nm.match(rg)){
-			diff = 10;
-			if(obj.series.label == 'msie' || obj.series.label == 'chrome'){
-				diff = -diff;
-			}
-			newHue = baseColor.lighter(diff);
-			minorDD.push({
-				label:nm,
-				data:dd,
-				color:newHue.hex
-			});
-		}
-	});
-	return $.plot($("#browser .minorPlot"),minorDD,flotOps.browserMinor);
-}
-function osPieClick(event,pos,obj){
-	if(!obj || obj.series.label == 'All Others') {
-		return;
-	}
-	var percent = parseFloat(obj.series.percent).toFixed(2),
-		baseColor = $.colorHelp.parse(obj.series.color),
-		mv = $.parseJSON($("#os .minorHolder").html()),
-		rg = '',
-		minorDD = [],
-		diff = 0;
-		
-	$.each(mv, function(nm, dd){
-		rg = new RegExp(obj.series.label);
-		if(nm.match(rg)){
-			newHue = baseColor.lighter();
-			minorDD.push({
-				label:nm,
-				data:dd,
-				color:newHue.hex
-			});
-		}
-	});
-	$.plot($("#os .minorPlot"), minorDD, flotOps.osMinor);
-}
-
 function plotData(sec){
 	$(sec+" .nStats th").each(function(i,v){
 		var $t = $(this),
@@ -171,6 +116,65 @@ function plotData(sec){
 	});
 	
 	return oFlot;
+}
+
+/* pieClick(event, position clicked, chart-obj)	- click event for Pie charts - creates a donut shaped chart out of the minor detail data
+ *
+ */
+function pieClick(event, pos, obj) {
+	if(!obj || obj.series.label == 'All Others') {
+		return;
+	}
+	var percent = parseFloat(obj.series.percent).toFixed(2),
+		baseColor = $.colorHelp.parse(obj.series.color),
+		mv = $.parseJSON($("#browser .minorHolder").html()),
+		rg = new RegExp(obj.series.label),
+		minorDD = [],
+		diff = 0;
+		
+	$.each(mv, function(nm, dd){
+		if(nm.match(rg)){
+			diff = 10;
+			if(obj.series.label == 'msie' || obj.series.label == 'chrome'){
+				diff = -diff;
+			}
+			newHue = baseColor.lighter(diff);
+			minorDD.push({
+				label:nm,
+				data:dd,
+				color:newHue.stringIt()
+			});
+		}
+	});
+	return $.plot($("#browser .minorPlot"),minorDD,flotOps.browserMinor);
+}
+
+/* osPieClick()	- bind plot click on the OS pie chart
+ * returns Donut chart of minor OS versions
+ */
+function osPieClick(event, pos, obj) {
+	if(!obj || obj.series.label == 'All Others') {
+		return;
+	}
+	var percent = parseFloat(obj.series.percent).toFixed(2),
+		baseColor = $.colorHelp.parse(obj.series.color),
+		mv = $.parseJSON($("#os .minorHolder").html()),
+		rg = new RegExp(obj.series.label),
+		minorDD = [],
+		diff = 0;
+		
+	$.each(mv, function(nm, dd){
+		if(nm.match(rg)){
+			diff = 10;
+			newHue = baseColor.lighter(diff);
+			minorDD.push({
+				label:nm,
+				data:parseInt(dd),
+				color:newHue.stringIt()
+			});
+		}
+	});
+	return $.plot($("#os .minorPlot"),minorDD,flotOps.osMinor);
 }
 
 
@@ -237,6 +241,25 @@ var tabFuns = {
 	},
 	os: {
 		startUp: function(){
+			var sec = this.sec,
+				plot = {},
+				pl = [];
+			$("#os .nStats td:first-child").each(function(i,v){
+				var $t = $(this),
+					td = $t.data(),
+					rd = [];
+				pl[i] = {
+					label:td.piename,
+					data:td.pieval,
+					color:td.piecolor
+				};
+				flotOps.os.legend.container = $("#os figcaption");
+				plot = $.plot($("#osPlot"),pl,flotOps.os);
+			});
+			
+			$("#osPlot").bind("plotclick", osPieClick);
+			
+			return this.plot = plot;
 		}
 	},
 	geo: {

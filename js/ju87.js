@@ -19,11 +19,14 @@
  */
  
 var flotOps = {
+	//@1 Today
 	today: {
 	},
+	//@2 Year to Date
 	year2date: {
 		
 	},
+	//@3 Monthly
 	monthly: {
 		series: {
 			points: {
@@ -56,6 +59,7 @@ var flotOps = {
 			show:true
 		}
 	},
+	//@4 Hourly
 	hourly: {
 		series: {
 			points: {
@@ -83,6 +87,7 @@ var flotOps = {
 			clickable:true
         }
 	},
+	//@5 Browser
 	browser: {
 		series: {
 			pie: {
@@ -124,7 +129,7 @@ var flotOps = {
 			clickable:true
 		}
 	},
-	//Browser minor metadata
+	//@5.1 Browser Minor
 	browserMinor: {
 		series: {
 			pie: {
@@ -170,6 +175,7 @@ var flotOps = {
 			hoverable:true
 		}
 	},
+	//@6 OS
 	os: {
 		series: {
 			pie: {
@@ -195,9 +201,7 @@ var flotOps = {
 			}
 		},
 		legend: {
-			show:true,		//show the legend
-			container: $("#os figcaption"),	//put the legend in the figcaption under the browser section
-			noColumns: 1,
+			show:true,
 			labelFormatter: function(label, series){
 				var ll = '';
 				switch (label){
@@ -221,8 +225,8 @@ var flotOps = {
 	osMinor: {
 		series: {
 			pie: {
-//				innerRadius:0.55,
-				radius:0.9,
+				innerRadius:0.55,
+				radius:1,
 				show:true,
 				stroke: {
 					color:'#fff',
@@ -234,25 +238,61 @@ var flotOps = {
 					background: {
 						opacity:0.7
 					},
-					threshold:0.1,
+					threshold:0.05,
 					formatter: function(label, series){
 						var ll = '',
-							vr = new RegExp('[0-9]'),
-							vl = label.search(vr),
-							v = label.substr(vl),
-							b = label.substring(0,vl);
-						b = b.charAt(0).toUpperCase() + b.substr(1);
-
-						if(b == 'Msie') {
-							b = 'IE';
+							lc = '';
+						switch(label){
+							case 'winxp':
+								ll = 'XP';
+								break;
+							case 'win2008':
+								ll = 'Windows 2008';
+								break;
+							case 'winlong':
+								ll = 'Windows Vista';
+								break;
+							case 'win98':
+								ll = 'Windows 98';
+								break;
+							case 'linuxandroid':
+								ll = 'Android';
+								break;
+							case 'linuxcentos':
+								ll = 'Cent OS';
+								break;
+							case 'linuxdebian':
+								ll = 'Debian';
+								break;
+							case 'linuxdefora':
+								ll = 'Fedora';
+								break;
+							case 'linuxgentoo':
+								ll = 'Gentoo';
+								break;
+							case 'linuxmandr':
+								ll = 'Mandrake';
+								break;
+							case 'linuxredhat':
+								ll = 'Red Hat';
+								break;
+							case 'linuxsuse':
+								ll = 'SuSe';
+								break;
+							case 'linuxubuntu':
+								ll = 'Ubuntu';
+								break;
+							default:
+								ll = label.charAt(0).toUpperCase() + label.substr(1);
+								break;
 						}
-						lc = b +' v.' + v + '<br />'+ Math.round(series.percent) +'%';
+						lc = ll + '<br />' +Math.round(series.percent) +"%";
 						return lc;
 					}
 				},
 				combine: {
 					color:"#333",
-					threshold:0.1
+					threshold:0.05
 				}
 			}
 		},
