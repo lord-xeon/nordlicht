@@ -111,5 +111,6 @@ $sh->Browserbuilder();
 	<div class="minorHolder">
 		<?php $sh->minorHold(); ?>
 	</div>
+	<br class="clear" />
 	<?php $sh->destroy(); ?>
 </section>
