@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Layout setup</title>
 <link href="css/jquery-ui-1.8.11.custom.css" type="text/css" rel="stylesheet" />
+<link href="css/spitfire.css" type="text/css" rel="stylesheet" />
 <link href="css/lightning.css" type="text/css" rel="stylesheet" />
 <link href="css/warhawk.css" type="text/css" rel="stylesheet" />
 <link href="css/mustang.css" type="text/css" rel="stylesheet" />
@@ -111,6 +112,7 @@
 		</section>
 	</div>
 	</div> <!-- closes europe div -->
+	<img src="images/loading-150x23.gif" alt="loading icon" id="loading" />
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
@@ -122,14 +124,27 @@
 <script>
 $(window).load(function(){
 	$("#europe").tabs({
+		select: function(e,uid){
+			$("#loading").fadeIn('fast');
+		},
+		
 		load: function(e,uid){
 			var sec = uid.tab.dataset.sec;
-			tabFuns[sec].startUp();
+			console.log(sec);
 		},
+		
+		show:function(e,uid){
+			var sec = uid.tab.dataset.sec;
+			tabFuns[sec].startUp();
+			$("#loading").fadeOut('slow');
+		},
+		
 		cache:true,
 		fx: {
-			opacity: 'toggle'
+			opacity:'toggle',
+			duration:1000
 		},
+		
 		ajaxOptions: {
 			error: function( xhr, status, index, anchor ) {
 					$( anchor.hash ).html(

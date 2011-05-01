@@ -1,20 +1,38 @@
 @charset "utf-8";
-/* CSS Document */
-@import url(http://fonts.googleapis.com/css?family=Quattrocento);
-@import url(http://fonts.googleapis.com/css?family=Expletus+Sans);
-table {
+/* CSS Document 
+ CSS for each individual Tab
+ 
+	@1 - General Styles
+	@2 - Today
+	@3 - Year to Date
+	@4 - Monthly
+	@5 - Hourly
+	@6 - Browser
+	@7 - OS
+	@8 - GEO
+	@9 - Content
+	@10 - Robots
+	@11 - Searches
+		@11.1 Word Cloud
+		@11.2 Word Cloud Tip
+	@12 - Errors
+*/
+
+/*@1 General Styles*/
+
+section table {
 	margin:10px;
 	border-collapse:collapse;
 }
+
 section table th,
 section table td {
 	border:1px solid;
 	padding:2px 8px 0;
 }
-section table th {
-	font-family:Quattrocento, Verdana, Geneva, sans-serif;
-}
-section table tr:first-child th{
+
+section table th { font-family:Quattrocento, Verdana, Geneva, sans-serif; }
+section table tr:first-child th {
 	background:#333;
 	color:#fff;
 	text-shadow:1px 1px 1px #000;
@@ -29,9 +47,9 @@ section table tr th.graphed {
 	-o-transition:2s;
 	cursor:pointer;
 }
-section table tr:nth-child(odd) {
-	background:#E2E2E2;
-}
+
+section table tr:nth-child(odd) { background:#E2E2E2; }
+
 section table tr:hover {
 	background:#0CF;
 	-webkit-transition:0.3s;
@@ -39,46 +57,42 @@ section table tr:hover {
 	-ms-transition:0.3s;
 	-o-transition:0.3s;
 }
+.clear { clear:both; }
 
-/*Month to Date Section*/
+
+/*Today*/
+/*Year to Date*/
+/*@4 Monthly*/
+#monthlyPlot {
+	width:80%;
+	height:200px;
+}
+
 #monthlyTable {
 	margin:0 auto;
 	border:1px solid;
 }
-#monthly table:first-child {
-	float:left;
-}
-#monthly table:nth-child(2) {
-	float:right;
-}
-#monthlyFlot {
-	width:80%;
-	height:200px;
-}
-.clear { clear:both; }
+#monthlyTable table:first-child	{ float:left; }
+#monthlyTable table:nth-child(2)	{ float:right; }
 
-/*Browser Section*/
-.pieLabel {
-	padding:5px;
-	font-weight:bold;
-	color:#fff;
-}
-.pieLabelBackground {
-	border:2px solid #999;
-	border-radius:10px;
+/*@5 Hourly*/
+#hourlyPlot {
+	margin:0 auto;
+	width:90%;
+	height:350px;
 }
 
-#browser aside {
-	position:relative;
-	width:45%;
-	height:500px;
+#hourlyTable {
+	margin:0 auto;
+	width:90%;
+}
+
+#hourlyTable table.nStats {
 	float:left;
-	margin:10px;
-	border:1px solid #fff;
+	margin-top:25px;
 }
-.plotSide {
-	min-width:500px;
-}
+
+/*@6 Browser*/
 #browserPlot {
 	width:50%;
 	height:50%;
@@ -97,17 +111,44 @@ section table tr:hover {
 }
 .minorHolder { display:none; }
 
-
 #browser figcaption {
 	position:absolute;
 	top:0;
 	right:10px;
 }
 
+#browser aside {
+	position:relative;
+	width:45%;
+	height:500px;
+	float:left;
+	margin:10px;
+	border:1px solid #fff;
+}
+
+
+.pieLabel {
+	padding:5px;
+	font-weight:bold;
+	color:#fff;
+}
+.pieLabelBackground {
+	border:2px solid #999;
+	border-radius:10px;
+}
+
+.plotSide { min-width:500px; }
 
 
 
-/*word cloud info*/
+/*OS*/
+/*GEO*/
+/*Content*/
+/*Robots*/
+
+/*@11 Searches*/
+
+/*@11.1 Word Cloud*/
 .wordCloud {
 	width:400px;
 	height:200px;
@@ -118,11 +159,12 @@ section table tr:hover {
 	font-size:75px;
 	font-family:Verdana, Geneva, sans-serif;
 	position:relative;
-	background: #b3dced; /* old browsers */
-	background: -moz-linear-gradient(top, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* firefox */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=0 ); /* ie */
+	background:#b3dced; /* old browsers */
+	background:-moz-linear-gradient(top, #b3dced 0%, #29b8e5 50%, #bce0ee 100%); /* firefox */
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee',GradientType=0 ); /* ie */
 	background:-webkit-radial-gradient(top left, circle, #128cc4 20%, white 25%, rgba(0,162,255,0.8) 35%);
 }
+
 .wordCloud span {
 	margin:0 10px;
 	padding:5px;
@@ -133,6 +175,7 @@ section table tr:hover {
 	border-radius:5px;
 	cursor:pointer;
 }
+
 #SEARCHWORDS {
 	width:500px;
 	height:300px;
@@ -203,13 +246,10 @@ section table tr:hover {
 	border-color:inherit;
 }
 
-/*word cloud tip*/
-.wordCloudTip {
-	width:300px;
-}
-.wordCloudTip .JSONtipBody {
-	font-size:10px;
-}
+/*@11.2 Word Cloud Tip*/
+.wordCloudTip				{ width:300px; }
+.wordCloudTip .JSONtipBody	{ font-size:10px; }
+
 .searchTipWord {
 	color:#036;
 	font-weight:bold;
@@ -218,3 +258,6 @@ section table tr:hover {
 	color:#300;
 	font-weight:bold;
 }
+
+
+/*@12 Errors*/

@@ -83,7 +83,6 @@ function chartData(flotD,what){
 	return flotD;
 }
 
-
 /* pieClick(event, position clicked, chart-obj)	- click event for Pie charts - creates a donut shaped chart out of the minor detail data
  *
  */
@@ -101,7 +100,7 @@ function pieClick(event, pos, obj) {
 	$.each(mv, function(nm, dd){
 		rg = new RegExp(obj.series.label);
 		if(nm.match(rg)){
-			diff += 10;
+			diff = 10;
 			if(obj.series.label == 'msie' || obj.series.label == 'chrome'){
 				diff = -diff;
 			}
@@ -139,9 +138,77 @@ function osPieClick(event,pos,obj){
 	});
 	$.plot($("#os .minorPlot"), minorDD, flotOps.osMinor);
 }
+
+function plotData(sec){
+	$(sec+" .nStats th").each(function(i,v){
+		var $t = $(this),
+			td = $t.data(),
+			rd = [],
+			day = '',
+			flot = {},
+			b = {};
+		if(td.charton == true){
+			$t.addClass('graphed');
+			flot = {
+				label:$t.html(),
+				yaxis:td.chartyaxis,
+				color:td.chartcolor,
+				data:[]
+			};
+			if(td.charttype == 'bars'){
+				flot.bars = { show:true };
+				flot.lines = { show:false };
+				flot.points = { show:false };
+			}
+			console.log(td);
+			$(sec +' .nStats td:nth-child('+td.chartid+')').each(function(ind,val){
+				day = parseInt(val.parentElement.children[0].dataset.chartdata)*1000;
+				rd.push([day, parseInt(val.dataset.chartdata)]);
+			});
+			flot.data = rd;
+			oFlot.push(flot);
+		}
+	});
+	
+	return oFlot;
+}
+
+
 //@3 Tab specific functions
 var oFlot = [];
 var tabFuns = {
+	today: {
+		startUp: function(){
+		}
+	},
+	year2date: {
+		startUp: function(){
+		}
+	},
+	monthly: {
+		sec:'monthly',
+		startUp:function(){
+			var sec = '#'+this.sec;
+			
+			oFlot = plotData(sec);
+			flotOps.monthly.legend.container = $("#monthly figcaption");
+			plot = $.plot($("#monthlyPlot"),oFlot,flotOps.monthly);
+			
+			return this.plot = plot;
+		}
+	},
+	hourly: {
+		sec: 'hourly',
+		startUp: function(){
+			var sec = '#'+this.sec;
+			
+			oFlot = plotData(sec);
+			flotOps.hourly.legend.container = $("#hourly figcaption");
+			plot = $.plot($("#hourlyPlot"),oFlot,flotOps.hourly);
+			
+			return this.plot = plot;
+		}
+	},
 	browser: {
 		sec: 'browser',
 		plot: {},
@@ -159,6 +226,7 @@ var tabFuns = {
 					data:td.pieval,
 					color:td.piecolor
 					};
+				flotOps.browser.legend.container = $("#browser figcaption");
 				plot = $.plot($("#"+sec+"Plot"),pl,flotOps.browser);
 			});
 			
@@ -167,48 +235,20 @@ var tabFuns = {
 			return this.plot = plot;
 		}
 	},
-	hourly: {
-		sec: 'hourly',
+	os: {
 		startUp: function(){
-			var sec = this.sec;
-			
 		}
-		
 	},
-	monthly: {
-		sec:'monthly',
-		startUp:function(){
-				var sec = '#monthly';
-				$(sec+" .nStats th").each(function(i,v){
-					var $t = $(this),
-						td = $t.data(),
-						rd = [],
-						day = '',
-						flot = {},
-						b = {};
-					if(td.charton == true){
-						$t.addClass('graphed');
-						flot = {
-							label:$t.html(),
-							yaxis:td.chartyaxis,
-							color:td.chartcolor,
-							data:[]
-						};
-						if(td.charttype == 'bars'){
-							flot.bars = { show:true };
-							flot.lines = { show:false };
-							flot.points = { show:false };
-						}
-						console.log(td);
-						$(sec +' .nStats td:nth-child('+td.chartid+')').each(function(ind,val){
-							day = parseInt(val.parentElement.children[0].dataset.chartdata)*1000;
-							rd.push([day, parseInt(val.dataset.chartdata)]);
-						});
-						flot.data = rd;
-						oFlot.push(flot);
-					}
-				});
-				$.plot($("#monthlyFlot"),oFlot,flotOps.monthly);
+	geo: {
+		startUp: function(){
+		}
+	},
+	content: {
+		startUp: function(){
+		}
+	},
+	robots: {
+		startUp: function(){
 		}
 	},
 	searches: {
@@ -245,6 +285,10 @@ var tabFuns = {
 					'tip-show-event':'hover'		//we want a hover event for the word cloud
 				});
 			});
+		}
+	},
+	errors: {
+		startUp: function(){
 		}
 	}
 }

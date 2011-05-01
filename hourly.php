@@ -32,8 +32,11 @@ $time->limit = 12;
 
 ?>
 <section id="hourly">
-	<div id="hourlyFlot"></div>
-	<caption></caption>
+	<figure>
+		<div id="hourlyPlot"></div>
+		<figcaption></figcaption>
+	</figure>
+	
 	<div id="hourlyTable">
 		<?php $time->builder();
 			$time->checked = array();

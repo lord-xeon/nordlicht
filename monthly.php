@@ -39,7 +39,7 @@ $monthly->limit = 15;
 ?>
 <section id="monthly">
 	<figure>
-		<div id="monthlyFlot"></div>
+		<div id="monthlyPlot"></div>
 		<figcaption></figcaption>
 	</figure>
 	<div id="monthlyTable">
