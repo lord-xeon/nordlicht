@@ -1,5 +1,17 @@
 @charset "utf-8";
 /* CSS Document */
+/* jQuery UI specific styles for nordlicht
+
+	This is the base CSS file that controls all the jQuery UI stuff.
+	It only includes CSS for the jQuery UI elements actually being used.
+	It also acts as a base class for the nordlicht specific CSS that takes place in warhawk.css
+	
+	If you want to use a jQuery UI specific theme just replace this file with the theme file you want
+	The nordlicht CSS will still work, you might need to change font colors/sizes though
+	
+	@1 - Tabs
+	@2 - Tabs Content
+*/
 
 /*@1 Tabs*/
 /*@1.1 Default Tab State*/
@@ -61,22 +73,34 @@
 /*@1.3.1 Individual tabs selected state widths*/
 .ui-tabs-nav li.todayTab:hover,
 .ui-tabs-nav li.ui-state-active.todayTab	{ width:100px; }
+
 .ui-tabs-nav li.year2DateTab:hover,
 .ui-tabs-nav li.ui-state-active.year2DateTab{ width:160px; }
+
 .ui-tabs-nav li.monthlyTab:hover,
 .ui-tabs-nav li.ui-state-active.monthlyTab	{ width:175px; }
+
 .ui-tabs-nav li.hourlyTab:hover,
 .ui-tabs-nav li.ui-state-active.hourlyTab	{ width:105px; }
+
+.ui-tabs-nav li.browserTab:hover,
+.ui-tabs-nav li.ui-state-active.browserTab	{ width:120px; }
+
 .ui-tabs-nav li.osTab:hover,
 .ui-tabs-nav li.ui-state-active.osTab		{ width:75px; }
+
 .ui-tabs-nav li.geoTab:hover,
 .ui-tabs-nav li.ui-state-active.geoTab		{ width:80px; }
+
 .ui-tabs-nav li.contentTab:hover,
 .ui-tabs-nav li.ui-state-active.contentTab	{ width:120px; }
+
 .ui-tabs-nav li.robotsTab:hover,
 .ui-tabs-nav li.ui-state-active.robotsTab	{ width:110px; }
+
 .ui-tabs-nav li.searchTab:hover,
 .ui-tabs-nav li.ui-state-active.searchTab	{ width:120px; }
+
 .ui-tabs-nav li.errorsTab:hover,
 .ui-tabs-nav li.ui-state-active.errorsTab	{ width:100px; }
 
@@ -86,3 +110,11 @@
 	text-shadow:0 1px 1px #fff;
 	opacity:1;
 }
+
+/*@2 Tabs Content*/
+.ui-tabs .ui-tabs-panel {
+	background:none;
+	padding:10px 0;
+	display:block;
+}
+.ui-tabs .ui-tabs-hide { display: none !important; }
