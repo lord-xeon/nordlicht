@@ -63,7 +63,7 @@ class Sherman extends nordlicht {
 			$fe = 'Hits';
 		}
 		//If it's the Month to Day section don't sort it by anything as it's already in the correct order
-		if($this->sec != 'DAY') {
+		if($this->sec != 'DAY' && $this->sec != 'TIME') {
 			arsort($this->ss[$fe]);
 		}
 		foreach($this->ss[$fe] as $id=>$v):
