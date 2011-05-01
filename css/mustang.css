@@ -141,7 +141,40 @@ section table tr:hover {
 
 
 
-/*OS*/
+/*@7 OS*/
+#osPlot {
+	width:50%;
+	height:50%;
+	position:absolute;
+	left:25%;
+	top:25%;
+	z-index:100;
+}
+#os .minorPlot {
+	width:90%;
+	height:90%;
+	position:absolute;
+	top:5%;
+	left:5%;
+	z-index:90;
+}
+#os figcaption {
+	position:absolute;
+	bottom:0;
+	left:10px;
+}
+
+#os aside {
+	position:relative;
+	width:45%;
+	height:500px;
+	float:left;
+	margin:10px;
+	border:1px solid #fff;
+}
+
+
+
 /*GEO*/
 /*Content*/
 /*Robots*/
