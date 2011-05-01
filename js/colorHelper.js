@@ -86,6 +86,36 @@
 			return $.colorHelp.getOpposite(this);
 		}
 		
+		/* stringIt(str)	- returns a string of the color to use somewhere
+		 * Defaults return the hex code of the color with the #
+		 * takes the type of string you want returned
+		 *		case insensitive:  rgb, rgba, hsl, hsla
+		 */
+		co.stringIt = function(type){
+			var str = '';
+			switch(type.toLowerCase()){
+				case 'rgba':
+					str = 'rgba('+co.r+','+co.g+','+co.b+','+co.a+')';
+					break;
+				case 'rgb':
+					str = 'rgb('+co.r+','+co.g+','+co.b+')';
+					break;
+				case 'hsla':
+					str = 'hsla('+co.h+','+co.s+'%,'+co.l+'%,'+co.a+')';
+					break;
+				case 'hsl':
+					str = 'hsl('+co.h+','+co.s+'%,'+co.l+'%)';
+					break;
+				case 'up':
+					str = "what do you plan on doing here?";
+					break;
+				default:
+					str = "#"+co.hex;
+					break;
+			}
+			return str;
+		}
+		
 		return co;
 	};
 	
