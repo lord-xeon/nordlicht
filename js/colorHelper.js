@@ -92,8 +92,9 @@
 		 *		case insensitive:  rgb, rgba, hsl, hsla
 		 */
 		co.stringIt = function(type){
-			var str = '';
-			switch(type.toLowerCase()){
+			var str = ''
+				ty = type ? ty.toLowerCase(): 'hex';
+			switch(ty){
 				case 'rgba':
 					str = 'rgba('+co.r+','+co.g+','+co.b+','+co.a+')';
 					break;
@@ -109,6 +110,8 @@
 				case 'up':
 					str = "what do you plan on doing here?";
 					break;
+				case 'hex':
+					
 				default:
 					str = "#"+co.hex;
 					break;
