@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<img src="images/loading-150x23.gif" alt="loading icon" id="loading" />
 <div id="europe">
 	<nav id="tabNav">
 		<ul>
@@ -23,7 +24,7 @@
 					<?php echo date('j');?>
 				</span> <!-- closes todayIcon span -->
 			</li>
-			<li class="year2DateTab"><a href="y2d.php">Year to Date</a></li>
+			<li class="year2DateTab"><a href="y2d.php" data-sec="year2date">Year to Date</a></li>
 			<li class="monthlyTab"><a href="monthly.php" data-sec="monthly">Month to Date</a>
 				<span class="navIcon monthIcon"> 
 					<span class="calRing"></span> 
@@ -43,13 +44,13 @@
 				</div>
 			</li>
 			<li class="browserTab"><a href="browser.php" data-sec="browser">Browser</a></li>
-			<li class="osTab"><a href="os.php">OS</a>
+			<li class="osTab"><a href="os.php" data-sec="os">OS</a>
 				<span class="navIcon OSIcon"> 
 					<span class="OSscreen"></span> 
 					<span class="OSbase"></span> 
 				</span> <!-- closes OSIcon span --> 
 			</li>
-			<li class="geoTab"><a href="#geo">Geo</a>
+			<li class="geoTab"><a href="#geo" data-sec="geo">Geo</a>
 				<span class="navIcon countryIcon"> 
 					<span class="ring ring1"></span> 
 					<span class="ring ring2"></span> 
@@ -58,7 +59,7 @@
 					<span class="ring ring5"></span> 
 				</span> <!-- closes countryIcon span -->
 			</li>
-			<li class="contentTab"><a href="#content">Content</a>
+			<li class="contentTab"><a href="#content" data-sec="content">Content</a>
 				<span class="navIcon fileIcon"> 
 					<span></span>
 					<table>
@@ -95,7 +96,7 @@
 					<span class="searchHandle"></span>
 				</div>
 			</li>
-			<li class="errorsTab"><a href="errors.php">Errors</a>
+			<li class="errorsTab"><a href="errors.php" data-sec="errors">Errors</a>
 				<span class="navIcon errorIcon"></span> <!-- closes errorIcon span -->
 			</li>
 		</ul>
@@ -112,7 +113,6 @@
 		</section>
 	</div>
 	</div> <!-- closes europe div -->
-	<img src="images/loading-150x23.gif" alt="loading icon" id="loading" />
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
@@ -129,12 +129,17 @@ $(window).load(function(){
 		},
 		
 		load: function(e,uid){
-			var sec = uid.tab.dataset.sec;
-			console.log(sec);
+
 		},
 		
 		show:function(e,uid){
-			var sec = uid.tab.dataset.sec;
+			var sec = uid.tab.text.toLowerCase();
+			if(sec == 'month to date'){
+				sec = 'monthly';
+			}
+			if(sec == 'year to date'){
+				sec = 'year2date';
+			}
 			tabFuns[sec].startUp();
 			$("#loading").fadeOut('slow');
 		},
