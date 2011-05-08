@@ -1,4 +1,17 @@
-<?php
+<?php 
+/*===========================================
+ #	Sherman.php is part of nordlicht v2 Omaha
+ #	author: stephen giorgi
+ #	author email: stephen.giorgi@alphavega.com
+ #	
+ #	last change: 05.07.2011
+ #	licensed under GNU GPLv2
+ #	see licenses/gnu.txt for full text
+ #
+ #	Purpose: Sherman is the main table builder
+ #		It extends nordlicht.php
+/*=========================================*/
+
 require_once('nordlicht.php');
 require_once('../funn/funnns.php');
 
@@ -13,7 +26,8 @@ class Sherman extends nordlicht {
 			$offSet = 0;
 
 	private $hRows = '',
-			$iRows = '';
+			$iRows = '',
+			$cc;
 			
 
 	
@@ -23,6 +37,10 @@ class Sherman extends nordlicht {
 	}
 	function __destruct(){
 		$this->destroy();
+	}
+	
+	public function cccp($what){
+		return $this->cc = $what;
 	}
 	
 	public function builder(){
@@ -122,6 +140,9 @@ class Sherman extends nordlicht {
 							 * also truncates the link to characters long placing ... in the center
 							 */
 							$vl = '<a href="'.$vl.'" title="visit site" rel="nofollow" class="externalLinks">'.truncate($vl,50).'</a>';
+							break;
+						case 'Domain':
+							$vl = '<img src="funn/img/country/'.$vl.'.png" alt="'.$vl.'" width="16" height="11"/>'.str_replace('+',' ',$this->cc[strtoupper($vl)]);
 							break;
 						default:
 							$vl = $vl;

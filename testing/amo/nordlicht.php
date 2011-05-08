@@ -1,4 +1,16 @@
 <?php 
+/*===========================================
+ #	nordlicht.php is part of nordlicht v2 Omaha
+ #	author: stephen giorgi
+ #	author email: stephen.giorgi@alphavega.com
+ #	
+ #	last change: 05.07.2011
+ #	licensed under GNU GPLv2
+ #	see licenses/gnu.txt for full text
+ #
+ #	Purpose: this file is the main class for dealing with the stats fext files
+ #		it's required in order to open & parse the stats file
+/*=========================================*/
 class nordlicht {
 	public	$fi,
 			$sec,

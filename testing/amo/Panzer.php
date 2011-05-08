@@ -1,4 +1,17 @@
 <?php 
+/*===========================================
+ #	Panzer.php is part of nordlicht v2 Omaha
+ #	author: stephen giorgi
+ #	author email: stephen.giorgi@alphavega.com
+ #	
+ #	last change: 05.07.2011
+ #	licensed under GNU GPLv2
+ #	see licenses/gnu.txt for full text
+ #
+ #	Purpose: Panzer builds the Browser & OS tables since those require more work then the regular tables
+ #		It extends nordlicht
+/*=========================================*/
+
 require_once('nordlicht.php');
 require_once('../funn/funnns.php');
 class Panzer extends nordlicht {
