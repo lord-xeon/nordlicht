@@ -1,3 +1,16 @@
+/*===========================================
+ #	superfortress.js is part of nordlicht v2 Omaha
+ #	author: stephen giorgi
+ #	author email: stephen.giorgi@alphavega.com
+ #	
+ #	last change: 05.07.2011
+ #	licensed under GNU GPLv2
+ #	see licenses/gnu.txt for full text
+ #
+ #	Purpose: This contains the custom javascript for nordlicht v2 Omaha
+ #		It's required in order for the charts to function, and the tabs to work on Load
+/*=========================================*/
+
 /*
 @1 - Prototype extensions
 @2 - Global Functions
@@ -82,9 +95,9 @@ function chartData(flotD,what){
 	flotD[td.charttype] = {show:true};				
 	return flotD;
 }
-/* plotData(section)	gets the data for the plot
+/* monthData(section)	gets the data for the plot
  */
-function plotData(sec){
+function monthData(sec){
 	$(sec+" .nStats th").each(function(i,v){
 		var $t = $(this),
 			td = $t.data(),
@@ -107,8 +120,8 @@ function plotData(sec){
 			}
 			console.log(td);
 			$(sec +' .nStats td:nth-child('+td.chartid+')').each(function(ind,val){
-				day = parseInt(val.parentElement.children[0].dataset.chartdata)*1000;
-				rd.push([day, parseInt(val.dataset.chartdata)]);
+				day = parseInt($(val.parentNode.children[0]).data('chartdata'));
+				rd.push([day,$(val).data('chartdata')]);
 			});
 			flot.data = rd;
 			oFlot.push(flot);
@@ -117,6 +130,44 @@ function plotData(sec){
 	
 	return oFlot;
 }
+
+/* hourData(section)	gets the data for the plot
+ */
+function plotData(sec){
+	var oFlotD = [];
+	$(sec+" .nStats th").each(function(i,v){
+		var $t = $(this),
+			td = $t.data(),
+			rd = [],
+			day = '',
+			flot = {},
+			b = {};
+		if(td.charton == true){
+			$t.addClass('graphed');
+			flot = {
+				label:$t.html(),
+				yaxis:td.chartyaxis,
+				color:td.chartcolor,
+				data:[]
+			};
+			if(td.charttype == 'bars'){
+				flot.bars = { show:true };
+				flot.lines = { show:false };
+				flot.points = { show:false };
+			}
+			console.log(td);
+			$(sec +' .nStats td:nth-child('+td.chartid+')').each(function(ind,val){
+				day = parseInt($(val.parentNode.children[0]).data('chartdata'));
+				rd.push([day,$(val).data('chartdata')]);
+			});
+			flot.data = rd;
+			oFlotD.push(flot);
+		}
+	});
+	
+	return oFlotD;
+}
+
 
 /* pieClick(event, position clicked, chart-obj)	- click event for Pie charts - creates a donut shaped chart out of the minor detail data
  *
@@ -177,6 +228,18 @@ function osPieClick(event, pos, obj) {
 	return $.plot($("#os .minorPlot"),minorDD,flotOps.osMinor);
 }
 
+function wheresPlotDiv(div){
+	var d = $(div);
+	if(d.length < 0){
+		return wheresPlotDiv(div);
+	}
+	return true;
+}
+
+function showTip(item,content){
+	
+}
+
 
 //@3 Tab specific functions
 var oFlot = [];
@@ -193,11 +256,15 @@ var tabFuns = {
 		sec:'monthly',
 		startUp:function(){
 			var sec = '#'+this.sec;
-			
+				oFlot = [],
+				plot = {};
+						
 			oFlot = plotData(sec);
 			flotOps.monthly.legend.container = $("#monthly figcaption");
-			plot = $.plot($("#monthlyPlot"),oFlot,flotOps.monthly);
 			
+			if(wheresPlotDiv("#monthlyPlot")) {
+				plot = $.plot($("#monthlyPlot"),oFlot,flotOps.monthly);
+			}
 			return this.plot = plot;
 		}
 	},
@@ -205,10 +272,15 @@ var tabFuns = {
 		sec: 'hourly',
 		startUp: function(){
 			var sec = '#'+this.sec;
+				oFlot = [],
+				plot = {};
 			
 			oFlot = plotData(sec);
 			flotOps.hourly.legend.container = $("#hourly figcaption");
-			plot = $.plot($("#hourlyPlot"),oFlot,flotOps.hourly);
+			
+			if(wheresPlotDiv("#hourlyPlot")) {
+				plot = $.plot($("#hourlyPlot"),oFlot,flotOps.hourly);
+			}
 			
 			return this.plot = plot;
 		}
@@ -263,7 +335,10 @@ var tabFuns = {
 		}
 	},
 	geo: {
+		sec: 'geo',
 		startUp: function(){
+			var sec = this.sec;
+			$("#"+sec+"Map").load('images/maps/world.svg');
 		}
 	},
 	content: {

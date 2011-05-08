@@ -1,3 +1,16 @@
+/*===========================================
+ #	ju87.php is part of nordlicht v2 Omaha
+ #	author: stephen giorgi
+ #	author email: stephen.giorgi@alphavega.com
+ #	
+ #	last change: 05.07.2011
+ #	licensed under GNU GPLv2
+ #	see licenses/gnu.txt for full text
+ #
+ #	Purpose: this file contains the metadata for each chart of nordlicht v2 Omaha
+ #		Even if there is no chart, like in Today, or Searches, the placeholder is there so that I can keep the numbers in order
+/*=========================================*/
+
 /*Junkers Ju 87
   Flot metadata for all charts of nordlicht Omaha build
  
@@ -73,12 +86,18 @@ var flotOps = {
 			}
 		},
 		xaxis: {
-			tickDecimals: 0
-			
+			tickDecimals:0,
+			mode:null
 		},
-		 yaxis: {
-			 
-        },
+		 yaxis: [{
+			min:0,
+			alignTicksWithAxis:'left',
+			position:'left',
+		},{
+			alignTicksWithAxis:'right',
+			position:'right',
+			tickFormatter:byteSizeTick
+		}],
 		legend: {
 			show:true
 		},
@@ -222,6 +241,7 @@ var flotOps = {
 			clickable:true
 		}
 	},
+	//@6.1 OS Minor
 	osMinor: {
 		series: {
 			pie: {
