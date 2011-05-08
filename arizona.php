@@ -1,8 +1,22 @@
+<!--
+/*===========================================
+ #	arizona.php is part of nordlicht v2 Omaha
+ #	author: stephen giorgi
+ #	author email: stephen.giorgi@alphavega.com
+ #	
+ #	last change: 05.07.2011
+ #	licensed under GNU GPLv2
+ #	see licenses/gnu.txt for full text
+ #
+ #	Purpose: this serves as the index.php of nordlicht v2 Omaha
+ #		You can change the name if you want to
+/*=========================================*/
+-->
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Layout setup</title>
+<title>nordlicht v2 Omaha</title>
 <link href="css/jquery-ui-1.8.11.custom.css" type="text/css" rel="stylesheet" />
 <link href="css/spitfire.css" type="text/css" rel="stylesheet" />
 <link href="css/lightning.css" type="text/css" rel="stylesheet" />
@@ -50,7 +64,7 @@
 					<span class="OSbase"></span> 
 				</span> <!-- closes OSIcon span --> 
 			</li>
-			<li class="geoTab"><a href="#geo" data-sec="geo">Geo</a>
+			<li class="geoTab"><a href="geo.php" data-sec="geo">Geo</a>
 				<span class="navIcon countryIcon"> 
 					<span class="ring ring1"></span> 
 					<span class="ring ring2"></span> 
@@ -114,13 +128,13 @@
 	</div>
 	</div> <!-- closes europe div -->
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
 <script async src="js/jquery.flot.js"></script>
 <script async src="js/flot.pie.js"></script>
 <script async src="js/colorHelper.js"></script>
-<script async src="js/superfortress.js"></script>
-<script async src="js/ju87.js"></script>
+<script src="js/superfortress.js"></script>
+<script src="js/ju87.js"></script>
 <script>
 $(window).load(function(){
 	$("#europe").tabs({
@@ -129,10 +143,6 @@ $(window).load(function(){
 		},
 		
 		load: function(e,uid){
-
-		},
-		
-		show:function(e,uid){
 			var sec = uid.tab.text.toLowerCase();
 			if(sec == 'month to date'){
 				sec = 'monthly';
@@ -140,8 +150,19 @@ $(window).load(function(){
 			if(sec == 'year to date'){
 				sec = 'year2date';
 			}
+			
 			tabFuns[sec].startUp();
 			$("#loading").fadeOut('slow');
+			
+			function started(){
+				tabFuns[sec].startUp();
+				$("#loading").fadeOut('slow');
+			};
+//			setTimeout(started(),1000);
+		},
+		
+		show:function(e,uid){
+
 		},
 		
 		cache:true,

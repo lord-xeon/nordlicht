@@ -1,4 +1,16 @@
 <?php
+/*===========================================
+ #	browser.php is part of nordlicht v2 Omaha
+ #	author: stephen giorgi
+ #	author email: stephen.giorgi@alphavega.com
+ #	
+ #	last change: 05.07.2011
+ #	licensed under GNU GPLv2
+ #	see licenses/gnu.txt for full text
+ #
+ #	Purpose: Error specific code for nordlicht v2 Omaha
+/*=========================================*/
+
 require_once('amo/nordlicht.php');
 require_once('amo/Sherman.php');
 
