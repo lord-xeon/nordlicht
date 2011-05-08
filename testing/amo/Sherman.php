@@ -44,7 +44,7 @@ class Sherman extends nordlicht {
 	}
 	
 	public function builder(){
-		parent::builder();
+		parent::builder();	
 		$this->buildTable();
 	}
 	
