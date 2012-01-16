@@ -1,6 +1,6 @@
 <?php 
 /*===========================================
- #	nordlicht.php is part of nordlicht v3 Omaha
+ #	nordlicht.php is part of nordlicht v3 Utah
  #	author: stephen giorgi
  #	author email: stephen.giorgi@alphavega.com
  #	
