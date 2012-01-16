@@ -5,13 +5,16 @@
 <title>nordlicht v3</title>
 <link type="text/css" rel="stylesheet" href="amo/css/sunny/jquery-ui-1.8.16.custom.css" />
 <link type="text/css" rel="stylesheet" href="amo/css/ui.jqgrid.css" />
+<link type="text/css" rel="stylesheet" href="amo/css/jquery.ui.selectmenu.css" />
 <link type="text/css" rel="stylesheet" href="amo/css/omaha/omaha.css" />
 <script src="amo/js/modernizr.js"></script>
 </head>
 
 <body>
 <header id="top-head">
-
+	<h2 id="site-name"></h2>
+    <h3 id="site-month"></h3>
+	<div id="show-settings">Show Settings</div>
 </header>
 <section id="nordlicht">
     <ul id="nav">
@@ -24,15 +27,15 @@
     </ul>
    	<section id="global">
     	<h2>This is the global data section</h2>
-    </section>
-</section>
-<footer id="bottom-foot"></footer>
+    </section>	<!-- closes global section -->
+</section> <!-- closes nordlicht section -->
+<div id="settings-dialog">
+	<select id="site-list"></select>
+    <input type="date" id="month-date" placeholder="Starting Month" />
+</div> <!-- closes settings-dialog div -->
+<div id="global-load" class="ui-widget-loading-large hidden"></div>
 </body>
 <script src="amo/js/jquery/jquery.1.7.1.source.js"></script>
 <script src="amo/js/jquery/jquery-ui-1.8.16.custom.min.js"></script>
-<script src="amo/js/jquery.jqGrid.js"></script>
-<script src="amo/js/d3/d3.js"></script>
-<script src="amo/js/eisenhower.js"></script>
-<script src="amo/js/Enigma.js"></script>
-<script src="amo/js/patton.js"></script>
+<script src="amo/js/require.js" data-main="amo/js/eisenhower" defer></script>
 </html>
