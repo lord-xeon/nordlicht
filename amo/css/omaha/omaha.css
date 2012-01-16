@@ -1,0 +1,723 @@
+/* CSS Document 
+
+	@0 Resets
+	@1. - General Layout
+		@1.1 Overlays
+		@1.2 Loading icons
+	@2. - jQuery UI styles
+		@2.1 - General Components
+		@2.2 - Tabs
+		@2.3 - Button
+	@5 Individual Tabs
+		@5.3 Domain
+	@9. Footer
+	@10. Globals
+	@11. Animations
+	
+
+
+Colors:
+ Pages color:	 	#19a2f0
+ Hits color:		#ab2828
+ Bandwidth color:	#229b39
+ */
+
+/*@0 Resets*/
+html,body	{ height:100% }
+ul			{ margin:0 }
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,pre,a,code,img,strong,sup,ul,li,ol		{ margin:0; padding:0; border:none; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section	{ display:block; margin:0; padding:0; border:none; }
+a		{ outline:none; }
+body	{ font-size:16px; color:#2a2a2a; }
+ul { margin-left:20px; }
+
+#nordlicht {
+	border:none;
+	border-radius:0;
+	margin:0;
+	padding:0;
+	background:none;
+}
+
+#top-head {
+	height:40px;
+	width:100%;
+	background: #58050e;
+	background: -moz-linear-gradient(top,  #58050e 0%, #ce0606 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#58050e), color-stop(100%,#ce0606));
+	background: -webkit-linear-gradient(top,  #58050e 0%,#ce0606 100%);
+	background: -o-linear-gradient(top,  #58050e 0%,#ce0606 100%);
+	background: -ms-linear-gradient(top,  #58050e 0%,#ce0606 100%);
+	background: linear-gradient(top,  #58050e 0%,#ce0606 100%);
+}
+#site-name,
+#site-month {
+	margin:5px 20px;
+	color:#efefef;
+	display:inline;
+}
+
+/*@1.1 Overlays*/
+.ui-widget-overlay {
+	background:#000;
+	opacity:0.9;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+.ui-widget-shadow { margin: -7px 0 0 -7px; padding: 7px; background: #cccccc url(images/ui-bg_flat_30_cccccc_40x100.png) 50% 50% repeat-x; opacity: .60;filter:Alpha(Opacity=60); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+
+/*@1.2 Loading Icons*/
+.ui-widget-loading-large {
+	width:100px;
+	height:100px !important;
+	border:10px solid #3D3D3D;
+	border-radius:50%;
+	top:20%;
+	left:50%;
+	margin-left:-50px;
+	-webkit-animation:spinner 2s linear infinite;
+	-moz-animation:spinner 2s linear infinite;
+	-ms-animation:spinner 2s linear infinite;
+	animation:spinner 2s linear infinite;
+}
+.ui-widget-loading-large::before {
+	content:"";
+	display:block;
+	width:50%;
+	height:50%;
+	border-radius:50%;
+	margin:7px;
+	background:-webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgba(135, 224, 253, 0.3)),color-stop(20%,rgba(83, 203, 241, 1)),color-stop(60%,rgba(44, 187, 233, 0.3)),color-stop(100%,rgba(5, 171, 224, 1)));
+	background:-moz-radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+	background:-webkit-radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+	background:-o-radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+	background:-ms-radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+	background:radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+}
+
+/*@2 jQuery UI Styles*/
+/*@2.1 General Components*/
+.ui-widget {
+	font-family:Segoe UI, Arial, sans-serif;
+	font-size:16px;
+	color:#2a2a2a;
+}
+.ui-widget .ui-widget {
+	font-size:16px;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: Segoe UI, Arial, sans-serif;
+	font-size:16px;
+}
+.ui-widget-content {
+	border: 1px solid #8e846b;
+	background:#feeebd url(images/ui-bg_highlight-soft_100_feeebd_1x100.png) 50% top repeat-x;
+	color:#2a2a2a;
+}
+.ui-widget-content a { color: #383838; }
+.ui-widget-header {
+	border: 1px solid #494437;
+	background: #817865 url(images/ui-bg_gloss-wave_45_817865_500x100.png) 50% 50% repeat-x;
+	color:#fff;
+	font-weight:bold;
+}
+.ui-widget-header a { color: #ffffff; }
+
+
+/*@2.2 Tabs
+ */
+#nav.ui-tabs-nav {
+	border:none;
+	border-radius:0;
+	background:#2a2a2a;
+	background:-moz-linear-gradient(top,  #2a2a2a 0%, #474747 100%);
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#2a2a2a), color-stop(100%,#474747));
+	background:-webkit-linear-gradient(top,  #2a2a2a 0%,#474747 100%);
+	background:-o-linear-gradient(top,  #2a2a2a 0%,#474747 100%);
+	background:-ms-linear-gradient(top,  #2a2a2a 0%,#474747 100%);
+	background:linear-gradient(top,  #2a2a2a 0%,#474747 100%);
+	margin:0;
+	padding:0;
+	color:#efefef;
+}
+
+
+.ui-widget-header {
+	font-family: 'Lora', serif;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/*@2.2 jQuery UI Tabs*/
+/* jQuery UI Tabs 1.8.16
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs {
+	position:relative;
+	padding:0.2em;
+	zoom: 1;
+}
+.ui-tabs .ui-tabs-nav {
+	margin:0;
+	padding:0;
+}
+.ui-tabs .ui-tabs-nav li {
+	border:none;
+	border-radius:0;
+	background:transparent;
+	list-style:none;
+	float:left;
+	position:relative;
+	white-space:nowrap;
+	border-left:1px solid #CCC;
+}
+.ui-tabs .ui-tabs-nav li:first-child {
+	border-left:none;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+	padding:5px 10px;
+	position:relative;
+	z-index:100;
+	float:left;
+	color:#efefef;
+	text-decoration:none;
+}
+.ui-tabs-nav li:not(.ui-tabs-selected):hover {
+	background:green;
+}
+.ui-tabs-nav li.ui-tabs-selected {
+
+}
+.ui-tabs-nav li.ui-tabs-selected a {
+	color:#5e5e5e;
+}
+
+.ui-tabs-nav li.ui-tabs-selected::after {
+	content:"";
+	display:block;
+	position:absolute;
+	z-index:90;
+	top:-10px;
+	left:0;
+	width:100%;
+	height:40px;
+	border:1px solid #efefef;
+	border-radius:5px 5px 0 0;
+	border-bottom:none;
+	background:rgba(0,0,0,0.2);
+	box-shadow:inset 2px 2px 2px rgba(255,255,255,0.3);
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; }
+
+.ui-tabs .ui-tabs-hide { display: none !important; }
+
+
+/* Panel section
+ */
+
+.ui-tabs .ui-tabs-panel {
+	display:block;
+	margin:0;
+	background:#efefef;
+	border:none;
+	border-radius:0;
+	box-sizing:border-box;
+	height:100%;
+	width:100%;
+	overflow-y:scroll;
+	box-shadow:inset -0px -10px 10px rgba(0,0,0,0.55);
+}
+
+
+
+
+/*@2.3 jQuery UI Button*/
+/*
+ * jQuery UI Button 1.8.16
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Button#theming
+ */
+.ui-button {
+	padding:0;
+	margin-right:5px;
+	position:relative;
+	display:inline-block;
+	cursor:pointer;
+	text-decoration:none !important;
+	text-align:center;
+	overflow:visible;
+	zoom:1;
+}
+.ui-button.ui-widget.ui-state-default {
+	background:#cc2222;
+	background:-moz-linear-gradient(top,  #cc2222 0%, #cc8484 100%);
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#cc2222), color-stop(100%,#cc8484));
+	background:-webkit-linear-gradient(top,  #cc2222 0%,#cc8484 100%);
+	background:-o-linear-gradient(top,  #cc2222 0%,#cc8484 100%);
+	background:-ms-linear-gradient(top,  #cc2222 0%,#cc8484 100%);
+	background:linear-gradient(top,  #cc2222 0%,#cc8484 100%);
+	border:1px solid #2a2a2a;
+	box-shadow:inset -2px -2px 7px rgba(0,0,0,0.3);
+	height:24px;
+	color:#2a2a2a;
+}
+.ui-button.ui-widget:hover {
+	background:#cc2222;
+	background:-moz-linear-gradient(top,  #cc8484 0%, #cc2222 100%);
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#cc8484), color-stop(100%,#cc2222));
+	background:-webkit-linear-gradient(top,  #cc8484 0%, #cc2222 100%);
+	background:-ms-linear-gradient(top,  #cc8484 0%, #cc2222 100%);
+	background:-o-linear-gradient(top,  #cc8484 0%, #cc2222 100%);
+	background:linear-gradient(top,  #cc8484 0%, #cc2222 100%);
+	box-shadow:inset 2px 2px 7px rgba(0,0,0,0.3)
+}
+.ui-button-icon-only {
+	width:24px;
+	height:24px;
+}
+/*
+button.ui-button-icon-only { width: 2.4em; } /* button elements seem to need a little more width * /
+.ui-button-icons-only { width: 3.4em; } 
+button.ui-button-icons-only { width: 3.7em; } */
+
+/*button text element */
+.ui-button .ui-button-text { display: block; line-height: 1.4;  }
+.ui-button-text-only .ui-button-text {
+	padding:1px 13px;
+}
+.ui-button-icon-only .ui-button-text, .ui-button-icons-only .ui-button-text { padding: .4em; text-indent: -9999999px; }
+.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 1em .4em 2.1em; }
+.ui-button-text-icon-secondary .ui-button-text, .ui-button-text-icons .ui-button-text { padding: .4em 2.1em .4em 1em; }
+.ui-button-text-icons .ui-button-text { padding-left: 2.1em; padding-right: 2.1em; }
+/* no icon support for input elements, provide padding by default */
+input.ui-button { padding: .4em 1em; }
+
+/*button icon element(s) */
+.ui-button-icon-only .ui-icon, .ui-button-text-icon-primary .ui-icon, .ui-button-text-icon-secondary .ui-icon, .ui-button-text-icons .ui-icon, .ui-button-icons-only .ui-icon { position: absolute; top: 50%; margin-top: -8px; }
+.ui-button-icon-only .ui-icon { left: 50%; margin-left: -8px; }
+.ui-button-text-icon-primary .ui-button-icon-primary, .ui-button-text-icons .ui-button-icon-primary, .ui-button-icons-only .ui-button-icon-primary { left: .5em; }
+.ui-button-text-icon-secondary .ui-button-icon-secondary, .ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+.ui-button-text-icons .ui-button-icon-secondary, .ui-button-icons-only .ui-button-icon-secondary { right: .5em; }
+
+/*button sets*/
+.ui-buttonset { margin-right: 7px; }
+.ui-buttonset .ui-button { margin-left: 0; margin-right: -.3em; }
+
+/* workarounds */
+button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra padding in Firefox */
+.tab-inside {
+	padding:15px;
+}
+/* Grid section
+ */
+.ui-widget-header {
+
+}
+.ui-jqgrid-pager {
+
+}
+ 
+ 
+.ui-jqgrid .ui-jqgrid-htable th div {
+	overflow:hidden;
+	position:relative;
+	height:20px;
+}
+
+/*@5 Tabs*/
+.grid-holder {
+	clear:both;
+	margin:10px auto;
+}
+.chart-section {
+	border:2px solid #2a2a2a;
+	border-radius:10px;
+	position:relative;
+	width:100%;
+}
+
+.slide-up {
+	height:0;
+	-webkit-transition:1s height;
+	-moz-transition:1s height;
+}
+.collapse-chart {
+	position:absolute;
+	z-index:100;
+	right:5px;
+	top:3px;
+}
+.collapse-chart::after {
+	content:" ";
+	display:block;
+	clear:both;
+}
+
+.ui-button .ui-slide-chart {
+	width:0;
+	height:0;
+	border:6px solid transparent;
+	border-top-color:#2a2a2a;
+	top:9px;
+	left:6px;
+	margin:0;
+	padding:0;
+	-webkit-transition:0.3s;
+	-webkit-transform-origin:50% 25%;
+	-moz-transition:0.3s;
+	-moz-transform-origin:50% 25%;
+	-ms-transition:0.3s;
+	-ms-transform-origin:50% 25%;
+	-o-transition:0.3s;
+	-o-transform-origin:50% 25%;
+	transition:0.3s;
+	transform-origin:50% 25%;
+}
+
+.ui-button:hover .ui-slide-chart,
+.ui-button.selected .ui-slide-chart {
+	border-top-color:#efefef;
+	-webkit-transform:rotate(180deg);
+	-moz-transform:rotate(180deg);
+	-ms-transform:rotate(180deg);
+	-o-transform:rotate(180deg);
+	transform:rotate(180deg);
+}
+.ui-button.selected:hover .ui-slide-chart {
+	border-top-color:#2a2a2a;
+	-webkit-transform:rotate(0deg);
+	-moz-transform:rotate(0deg);
+	-ms-transform:rotate(0deg);
+	-o-transform:rotate(0deg);
+	transform:rotate(0deg);
+}
+/*@5.1 Time of Day*/
+#Time .grid-holder { width:550px; }
+
+/*@5.3 Domain*/
+.domain-map {
+	height:550px;
+	width:100%;
+	position:relative;
+}
+#domain-chart {
+	width:600px;
+	height:100%;
+	position:absolute;
+	top:15px;
+	left:150px;
+}
+
+.auto-spin {
+	position:absolute;
+	top:3px;
+	right:35px;
+	z-index:100;
+}
+
+/*@5.3.1 Info Box*/
+.info-box {
+	border:2px solid #2a2a2a;
+	position:absolute;
+}
+.info-box ul {
+	list-style:none;
+	width:40%;
+	float:left;
+}
+.info-box ul.metrics {
+	margin:0;
+	text-align:right;
+	width:150px;
+	font-weight:bold;
+}
+.info-box ul.values {
+	text-align:left;
+	margin-left:20px;
+	text-overflow:ellipsis;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+/*@5.3.2 Coordinate Info Box*/
+#current-cords {
+	border-radius:0 0 20px 0 ;
+	border-top:none;
+	border-left:none;
+	top:10px;
+	left:10px;
+	width:200px;
+	height:40px;
+}
+#current-cords .metrics {
+	width:75px;
+	margin-top:-5px;
+}
+.current-lat::after {
+	content:"Latitude";
+	margin-left:20px;
+	color:#2D8CBC;
+	font-weight:normal;
+	position:absolute;
+}
+.current-long::after {
+	content:"Longitude";
+	margin-left:20px;
+	color:#167F28;
+	font-weight:normal;
+	position:absolute;
+}
+.lat-metric		{ color:#2D8CBC; }
+.long-metric	{ color:#167F28; }
+
+#current-cords::after,
+#current-cords::before {
+	content:"";
+	display:block;
+	position:absolute;
+	width:10px;
+	height:10px;
+	border:2px solid #2a2a2a;
+	border-radius:10px 0 0 0;
+	border-right:none;
+	border-bottom:none;
+}
+/* top right corner */
+#current-cords::before {
+	top:-12px;
+	left:200px;
+}
+/* bottom left corner */
+#current-cords::after {
+	top:40px;
+	left:-12px;
+}
+
+/*@5.3.3 Tip Info Box*/
+#domain-tip {
+	border-radius:20px 0 0 0;
+	border-bottom:none;
+	border-right:none;
+	right:20px;
+	bottom:20px;
+	width:350px;
+	height:80px;
+}
+
+#domain-tip .values {
+	margin:5px 0 0 0;
+	width:100%;
+}
+#domain-tip .country-flag { padding-right:10px; }
+#domain-tip::after,
+#domain-tip::before {
+	content:"";
+	display:block;
+	position:absolute;
+	bottom:80px;
+	right:-22px;
+	width:20px;
+	height:20px;
+	border:2px solid #2a2a2a;
+	border-radius:0 0 20px 0;
+	border-top:none;
+	border-left:none;
+}
+/* top right corner */
+#domain-tip::before { right:-22px; }
+/* bottom left corner*/
+#domain-tip::after {
+	bottom:-22px;
+	left:-22px;
+}
+#domain-tip .values li::before {
+	content:attr(data-tipValue);
+	width:100px;
+	margin-right:20px;
+	text-align:right;
+	font-weight:bold;
+	float:left;
+}
+
+/*@5.3.4 Slider*/
+#domain-controls .ui-slider {
+	height:450px;
+	float:left;
+	margin:80px 20px 0;
+}
+
+#lat-control {
+	background:#143e54;
+	background:-moz-linear-gradient(left,  #143e54 5%, #2d8cbc 99%);
+	background:-webkit-gradient(linear, left top, right top, color-stop(5%,#143e54), color-stop(99%,#2d8cbc));
+	background:-webkit-linear-gradient(left,  #143e54 5%,#2d8cbc 99%);
+	background:-o-linear-gradient(left,  #143e54 5%,#2d8cbc 99%);
+	background:-ms-linear-gradient(left,  #143e54 5%,#2d8cbc 99%);
+	background:linear-gradient(left,  #143e54 5%,#2d8cbc 99%);
+}
+#long-control {
+	background:#07280d;
+	background:-moz-linear-gradient(left,  #07280d 0%, #167f28 99%);
+	background:-webkit-gradient(linear, left top, right top, color-stop(0%,#07280d), color-stop(99%,#167f28));
+	background:-webkit-linear-gradient(left,  #07280d 0%,#167f28 99%);
+	background:-o-linear-gradient(left,  #07280d 0%,#167f28 99%);
+	background:-ms-linear-gradient(left,  #07280d 0%,#167f28 99%);
+	background:linear-gradient(left,  #07280d 0%,#167f28 99%);
+}
+
+#domain-controls .ui-slider-handle {
+	background:rgba(255,255,255,0.7);
+	border:2px solid #2A2A2A;
+	border-radius:50% / 30%;
+	box-shadow:inset -1px -1px 1px  rgba(0,0,0,0.5);
+	cursor:pointer;
+	margin-left:-1px;
+}
+#domain-controls .ui-slider-handle:hover {
+	background:rgba(0,0,0,0.7);
+}
+
+/*@5.3.5 SVG*/
+#world-map path { fill-rule:evenodd; }
+
+/*@5.3.6 Grid section*/
+#Domain .grid-holder {
+	width:550px;
+	margin:10px auto;
+}
+
+#Domain .country-name {
+	padding-left:10px;
+}
+
+/*@5.4 Browser*/
+#Browser .d3-chart-holder {
+	width:50%;
+	margin-top:15px;
+}
+
+#Browser .grid-holder {
+	width:350px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+}
+
+#browser-tip {
+	position:absolute;
+	top:10px;
+	right:10px;
+	width:255px;
+	height:50px;
+	border-radius:0 0 0 20px;
+	border-top:none;
+	border-right:none;
+}
+#browser-tip .values {
+	width:100%;
+	margin:0;
+}
+#browser-tip .values li::before{
+	content:attr(data-tipValue);
+	margin:0 10px;
+	font-weight:bold;
+	text-align:right;
+	display:inline-block;
+	width:70px;
+}
+
+#browser-tip::before,
+#browser-tip::after {
+	content:"";
+	border:2px solid #2a2a2a;
+	position:absolute;
+	height:10px;
+	width:10px;
+	border-radius:0 10px 0 0;
+	border-left:none;
+	border-bottom:none;
+}
+
+#browser-tip::before {
+	top:-12px;
+	left:-12px;
+}
+#browser-tip::after {
+	bottom:-12px;
+	right:-12px;
+}
+
+/*@9 Footer*/
+#bottom-foot {
+	background:#2a2a2a;
+	background:-moz-linear-gradient(top,  #2a2a2a 0%, #474747 100%);
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#2a2a2a), color-stop(100%,#474747));
+	background:-webkit-linear-gradient(top,  #2a2a2a 0%,#474747 100%);
+	background:-o-linear-gradient(top,  #2a2a2a 0%,#474747 100%);
+	background:-ms-linear-gradient(top,  #2a2a2a 0%,#474747 100%);
+	background:linear-gradient(top,  #2a2a2a 0%,#474747 100%);
+	height:20px;
+	width:100%;
+	position:absolute;
+	bottom:0;
+}
+/*@10 Globals*/
+.hidden				{ display:none; }
+.fade-hide			{ opacity:0; }
+.fade-it {
+	-webkit-transition:0.3s;
+	-moz-transition:0.3s;
+	-ms-transition:0.3s;
+	-o-transition:0.3s;
+	transition:0.3s;
+}
+.clear 				{ clear:both; }
+.pages-metric		{ color:#19a2f0; }
+.hits-metric		{ color:#ab2828; }
+.bandwidth-metric	{ color:#229b39; }
+
+/*@11 Animations*/
+@-webkit-keyframes spinner{
+	0%	{ -webkit-transform:rotate(0); }
+	100%{ -webkit-transform:rotate(360deg); }
+}
+@-moz-keyframes spinner{
+	0%	{ -moz-transform:rotate(0); }
+	100%{ -moz-transform:rotate(360deg); }
+}
+@-ms-keyframes spinner{
+	0%	{ -ms-transform:rotate(0); }
+	100%{ -ms-transform:rotate(360deg); }
+}
+@keyframes spinner{
+	0% {
+		-webkit-transform:rotate(0);
+		-moz-transform:rotate(0);
+		-ms-transform:rotate(0);
+		transform:rotate(0);
+	}
+	100% {
+		-webkit-transform:rotate(360deg);
+		-moz-transform:rotate(360deg);
+		-ms-transform:rotate(360deg);
+		transform:rotate(360deg);
+	}
+}
