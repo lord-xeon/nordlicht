@@ -2,12 +2,18 @@
 
 	@0 Resets
 	@1. - General Layout
+		@1.1 Overlays
+		@1.2 Loading icons
 	@2. - jQuery UI styles
 		@2.1 - General Components
 		@2.2 - Tabs
 		@2.3 - Button
 	@5 Individual Tabs
 		@5.3 Domain
+	@9. Footer
+	@10. Globals
+	@11. Animations
+	
 
 
 Colors:
@@ -44,12 +50,52 @@ ul { margin-left:20px; }
 	background: -ms-linear-gradient(top,  #58050e 0%,#ce0606 100%);
 	background: linear-gradient(top,  #58050e 0%,#ce0606 100%);
 }
-#site-name {
+#site-name,
+#site-month {
 	margin:5px 20px;
 	color:#efefef;
+	display:inline;
 }
-#site-month {
-	
+
+/*@1.1 Overlays*/
+.ui-widget-overlay {
+	background:#000;
+	opacity:0.9;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+}
+.ui-widget-shadow { margin: -7px 0 0 -7px; padding: 7px; background: #cccccc url(images/ui-bg_flat_30_cccccc_40x100.png) 50% 50% repeat-x; opacity: .60;filter:Alpha(Opacity=60); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+
+/*@1.2 Loading Icons*/
+.ui-widget-loading-large {
+	width:100px;
+	height:100px !important;
+	border:10px solid #3D3D3D;
+	border-radius:50%;
+	top:20%;
+	left:50%;
+	margin-left:-50px;
+	-webkit-animation:spinner 2s linear infinite;
+	-moz-animation:spinner 2s linear infinite;
+	-ms-animation:spinner 2s linear infinite;
+	animation:spinner 2s linear infinite;
+}
+.ui-widget-loading-large::before {
+	content:"";
+	display:block;
+	width:50%;
+	height:50%;
+	border-radius:50%;
+	margin:7px;
+	background:-webkit-gradient(radial,center center,0px,center center,100%,color-stop(0%,rgba(135, 224, 253, 0.3)),color-stop(20%,rgba(83, 203, 241, 1)),color-stop(60%,rgba(44, 187, 233, 0.3)),color-stop(100%,rgba(5, 171, 224, 1)));
+	background:-moz-radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+	background:-webkit-radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+	background:-o-radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+	background:-ms-radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
+	background:radial-gradient(center,ellipse cover,rgba(135, 224, 253, 0.3) 0%,#53CBF1 20%,rgba(44, 187, 233, 0.3) 60%,#05ABE0 100%);
 }
 
 /*@2 jQuery UI Styles*/
@@ -647,3 +693,31 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .pages-metric		{ color:#19a2f0; }
 .hits-metric		{ color:#ab2828; }
 .bandwidth-metric	{ color:#229b39; }
+
+/*@11 Animations*/
+@-webkit-keyframes spinner{
+	0%	{ -webkit-transform:rotate(0); }
+	100%{ -webkit-transform:rotate(360deg); }
+}
+@-moz-keyframes spinner{
+	0%	{ -moz-transform:rotate(0); }
+	100%{ -moz-transform:rotate(360deg); }
+}
+@-ms-keyframes spinner{
+	0%	{ -ms-transform:rotate(0); }
+	100%{ -ms-transform:rotate(360deg); }
+}
+@keyframes spinner{
+	0% {
+		-webkit-transform:rotate(0);
+		-moz-transform:rotate(0);
+		-ms-transform:rotate(0);
+		transform:rotate(0);
+	}
+	100% {
+		-webkit-transform:rotate(360deg);
+		-moz-transform:rotate(360deg);
+		-ms-transform:rotate(360deg);
+		transform:rotate(360deg);
+	}
+}

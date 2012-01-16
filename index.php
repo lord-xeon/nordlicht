@@ -56,7 +56,7 @@ pre { display:none; }
         </section>
 	</section>
 </section>
-<footer id="bottom-foot"></footer>
+<div id="global-load" class="ui-widget-loading-large"></div>
 <div id="settings-dialog">
 	<select id="site-list"></select>
     <input type="date" id="month-date" placeholder="Starting Month" />

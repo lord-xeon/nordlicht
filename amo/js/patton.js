@@ -1,37 +1,8 @@
-$(function(){
-	var $tabs = $("#nordlicht");
+if(typeof(nordlicht) == null){
+	var nordlicht = {};
+}
 
-	$tabs.tabs({
-		ajaxOptions:{
-			error:function(xhr,status,indx,anchor){
-				console.log(status,indx,anchor);
-			}
-		},
-		cache:true,
-		fx:{
-			opacity:"toggle"
-		},
-		load:function(e,ui){
-			var win = $(window).innerHeight(),
-				dt = $(ui.tab).data()
-//			return;	//comment this out when done testing
-			require([
-				"jquery.jqGrid",
-				"beaches/"+dt.section
-				],function(){
-				$(ui.panel)[dt.section+"Tab"]({
-					tab:ui,
-					section:dt.section,
-					offset:dt.offset
-				});
-			});
-		},
-	});
-	//sorts the tabs along the x axis
-	$tabs.find(".ui-tabs-nav").sortable({ axis: "x" });
-});
-
-var nordlicht = {
+nordlicht = {
 	//basic about info
 	about:{
 		version:"3.0",
@@ -49,8 +20,14 @@ var nordlicht = {
 		bandwidth:d3.rgb("#229b39"),	//default bandwidth color
 		visits:d3.rgb("#E29CCF")		//default visits color
 	},
+	tabs:{},
+	globalLoad:null,
 	months:["January","February","March","April","May","June","July","August","September","October","November","December"],
-	initTab:function(){
+	/* initNordlicht()	
+	 */
+	initNordlicht:function(){
+		nordlicht.initTab();
+		nordlicht.globalLoad = $("#global-load");
 		var dlg;
 		/* get the list of sites to populate the drop down list
 		 */
@@ -91,6 +68,7 @@ var nordlicht = {
 			buttons:[{
 				text:"Go!",
 				click:function(e){
+					nordlicht.globalLoad.removeClass("hidden");
 					var month = $("#month-date").val(),
 						monthAr = month.split("/"),
 						siteId = $("#site-list").val(),
@@ -111,6 +89,8 @@ var nordlicht = {
 					siteInfo.siteid = siteId;
 					localStorage.setItem("site",JSON.stringify(siteInfo));
 					nordlicht.updateSite(siteId);
+					nordlicht.destroyTab();
+					nordlicht.initTab();
 					dlg.dialog("close");
 				}
 			},{
@@ -125,7 +105,10 @@ var nordlicht = {
 		/* set up the connections to button that opens the dialog
 		 */
 		$("#show-settings").button({
-			text:"show dialog"
+			text:false,
+			icons:{
+				primary:"ui-icon-wrench"
+			}
 		})
 		.click(function(e){
 			dlg.dialog("open");
@@ -134,6 +117,48 @@ var nordlicht = {
 			maxDate:"+0",
 		});
 	},
+	destroyTab:function(){
+		nordlicht.tabs.tabs("destroy");
+	},
+	
+	initTab:function(){
+		var $tabs = $("#nordlicht");
+		nordlicht.tabs = $tabs;
+
+		$tabs.tabs({
+			ajaxOptions:{
+				error:function(xhr,status,indx,anchor){
+					console.log(status,indx,anchor);
+				}
+			},
+			cache:true,
+			fx:{
+				opacity:"toggle"
+			},
+			load:function(e,ui){
+				var win = $(window).innerHeight(),
+					dt = $(ui.tab).data()
+				$tabs.css({ height:win - 40 });
+				//return;	//comment this out when done testing
+				require([
+					"jquery.jqGrid",
+					"beaches/"+dt.section
+					],
+					function(){
+						$(ui.panel)[dt.section+"Tab"]({
+							tab:ui,
+							section:dt.section,
+							offset:dt.offset
+						});
+					nordlicht.globalLoad.addClass("hidden");
+				});
+			},
+		});
+		//sorts the tabs along the x axis
+		$tabs.find(".ui-tabs-nav").sortable({ axis: "x" });
+	},
+	
+	
 	makeSelect:function(data){
 		var dd3 = $("#site-list");
 		data.forEach(function(val,ind){
