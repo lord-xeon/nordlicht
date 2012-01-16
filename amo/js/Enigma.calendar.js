@@ -1,7 +1,6 @@
 Enigma.prototype._calenderBuilder = function(){
 	var me = this;
-	
-	console.log("calender",me);
+
 	me.chartHolderVis = me.vis.append("svg:g")
 							.attr("class","holder")
 							.attr("transform","translate(10,0)");

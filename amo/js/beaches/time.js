@@ -160,14 +160,20 @@ $.widget("nordlicht.timeTab",{
 	},
 	
 	_getData:function(){
-		var me = this;
+		var me = this,
+			ls = JSON.parse(localStorage.getItem("site"));
+		
 		$.ajax({
 			url:"amo/fire.php",
 			type:"GET",
 			data:{
+				req:"stats",
+				siteid:ls.siteid,
+				sitename:ls.site.site,
+				date:ls.date.awstats,
 				section:me.options.section,
 				offset:me.options.offset,
-				perPage:12
+				perPage:32
 			},
 			dataType:"json",
 			success:function(data,status,xhr){

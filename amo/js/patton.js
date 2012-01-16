@@ -12,66 +12,56 @@ $(function(){
 			opacity:"toggle"
 		},
 		load:function(e,ui){
-			var win = $(window).innerHeight();
-			$("#nordlicht").css({
-				height:win - 50
-			});
+			var win = $(window).innerHeight(),
+				dt = $(ui.tab).data()
 //			return;	//comment this out when done testing
-			var dt = $(ui.tab).data();
-			Modernizr.load({
-				both:"amo/js/beaches/"+dt.section+".js",
-				complete:function(){
-					$(ui.panel)[dt.section+"Tab"]({
-						tab:ui,
-						section:dt.section,
-						offset:dt.offset
-					});					
-				}
+			require([
+				"jquery.jqGrid",
+				"beaches/"+dt.section
+				],function(){
+				$(ui.panel)[dt.section+"Tab"]({
+					tab:ui,
+					section:dt.section,
+					offset:dt.offset
+				});
 			});
 		},
 	});
 	//sorts the tabs along the x axis
 	$tabs.find(".ui-tabs-nav").sortable({ axis: "x" });
-
-	Modernizr.load({
-		both:"amo/js/jquery/jquery.ui.selectmenu.js",
-		complete:function(){
-			nordlicht.initTab();
-		}
-	})
 });
+
 var nordlicht = {
+	//basic about info
 	about:{
 		version:"3.0",
-		lastUpdate:"Jan. 08, 2012",
+		lastUpdate:"Jan. 16, 2012",
 		author:"Stephen Giorgi",
 		authorEmail:"stephen.giorgi@alphavega.com",
 		authorURL:"http://www.alphavega.com",
 		home:"http://www.alphavega.com/nordlicht",
 		repository:"http://code.google.com/p/nordlicht/"
 	},
+	//List of colors used throughtout the visiluzations
 	colors:{
-		pages:d3.rgb("#19a2f0"),
-		hits:d3.rgb("#ab2828"),
-		bandwidth:d3.rgb("#229b39")
+		pages:d3.rgb("#19a2f0"),		//default pages color
+		hits:d3.rgb("#ab2828"),			//default hits color
+		bandwidth:d3.rgb("#229b39"),	//default bandwidth color
+		visits:d3.rgb("#E29CCF")		//default visits color
 	},
+	months:["January","February","March","April","May","June","July","August","September","October","November","December"],
 	initTab:function(){
-		console.log("starting...");
-		var dir = true
-		if(!localStorage.getItem("dir") === null){
-			dir = false;
-		}
+		var dlg;
+		/* get the list of sites to populate the drop down list
+		 */
 		$.ajax({
-			url:"amo/config.php",
+			url:"amo/fire.php",
 			data:{
-				siteDir:dir
+				req:"siteList"
 			},
 			dataType:"json",
 			success:function(data){
-				if(dir){
-					localStorage.setItem("dir",data.dir);
-				}
-				makeSelect(data.sitelist);
+				nordlicht.makeSelect(data.sitelist);
 				$("#site-list").selectmenu({
 					menuWidth:400,
 					width:200,
@@ -87,7 +77,10 @@ var nordlicht = {
 				})
 			}
 		});	//end $.ajax()
-		var dlg = $("#settings-dialog").dialog({
+		
+		/* Make the dialog that 
+		 */
+		dlg = $("#settings-dialog").dialog({
 			height:400,
 			modal:true,
 			closeOnEscape:false,
@@ -98,8 +91,26 @@ var nordlicht = {
 			buttons:[{
 				text:"Go!",
 				click:function(e){
-					localStorage.setItem("site",$("#site-list").val());
-					localStorage.setItem("month",$("#month-date").val());
+					var month = $("#month-date").val(),
+						monthAr = month.split("/"),
+						siteId = $("#site-list").val(),
+						siteInfo = {},
+						date = new Date(monthAr[2],monthAr[0],monthAr[1]),
+						mon = date.getMonth() + 1;
+					
+					if(mon < 10){
+						mon = "0"+mon;
+					}
+
+					siteInfo.date = {
+						awstats:mon + "" + date.getFullYear(),
+						date:date.toLocaleDateString(),
+						year:date.getFullYear(),
+						month:nordlicht.months[date.getMonth()]
+					};
+					siteInfo.siteid = siteId;
+					localStorage.setItem("site",JSON.stringify(siteInfo));
+					nordlicht.updateSite(siteId);
 					dlg.dialog("close");
 				}
 			},{
@@ -110,6 +121,9 @@ var nordlicht = {
 				}
 			}]
 		});
+
+		/* set up the connections to button that opens the dialog
+		 */
 		$("#show-settings").button({
 			text:"show dialog"
 		})
@@ -119,17 +133,37 @@ var nordlicht = {
 		$("#month-date").datepicker({
 			maxDate:"+0",
 		});
+	},
+	makeSelect:function(data){
+		var dd3 = $("#site-list");
+		data.forEach(function(val,ind){
+			var opt = document.createElement("option"),
+				ih = "";
+			opt.setAttribute("value",val.siteid);
+			ih += val.nicesitename + "-|-" + val.lastupdate + "-|-" + val.firstupdate + "-|-" + val.site;
+			opt.innerHTML = ih;
+			dd3.append(opt);
+		});
+	},
+	updateSite:function(siteId){
+		$.ajax({
+			url:"amo/fire.php",
+			data:{
+				req:"siteinfo",
+				siteid:siteId
+			},
+			dataType:"json",
+			success:function(data){
+				var siteInfo = JSON.parse(localStorage.getItem("site"));
+				siteInfo.site = data;
+				localStorage.setItem("site",JSON.stringify(siteInfo));
+				$("#site-name").html(data.nicename);
+				$("#site-month").html("Month of " + siteInfo.date.month + ", "+ siteInfo.date.year);
+			},
+			error:function(e){
+				console.log("error",e);
+			}
+		});
 	}
 };
 
-function makeSelect(data){
-	var dd3 = $("#site-list");
-	data.forEach(function(val,ind){
-		var opt = document.createElement("option"),
-			ih = "";
-		opt.setAttribute("value",val.siteid);
-		ih += val.nicesitename + "-|-" + val.lastupdate + "-|-" + val.firstupdate + "-|-" + val.site;
-		opt.innerHTML = ih;
-		dd3.append(opt);
-	});
-};

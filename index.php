@@ -16,6 +16,8 @@ pre { display:none; }
 
 <body>
 <header id="top-head">
+	<h2 id="site-name"></h2>
+    <h3 id="site-month"></h3>
 	<div id="show-settings">Show Settings</div>
 </header>
 <section id="nordlicht">
@@ -62,8 +64,9 @@ pre { display:none; }
 </body>
 <script src="amo/js/jquery/jquery.1.7.1.source.js"></script>
 <script src="amo/js/jquery/jquery-ui-1.8.16.custom.min.js"></script>
-<script src="amo/js/jquery.jqGrid.js"></script>
+<script src="amo/js/require.js" data-main="amo/js/eisenhower" defer></script>
+<!--<script src="amo/js/jquery.jqGrid.js"></script>
 <script src="amo/js/d3/d3.js"></script>
 <script src="amo/js/Enigma.js"></script>
-<script src="amo/js/patton.js"></script>
+<script src="amo/js/patton.js"></script>-->
 </html>

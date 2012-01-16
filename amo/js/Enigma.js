@@ -38,6 +38,10 @@ function Enigma(obj){
 				}
 			}
 		},
+		calDefs,
+		cObj = null;
+	
+	if(obj.type == "calendar"){
 		calDefs = {
 			funs:{
 				day:d3.time.format("%w"),
@@ -63,7 +67,7 @@ function Enigma(obj){
 				styles:{
 					stroke:"#efefef",
 					"stroke-width":"1px",
-					
+					cursor:"pointer"
 				},
 				text:{
 					show:true,
@@ -83,9 +87,6 @@ function Enigma(obj){
 				old:""
 			}
 		};
-		cObj = null;
-	
-	if(obj.type == "calendar"){
 		def.calendar = applyDefaults(calDefs,obj.calendar);
 	}
 	me.chartDefaults = applyDefaults(def,obj);

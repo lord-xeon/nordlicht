@@ -134,6 +134,46 @@ $.widget("nordlicht.dayTab",{
 					"stroke-width":"3px"
 				}
 			}]
+		},
+		chartConfig2:{
+			type:"calendar",
+			calendar:{},
+			legend:{
+				tips:[{
+					name:"Pages",
+					dataType:"pages",
+					formatter:function(vl){return addKs(vl,2);}
+				},{
+					name:"Visits",
+					dataType:"visits",
+					formatter:function(vl){return addKs(vl,2);}
+				},{
+					name:"Bandwidth",
+					dataType:"bandwidth",
+					formatter:function(vl){return byteSize(vl,2);}
+				},{
+					name:"Hits",
+					dataType:"hits",
+					formatter:function(vl){return addKs(vl,2);}
+				}],
+			},
+			series:[{
+				name:"Pages",
+				dataType:"pages",
+				color:nordlicht.colors.pages,
+			},{
+				name:"Visits",
+				dataType:"visits",
+				color:nordlicht.colors.visits,
+			},{
+				name:"Bandwidth",
+				dataType:"bandwidth",
+				color:nordlicht.colors.bandwidth,
+			},{
+				name:"Hits",
+				dataType:"hits",
+				color:nordlicht.colors.hits,
+			}]
 		}
 	},
 	
@@ -145,30 +185,44 @@ $.widget("nordlicht.dayTab",{
 	},
 	
 	_getData:function(){
-		var me = this;
-		$.ajax({
-			url:"amo/fire.php",
-			type:"GET",
-			data:{
-				section:me.options.section,
-				offset:me.options.offset,
-				perPage:32
-			},
-			dataType:"json",
-			success:function(data,status,xhr){
-				me.data = data;
-				me.initTab();
-			},
-			error:function(xhr,status,error){
-				console.log(error);
-			}
+		var me = this,
+			ls = JSON.parse(localStorage.getItem("site"));
+		
+		$.when(
+			$.ajax({
+				url:"amo/fire.php",
+				type:"GET",
+				data:{
+					req:"stats",
+					siteid:ls.siteid,
+					sitename:ls.site.site,
+					date:ls.date.awstats,
+					section:me.options.section,
+					offset:me.options.offset,
+					perPage:32
+				},
+				dataType:"json",
+				success:function(data,status,xhr){
+					me.data = data;
+					//me.initTab();
+				},
+				error:function(xhr,status,error){
+					console.log(error);
+				}
+			}),
+			$.ajax({url:"amo/js/d3/d3.time.js"}),
+			$.ajax({url:"amo/js/Enigma.calendar.js"})
+		)
+		.done(function(){
+			me.initTab();
 		});
 	},
 	
 	initTab:function(){
 		var me = this;
 		me.buildGrid();
-		me.buildChart();
+		me.buildCal();
+		//me.buildChart();
 	},
 	
 	buildGrid:function(){
@@ -183,6 +237,15 @@ $.widget("nordlicht.dayTab",{
 		grid.trigger("reloadGrid");
 		//set the grid to the object so we can access it
 		me.grid = grid;
+	},
+	
+	buildCal:function(){
+		var me = this;
+		me.options.chartConfig2.chartDiv = me.element.find("#day-chart")[0];
+		me.options.chartConfig2.chartData = me.data.rows;
+		
+		me.chart = new Enigma(me.options.chartConfig2);
+		
 	},
 	
 	buildChart:function(){

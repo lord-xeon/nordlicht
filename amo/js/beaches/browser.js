@@ -59,20 +59,28 @@ $.widget("nordlicht.browserTab",{
 	},
 
 	_getData:function(){
-		var me = this;
+		var me = this,
+			ls = JSON.parse(localStorage.getItem("site"));
 
 		$.when(
-			$.ajax({url:"amo/fire.php",data:{
-				section:me.options.section,
-				offset:me.options.offset,
-				perPage:15
+			$.ajax({
+				url:"amo/fire.php",
+				type:"GET",
+				data:{
+					req:"stats",
+					siteid:ls.siteid,
+					sitename:ls.site.site,
+					date:ls.date.awstats,
+					section:me.options.section,
+					offset:me.options.offset,
+					perPage:32
 				},
-			dataType:"json",
-			success:function(data,status,xhr){
-				me.data = {
-					children:data.rows,
-					name:"browsers"
-				};
+				dataType:"json",
+				success:function(data,status,xhr){
+					me.data = {
+						children:data.rows,
+						name:"browsers"
+					};
 			}}),
 			$.ajax({url:"amo/js/d3/d3.layout.js",dataType:"script"}),
 			$.ajax({url:"amo/js/Enigma.tree.js",dataType:"script"})
